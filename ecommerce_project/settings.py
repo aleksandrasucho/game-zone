@@ -38,7 +38,6 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
     '0.0.0.0',
-    'game-zone171-5159875123fa.herokuapp.com'
     'game-zone171.herokuapp.com'
 ]
 
