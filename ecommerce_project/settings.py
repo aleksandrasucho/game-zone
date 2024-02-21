@@ -60,7 +60,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'home',
-    'user',
+    'profiles',
 ]
 
 MIDDLEWARE = [
