@@ -48,7 +48,7 @@
   {% block extra_js %}
   {% endblock%}
 
-  <title>WoWder! {% block extra_title %}{% endblock %}</title>
+  <title>Game Zone {% block extra_title %}{% endblock %}</title>
 </head>
 
 <body>
@@ -64,27 +64,27 @@
         {% comment %} {% if not request.user.is_authenticated %} {% endcomment %}
           <li class="navbar__item">
             {% comment %} Product in Store {% endcomment %}
-            <a href="{% url 'products_list' %}" aria-label="Go to Products page" class="account__option">
+            <a href="#" aria-label="Go to Products page" class="account__option">
               <i class="fas fa-store"></i>
               <span class="navbar__item--name">Store</span>
             </a>
           </li>
           <li class="navbar__item">
-            <a href="{% url 'wishlist_display' %}" aria-label="Go to Wishlist page" class="account__option">
+            <a href="#" aria-label="Go to Wishlist page" class="account__option">
               <i class="fas fa-heart"></i>
               <span class="navbar__item--name">Wishlist</span>
             </a>
           </li>
           <li class="navbar__item">
             {% comment %} Bag {% endcomment %}
-            <a href="{% url 'bag_display' %}" aria-label="Go to Bag page" class="account__option account__option--bag">
+            <a href="#" aria-label="Go to Bag page" class="account__option account__option--bag">
               <i class="fas fa-shopping-bag"></i><span id="shopping-bag-count">{{ product_count }}</span>
               <div class="navbar__item--name">Bag</div>
             </a>
           </li>
         {% if request.user.is_authenticated %}
           <li class="navbar__item">
-            <a href="{% url 'my_profile' user=request.user %}" aria-label="Go to Profile page" class="account__option">
+            <a href="#" aria-label="Go to Profile page" class="account__option">
               <div class="profile__avatar--navbar">
                 {% if user.profile.avatar %}
                   <img src="{{ user.profile.avatar.url }}" alt="avatar" class="avatar">
@@ -130,51 +130,51 @@
                   </a>
                   <ul class="dropdown-menu dropdown__items--admin" aria-labelledby="navbarDropdownMenuLink">
                     <li class="navbar__item--admin">
-                      <a href="{% url 'promotions_list' %}" aria-label="Go to Promotions page" class="account__option">
+                      <a href="#" aria-label="Go to Promotions page" class="account__option">
                         <i class="fas fa-gift"></i>
                         Promo
                       </a>
                     </li>
                     <li class="navbar__item--admin">
-                      <a href="{% url 'add_promo_email' %}" aria-label="Go to Promotions page" class="account__option">
+                      <a href="#" aria-label="Go to Promotions page" class="account__option">
                         <i class="fas fa-envelope"></i>
                         Email
                       </a>
                     </li>
                     <li class="navbar__item--admin">
-                      <a href="{% url 'categories_table' %}" aria-label="Go to Categories page" class="account__option">
+                      <a href="#" aria-label="Go to Categories page" class="account__option">
                         <i class="fas fa-list-ul"></i>
                         Categories
                       </a>
                     </li>
                     <li class="navbar__item--admin">
-                      <a href="{% url 'brands_table' %}" aria-label="Go to Brands page" class="account__option">
+                      <a href="#" aria-label="Go to Brands page" class="account__option">
                         <i class="fas fa-layer-group"></i>
                         Brands
                       </a>
                     </li>
                     <li class="navbar__item--admin">
-                      <a href="{% url 'tags_table' %}" aria-label="Go to Tags page" class="account__option">
+                      <a href="#" aria-label="Go to Tags page" class="account__option">
                         <i class="fas fa-tag"></i>
                         Tags
                       </a>
                     </li>
                     <li class="navbar__item--admin">
-                      <a href="{% url 'product_types_table' %}" aria-label="Go to Product Types page"
+                      <a href="#" aria-label="Go to Product Types page"
                         class="account__option">
                         <i class="fas fa-boxes"></i>
                         Product Types
                       </a>
                     </li>
                     <li class="navbar__item--admin">
-                      <a href="{% url 'product_type_attributes' %}" aria-label="Go to Product Attributes page"
+                      <a href="#" aria-label="Go to Product Attributes page"
                         class="account__option">
                         <i class="fas fa-boxes"></i>
                         Product Attributes
                       </a>
                     </li>
                     <li class="navbar__item--admin">
-                      <a href="{% url 'attribute_values' %}" aria-label="Go to Product Attributes Values page"
+                      <a href="#" aria-label="Go to Product Attributes Values page"
                         class="account__option">
                         <i class="fas fa-boxes"></i>
                         Attributes Values
@@ -182,31 +182,31 @@
                     </li>
                     <!--  -->
                     <li class="navbar__item--admin">
-                      <a href="{% url 'products_table' %}" aria-label="Go to Products page" class="account__option">
+                      <a href="#" aria-label="Go to Products page" class="account__option">
                         <i class="fas fa-table"></i>
                         Products
                       </a>
                     </li>
                     <li class="navbar__item--admin">
-                      <a href="{% url 'product_inventories_table' %}" aria-label="Go to Units page" class="account__option">
+                      <a href="#" aria-label="Go to Units page" class="account__option">
                         <i class="far fa-folder"></i>
                         Units
                       </a>
                     </li>
                     <li class="navbar__item--admin">
-                      <a href="{% url 'stock' %}" aria-label="Go to stock page" class="account__option">
+                      <a href="#" aria-label="Go to stock page" class="account__option">
                         <i class="fas fa-warehouse"></i>
                         Stock
                       </a>
                     </li>
                     <li class="navbar__item--admin">
-                      <a href="{% url 'orders' %}" aria-label="Go to Orders page" class="account__option">
+                      <a href="#" aria-label="Go to Orders page" class="account__option">
                         <i class="fas fa-truck"></i>
                         Orders
                       </a>
                     </li>
                     <li class="navbar__item--admin">
-                      <a href="{% url 'stock_requests_list' %}" aria-label="Go to Stock Requests page" class="account__option">
+                      <a href="#" aria-label="Go to Stock Requests page" class="account__option">
                         <i class="fas fa-exclamation-circle"></i>
                         Stock Requests
                       </a>
@@ -275,19 +275,14 @@
             <a href="https://www.linkedin.com/jobs/" rel="noopener" target="_blank" aria-label="Visit linkedin page with jobs offers">Jobs</a>
           </li>
           <li class="footer__link">
-            <a href="{% url 'products_list' %}" aria-label="Go to Products page">Products</a>
+            <a href="#" aria-label="Go to Products page">Products</a>
           </li>
         </ul>
         <!-- Webpage links -->
         <ul class="footer__links">
           <li class="footer__link">
-            <a href="mailto:JuliiaKonn@protonmail.com" aria-label="Go to email page">
+            <a href="mailto:aleksandrasucho@gmail.com" aria-label="Go to email page">
               Contact Us
-            </a>
-          </li>
-          <li class="footer__link">
-            <a href="https://www.privacypolicygenerator.info/live.php?token=rEZ3YuASkCilUeSMDoqbmYILRRSo6wth" aria-label="Go to view Game Zone privacy policy" target="_blank" rel="noopener">
-              Privacy
             </a>
           </li>
         </ul>
