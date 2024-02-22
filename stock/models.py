@@ -125,3 +125,17 @@ class Product(models.Model):
         except IntegrityError:
             # Handle IntegrityError, possibly due to duplicate slug
             pass
+
+class ProductInventory(models.Model):
+    """Model for Product Inventory."""
+    product = models.OneToOneField(
+        Product,
+        on_delete=models.CASCADE,
+        related_name='inventory',
+        verbose_name='Product',
+        help_text='format: required'
+    )
+    quantity_available = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.product.name} Inventory"
