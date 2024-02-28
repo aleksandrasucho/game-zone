@@ -1,7 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from cloudinary.models import CloudinaryField
-from datetime import date
+from django_countries.fields import CountryField
 
 class Profile(models.Model):
     """Model for the profiles."""
@@ -46,7 +48,7 @@ class Profile(models.Model):
     )
     updated_at = models.DateTimeField(
         auto_now=True,
-        verbose_name='Updated at',
+        verbose_name='Updated at'
     )
     
     def __str__(self):
@@ -61,12 +63,14 @@ class Profile(models.Model):
         if self.avatar:
             return self.avatar.url
         return '/static/images/default_avatar.svg'
-    
+
+
 class Address(models.Model):
     """Model for the addresses."""
     profile = models.ForeignKey(
         Profile,
         on_delete=models.CASCADE,
+        related_name='addresses',  # Add a related_name to access addresses from a profile
         verbose_name='Profile',
         help_text=(
             'format: required'
@@ -86,13 +90,13 @@ class Address(models.Model):
             'format: required, max_length=50'
         )
     )
-    country = models.CharField(
-        max_length=50,
-        verbose_name='Country',
-        help_text=(
-            'format: required, max_length=50'
-        )
-    )
+    country = CountryField(
+    blank_label='Country *',
+    null=False,
+    blank=False,
+    verbose_name='Country',
+    help_text='format: required, max_length=50'
+)
     county_region = models.CharField(
         max_length=50,
         verbose_name='County/Region',
@@ -141,3 +145,4 @@ class Address(models.Model):
             for address in self.profile.addresses.all().exclude(id=self.id):
                 address.is_primary = False
                 address.save()
+

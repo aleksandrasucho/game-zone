@@ -61,6 +61,11 @@ INSTALLED_APPS = [
     'cloudinary',
     'home',
     'profiles',
+    'orders',
+    'newsletter',
+    'reviews',
+    'wishlist',
+    'stock',
 ]
 
 MIDDLEWARE = [

@@ -84,7 +84,7 @@
           </li>
         {% if request.user.is_authenticated %}
           <li class="navbar__item">
-            <a href="#" aria-label="Go to Profile page" class="account__option">
+            <a a href="{% url 'profile' %}" aria-label="Go to Profile page" class="account__option">
               <div class="profile__avatar--navbar">
                 {% if user.profile.avatar %}
                   <img src="{{ user.profile.avatar.url }}" alt="avatar" class="avatar">

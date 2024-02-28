@@ -5,7 +5,7 @@ class ProfileForm(forms.ModelForm):
     """Form for the Profile model."""
     class Meta:
         model = Profile
-        fields = ['first_name', 'last_name', 'birthday', 'subscription']
+        fields = ['first_name', 'last_name']
         widgets = {
             'first_name': forms.TextInput(
                 attrs={
@@ -21,16 +21,6 @@ class ProfileForm(forms.ModelForm):
                     'placeholder': 'Last name',
                 }
             ),
-            'birthday': forms.DateInput(
-                attrs={
-                    'class': 'form-control',
-                    'title': 'YYYY-MM-DD',
-                    'placeholder': 'Birthday',
-                }
-            ),
-            'subscription': forms.CheckboxInput(
-                attrs={'class': 'form-check-input'}
-            )
         }
 
 
