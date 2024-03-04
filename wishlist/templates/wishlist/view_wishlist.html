@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wishlist</title>
+</head>
+<body>
+    <h1>My Wishlist</h1>
+
+    <!-- Display messages -->
+    {% for message in messages %}
+        <div>{{ message }}</div>
+    {% endfor %}
+
+    <!-- Display wishlist items -->
+    {% if products %}
+        <ul>
+            {% for product in products %}
+                <li>
+                    {{ product.name }} 
+                    <a href="{% url 'wishlist:remove_from_wishlist' product.id %}">Remove</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <form action="{% url 'wishlist:clear_wishlist' %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Clear Wishlist">
+        </form>
+    {% else %}
+        <p>Your wishlist is empty.</p>
+    {% endif %}
+    
+    <!-- Link to go back or to add more items -->
+    <a href="{% url 'home' %}">Back to Home</a>
+</body>
+</html>
+{% endblock %}
