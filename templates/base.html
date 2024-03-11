@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="e-commerce website for an business to have their online presence, for the customers to find all pc games online. This website has constant sale and discounts for customers" />
+    <meta name="description" content="e-commerce website for a business to have their online presence, for the customers to find all PC games online. This website has constant sale and discounts for customers" />
     <meta name="keywords"
         content="shopping, online shopping, eshop, game store, online shop, shopping online, online shopping sites, shop online, ecommerce website, clothes shops shopping sites, online shopping websites, online stores, online sale," />
     <meta name="author" content="Aleksandra Suchojad" />
@@ -23,7 +23,7 @@
   {% endblock%}
 
   {% block extra_meta %}
-  {% endblock%}
+  {% endblock %}
 
   {% block corecss %}
     {% comment %} Link to css {% endcomment %}
@@ -34,19 +34,19 @@
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-  {% endblock%}
+  {% endblock %}
 
   {% block extra_css %}
-  {% endblock%}
+  {% endblock %}
 
   {% block jslibraries %}
     <script src="https://kit.fontawesome.com/8e4b08b302.js" crossorigin="anonymous"></script>
   {% endblock %}
   {% block corejs %}
-  {% endblock%}
+  {% endblock %}
 
   {% block extra_js %}
-  {% endblock%}
+  {% endblock %}
 
   <title>Game Zone {% block extra_title %}{% endblock %}</title>
 </head>
@@ -54,37 +54,39 @@
 <body>
   <header class="header">
     {% comment %} Navbar {% endcomment %}
-    <nav class="navbar navbar__customer">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 100px;">
       {% comment %} Navbar content {% endcomment %}
       {% comment %} Logo container {% endcomment %}
-      <a href="{% url 'home' %}" aria-label="Go to Home page" class="logo__container">
-        <span>Game</span>Zone!
-      </a>
-      <ul class="navbar__items">
-        {% comment %} {% if not request.user.is_authenticated %} {% endcomment %}
-          <li class="navbar__item">
-            {% comment %} Product in Store {% endcomment %}
-            <a href="#" aria-label="Go to Products page" class="account__option">
+      <a href="{% url 'home' %}" class="nav-link main-logo-link">
+        <img src="{% static 'images/Game_Zone_transparent.png' %}" alt="Logo" class="logo-img" style="max-height: 140px;">
+    </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a href="{% url 'product_list' %}" aria-label="Go to Products page" class="nav-link">
               <i class="fas fa-store"></i>
-              <span class="navbar__item--name">Store</span>
+              <span class="nav-link-text">Store</span>
             </a>
           </li>
-          <li class="navbar__item">
-            <a href="{% url 'view_wishlist' %}" aria-label="Go to Wishlist page" class="account__option">
+          <li class="nav-item">
+            <a href="{% url 'view_wishlist' %}" aria-label="Go to Wishlist page" class="nav-link">
               <i class="fas fa-heart"></i>
-              <span class="navbar__item--name">Wishlist</span>
+              <span class="nav-link-text">Wishlist</span>
             </a>
           </li>
-          <li class="navbar__item">
-            {% comment %} Bag {% endcomment %}
-            <a href="#" aria-label="Go to Bag page" class="account__option account__option--bag">
+          <li class="nav-item">
+            <a href="#" aria-label="Go to Bag page" class="nav-link">
               <i class="fas fa-shopping-bag"></i><span id="shopping-bag-count">{{ product_count }}</span>
-              <div class="navbar__item--name">Bag</div>
+              <span class="nav-link-text">Bag</span>
             </a>
           </li>
-        {% if request.user.is_authenticated %}
-          <li class="navbar__item">
-            <a a href="{% url 'profile' %}" aria-label="Go to Profile page" class="account__option">
+          {% if request.user.is_authenticated %}
+          <li class="nav-item">
+            <a href="{% url 'profile' %}" aria-label="Go to Profile page" class="nav-link">
               <div class="profile__avatar--navbar">
                 {% if user.profile.avatar %}
                   <img src="{{ user.profile.avatar.url }}" alt="avatar" class="avatar">
@@ -92,80 +94,79 @@
                   <img src="{% static 'images/default_avatar.svg' %}" alt="avatar" class="avatar">
                 {% endif %}
               </div>
-              <span class="navbar__item--name">Profile</span>
+              <span class="nav-link-text">Profile</span>
             </a>
           </li>
-          {% comment %} logout {% endcomment %}
-          <li class="navbar__item">
-            <a href="{% url 'account_logout' %}" aria-label="Logout" class="">
+          <li class="nav-item">
+            <a href="{% url 'account_logout' %}" aria-label="Logout" class="nav-link">
               <i class="fas fa-sign-out-alt"></i>
-              <span class="navbar__item--name">Logout</span>
+              <span class="nav-link-text">Logout</span>
             </a>
           </li>
-        {% elif not request.user.is_authenticated %}
-          <li class="navbar__item">
-            <a href="{% url 'account_signup' %}" class="account__option">SignUp</a>
+          {% elif not request.user.is_authenticated %}
+          <li class="nav-item">
+            <a href="{% url 'account_signup' %}" class="nav-link">SignUp</a>
           </li>
-          <li class="navbar__item">
-            <a href="{% url 'account_login' %}" class="account__option">Login</a>
+          <li class="nav-item">
+            <a href="{% url 'account_login' %}" class="nav-link">Login</a>
           </li>
-        {% endif %}
-      </ul>
+          {% endif %}
+        </ul>
+      </div>
     </nav>
-    {% if request.user.is_authenticated and not request.user.profile.role.id == 1 %}
-    {% comment %} Show navbar for store personnel {% endcomment %}
-    <div class="navbar__admin">
-      <nav class="navbar navbar-expand-lg navbar__items--admin">
-        <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-bars"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                  data-bs-toggle="dropdown" aria-expanded="false">
-                  Personnel dashboard
-                </a>
-                <ul class="dropdown-menu dropdown__items--admin" aria-labelledby="navbarDropdownMenuLink">
-                  <li class="navbar__item--admin">
-                    <a href="{% url 'category_list' %}" aria-label="Go to Categories page" class="account__option">
-                      <i class="fas fa-list-ul"></i>
-                      Categories
-                    </a>
-                  </li>
-                  <li class="navbar__item--admin">
-                    <a href="{% url 'product_list' %}" aria-label="Go to Products page" class="account__option">
-                      <i class="fas fa-table"></i>
-                      Products
-                    </a>
-                  </li>
-                  <li class="navbar__item--admin">
-                    <a href="{% url 'order_list' %}" aria-label="Go to Orders page" class="account__option">
-                      <i class="fas fa-truck"></i>
-                      Orders
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
+  </header>
+  {% if request.user.is_authenticated and not request.user.profile.role.id == 1 %}
+  {% comment %} Show navbar for store personnel {% endcomment %}
+  <div class="navbar__admin">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Personnel dashboard
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
+                <li class="nav-item">
+                  <a href="{% url 'category_list' %}" aria-label="Go to Categories page" class="nav-link">
+                    <i class="fas fa-list-ul"></i>
+                    Categories
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'product_list' %}" aria-label="Go to Products page" class="nav-link">
+                    <i class="fas fa-table"></i>
+                    Products
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'order_list' %}" aria-label="Go to Orders page" class="nav-link">
+                    <i class="fas fa-truck"></i>
+                    Orders
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
+  </div>
   {% endif %}
   </header>
   {% comment %} Main content container {% endcomment %}
   <main class="main">
-    <div class="content__container">
+    <div class="container">
       {% comment %} Messages {% endcomment %}
       {% if messages %}
-        <div class="message-container" id="messages-notes-main">
+        <div class="alert alert-info" role="alert">
           {% for message in messages %}
-            <div class="message-container__message">
-              <p class="message-container__message--text">{{ message }}</p>
-            </div>
+            {{ message }}
           {% endfor %}
         </div>
       {% endif %}
@@ -178,81 +179,83 @@
     </div>
   </main>
   {% comment %} Footer {% endcomment %}
-  <footer class="footer">
-    <div class="footer__main">
-      <!-- Logo -->
-      <div class="footer__logo--container">
-        <div class="logo__container">
-          <span>Game</span>Zone!
+  <footer class="footer mt-auto py-3">
+    <div class="container">
+      <div class="row">
+        <!-- Logo -->
+        <div class="col-md-6">
+          <div class="footer__logo--container">
+            <div class="logo__container">
+              <span>Game</span>Zone!
+            </div>
+          </div>
+        </div>
+        <!-- Links container -->
+        <div class="col-md-6">
+          <div class="footer__links--container">
+            <!-- Contact info -->
+            <ul class="list-unstyled">
+              <li class="footer__link phone">
+                <i class="fas fa-phone"></i>
+                <span>44 20 1234 5678</span>
+              </li>
+              <li class="footer__link email">
+                <i class="fas fa-envelope"></i>
+                <span>game-zone@gmail.com</span>
+              </li>
+            </ul>
+            <!-- More info links -->
+            <ul class="list-unstyled">
+              <li class="footer__link">
+                <a href="{% url 'home' %}" aria-label="Go to Home page">About us</a>
+              </li>
+              <li class="footer__link">
+                <a href="https://www.linkedin.com/jobs/" rel="noopener" target="_blank" aria-label="Visit linkedin page with jobs offers">Jobs</a>
+              </li>
+              <li class="footer__link">
+                <a href="#" aria-label="Go to Products page">Products</a>
+              </li>
+            </ul>
+            <!-- Webpage links -->
+            <ul class="list-unstyled">
+              <li class="footer__link">
+                <a href="mailto:aleksandrasucho@gmail.com" aria-label="Go to email page">
+                  Contact Us
+                </a>
+              </li>
+            </ul>
+            <!-- Social links -->
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Visit our Instagram page">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Visit our Twitter page">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Visit our Facebook page">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-      <!-- Links container -->
-      <div class="footer__links--container">
-        <!-- Contact info -->
-        <ul class="footer__links">
-          <li class="footer__link phone">
-            <div class="footer__icon">
-              <i class="fas fa-phone"></i>
-            </div>
-            <div>44 20 1234 5678</div>
-          </li>
-          <li class="footer__link email">
-            <div class="footer__icon">
-              <i class="fas fa-envelope"></i>
-            </div>
-            <div>game-zone@gmail.com</div>
-          </li>
-        </ul>
-        <!-- More info links -->
-        <ul class="footer__links">
-          <li class="footer__link">
-            <a href="{% url 'home' %}" aria-label="Go to Home page">About us</a>
-          </li>
-          <li class="footer__link">
-            <a href="https://www.linkedin.com/jobs/" rel="noopener" target="_blank" aria-label="Visit linkedin page with jobs offers">Jobs</a>
-          </li>
-          <li class="footer__link">
-            <a href="#" aria-label="Go to Products page">Products</a>
-          </li>
-        </ul>
-        <!-- Webpage links -->
-        <ul class="footer__links">
-          <li class="footer__link">
-            <a href="mailto:aleksandrasucho@gmail.com" aria-label="Go to email page">
-              Contact Us
-            </a>
-          </li>
-        </ul>
-        <!-- Social links -->
-        <ul class="footer__links--social footer__links">
-          <li class="footer__link--social">
-            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Visit our Instagram page">
-              <i class="fab fa-instagram"></i>
-            </a>
-          </li>
-          <li class="footer__link--social">
-            <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Visit our Twitter page">
-              <i class="fab fa-twitter"></i>
-            </a>
-          </li>
-          <li class="footer__link--social">
-            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Visit our Facebook page">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
+      <!-- Attributions -->
+      <ul class="list-unstyled attribution">
+        <li class="credits">
+          Created by
+          <a href="https://github.com/aleksandrasucho" rel="noopener" target="_blank"
+            aria-label="Visit Aleksandra Suchojad github page">
+            Aleksandra Suchojad
+          </a>.
+        </li>
+      </ul>
     </div>
-    <!-- Attributions -->
-    <ul class="attribution">
-      <li class="credits">
-        Created by
-        <a href="https://github.com/aleksandrasucho" rel="noopener" target="_blank"
-          aria-label="Visit Aleksandra Suchojad github page">
-          Aleksandra Suchojad
-        </a>.
-      </li>
-    </ul>
   </footer>
   {% block postloadjs %}
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -265,7 +268,6 @@
     integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
     crossorigin="anonymous"></script>
   <script src="{% static 'js/base.js' %}" type="module"></script>
-
   {% endblock %}
   {% block postloadjs_extra %}
   {% endblock %}

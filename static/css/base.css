@@ -1,0 +1,48 @@
+/*------ Global Settings ------*/
+/* Resetting default margin, padding, and box-sizing for all elements */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Smooth scrolling for the entire page */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Navbar links */
+.navbar-nav .nav-link {
+    color: #ffffff; /* White text color */
+    margin-right: 20px; /* Add more space between links */
+    font-size: 20px; /* Increase font size */
+}
+
+/* Navbar logo */
+.logo-img {
+    max-height: 80px; /* Adjust the maximum height of the logo */
+}
+
+/* Navbar toggler icon */
+.navbar-toggler-icon {
+    background-color: #ffffff; /* White color for the toggler icon */
+}
+
+/* Navbar brand text */
+.navbar-brand {
+    font-size: 26px; /* Increase font size */
+}
+
+/* Active link */
+.nav-item.active .nav-link {
+    font-weight: bold; /* Bold font for active link */
+}
