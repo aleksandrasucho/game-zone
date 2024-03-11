@@ -179,84 +179,71 @@
     </div>
   </main>
   {% comment %} Footer {% endcomment %}
-  <footer class="footer mt-auto py-3">
-    <div class="container">
-      <div class="row">
-        <!-- Logo -->
-        <div class="col-md-6">
-          <div class="footer__logo--container">
-            <div class="logo__container">
-              <span>Game</span>Zone!
-            </div>
-          </div>
-        </div>
-        <!-- Links container -->
-        <div class="col-md-6">
-          <div class="footer__links--container">
-            <!-- Contact info -->
-            <ul class="list-unstyled">
-              <li class="footer__link phone">
-                <i class="fas fa-phone"></i>
-                <span>44 20 1234 5678</span>
-              </li>
-              <li class="footer__link email">
-                <i class="fas fa-envelope"></i>
-                <span>game-zone@gmail.com</span>
-              </li>
-            </ul>
-            <!-- More info links -->
-            <ul class="list-unstyled">
-              <li class="footer__link">
-                <a href="{% url 'home' %}" aria-label="Go to Home page">About us</a>
-              </li>
-              <li class="footer__link">
-                <a href="https://www.linkedin.com/jobs/" rel="noopener" target="_blank" aria-label="Visit linkedin page with jobs offers">Jobs</a>
-              </li>
-              <li class="footer__link">
-                <a href="#" aria-label="Go to Products page">Products</a>
-              </li>
-            </ul>
-            <!-- Webpage links -->
-            <ul class="list-unstyled">
-              <li class="footer__link">
-                <a href="mailto:aleksandrasucho@gmail.com" aria-label="Go to email page">
-                  Contact Us
-                </a>
-              </li>
-            </ul>
-            <!-- Social links -->
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Visit our Instagram page">
-                  <i class="fab fa-instagram"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Visit our Twitter page">
-                  <i class="fab fa-twitter"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Visit our Facebook page">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <!-- Attributions -->
-      <ul class="list-unstyled attribution">
-        <li class="credits">
-          Created by
-          <a href="https://github.com/aleksandrasucho" rel="noopener" target="_blank"
-            aria-label="Visit Aleksandra Suchojad github page">
-            Aleksandra Suchojad
-          </a>.
+<!-- Footer -->
+<footer class="footer mt-auto py-3">
+  <div class="container">
+    <!-- Footer logo -->
+    <div class="footer__logo--container">
+      <span>Game</span>Zone!
+    </div>
+    <!-- Footer contact info -->
+    <div class="footer__contact-info">
+      <ul class="list-unstyled">
+        <li class="footer__link phone">
+          <i class="fas fa-phone"></i>
+          <span>44 20 1234 5678</span>
+        </li>
+        <li class="footer__link email">
+          <i class="fas fa-envelope"></i>
+          <span>game-zone@gmail.com</span>
         </li>
       </ul>
     </div>
-  </footer>
+    <!-- Footer links container -->
+    <div class="footer__links--container">
+      <!-- Links -->
+      <ul class="list-unstyled">
+        <li class="footer__link">
+          <a href="{% url 'home' %}" aria-label="Go to Home page">About us</a>
+        </li>
+        <li class="footer__link">
+          <a href="https://www.linkedin.com/jobs/" rel="noopener" target="_blank" aria-label="Visit LinkedIn page with job offers">Jobs</a>
+        </li>
+        <li class="footer__link">
+          <a href="#" aria-label="Go to Products page">Products</a>
+        </li>
+      </ul>
+    </div>
+    <!-- Footer social links container -->
+    <div class="footer__social-links--container">
+      <!-- Social links -->
+      <ul class="list-inline">
+        <li class="list-inline-item">
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Visit our Instagram page">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Visit our Twitter page">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Visit our Facebook page">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- Attribution -->
+    <div class="footer__attribution">
+      <p>
+        Created by
+        <a href="https://github.com/aleksandrasucho" rel="noopener" target="_blank" aria-label="Visit Aleksandra Suchojad GitHub page">Aleksandra Suchojad</a>.
+      </p>
+    </div>
+  </div>
+</footer>
   {% block postloadjs %}
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

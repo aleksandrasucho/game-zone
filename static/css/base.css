@@ -46,3 +46,62 @@ body {
 .nav-item.active .nav-link {
     font-weight: bold; /* Bold font for active link */
 }
+
+/* Footer container */
+.footer {
+    background-color: #343a40; /* Dark background color */
+    color: #ffffff; /* White text color */
+    padding: 50px 0; /* Add padding top and bottom */
+  }
+  
+  /* Footer logo */
+  .footer__logo--container {
+    font-size: 24px; /* Set font size */
+    margin-bottom: 20px; /* Add space below the logo */
+  }
+  
+  /* Footer contact info */
+  .footer__contact-info {
+    margin-bottom: 30px; /* Add space below contact info */
+  }
+  
+  /* Footer links container */
+  .footer__links--container {
+    margin-bottom: 30px; /* Add space below links */
+  }
+  
+  /* Footer links */
+  .footer__links--container a {
+    color: #ffffff; /* White text color for links */
+    text-decoration: none; /* Remove underline */
+  }
+  
+  .footer__links--container a:hover {
+    color: #2fcd99; /* Change link color on hover */
+  }
+  
+  /* Footer social links */
+  .footer__social-links--container {
+    margin-bottom: 30px; /* Add space below social links */
+  }
+  
+  /* Social link icons */
+  .footer__social-links--container .list-inline-item a {
+    color: #ffffff; /* White text color for social icons */
+    font-size: 24px; /* Increase icon size */
+    margin-right: 20px; /* Add space between icons */
+  }
+  
+  /* Attribution */
+  .footer__attribution {
+    font-size: 14px; /* Decrease font size */
+  }
+  
+  .footer__attribution a {
+    color: #ffffff; /* White text color for attribution link */
+  }
+  
+  .footer__attribution a:hover {
+    color: #2fcd99; /* Change link color on hover */
+  }
+  
