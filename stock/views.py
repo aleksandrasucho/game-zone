@@ -1,3 +1,48 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView, DetailView
+from .models import Category, Product
 
-# Create your views here.
+class CategoryListView(ListView):
+    model = Category
+    template_name = 'category_list.html'
+    context_object_name = 'categories'
+
+class CategoryDetailView(DetailView):
+    model = Category
+    template_name = 'category_detail.html'
+    context_object_name = 'category'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        category = self.get_object()
+        related_products = Product.objects.filter(category=category).exclude(slug=self.kwargs['slug'])[:3]
+        context['related_products'] = related_products
+        return context
+
+class ProductListView(ListView):
+    model = Product
+    template_name = 'product_list.html'
+    context_object_name = 'products'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        # You can customize queryset here, for example, ordering by popularity or release date
+        return queryset
+
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'product_detail.html'
+    context_object_name = 'product'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        product = self.get_object()
+        related_products = Product.objects.filter(category=product.category).exclude(slug=product.slug)[:3]
+        context['related_products'] = related_products
+        return context
+
+    def get_object(self, queryset=None):
+        try:
+            return super().get_object(queryset=queryset)
+        except Product.DoesNotExist:
+            return None

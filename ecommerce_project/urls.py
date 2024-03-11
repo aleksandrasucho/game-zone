@@ -26,4 +26,5 @@ urlpatterns = [
     path('newsletter/', include('newsletter.urls')),
     path('wishlist/', include('wishlist.urls')),
     path('reviews/', include('reviews.urls')),
+    path('stock/', include('stock.urls')),
 ]
