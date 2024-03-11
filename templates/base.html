@@ -60,6 +60,20 @@
       <a href="{% url 'home' %}" class="nav-link main-logo-link">
         <img src="{% static 'images/Game_Zone_transparent.png' %}" alt="Logo" class="logo-img" style="max-height: 140px;">
     </a>
+    <div class="col-12 col-lg-6 my-auto py-1 py-lg-0 text-center"> <!-- Updated col-lg-6 class for wider search bar -->
+      <form method="GET" action="">
+        <div class="input-group w-100">
+          <input class="form-control border border-black rounded-0" type="text" name="q" placeholder="Search our site">
+          <div class="input-group-append">
+            <button class="form-control btn btn-black border border-black rounded-0" type="submit" style="background-color: black; color: white;">
+              <span class="icon">
+                <i class="fas fa-search"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

@@ -47,6 +47,30 @@ body {
     font-weight: bold; /* Bold font for active link */
 }
 
+/* Adjustments for the search bar */
+.my-auto {
+    margin: auto; /* Center vertically */
+}
+
+.input-group {
+    width: auto; /* Remove width limitation */
+    max-width: 600px; /* Updated max-width for a longer search bar */
+}
+
+.form-control {
+    border-radius: 25px; /* Make the input and button round */
+}
+
+.btn {
+    border-radius: 25px; /* Make the button round */
+}
+
+
+
+
+
+
+
 /* Footer container */
 .footer {
     background-color: #343a40; /* Dark background color */
