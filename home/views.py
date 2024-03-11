@@ -5,6 +5,7 @@ from django.views import View
 
 class HomeView(View):
     """View for the home page."""
+
     def get(self, request):
-        """Return the home page."""
+        """Handle GET requests to display the home page."""
         return render(request, 'home.html')
