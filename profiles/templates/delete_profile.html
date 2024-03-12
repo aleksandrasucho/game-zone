@@ -2,6 +2,11 @@
 {% load static %}
 
 {% block content %}
-<h1>Welcome to My Website!</h1>
-<p>This is the home page content.</p>
+<h1>Delete Profile</h1>
+<p>Are you sure you want to delete your profile?</p>
+<form action="{% url 'delete_profile' %}" method="post">
+  {% csrf_token %}
+  <input type="submit" value="Delete">
+  <a href="{% url 'profile' %}"><button type="button">Cancel</button></a>
+</form>
 {% endblock %}

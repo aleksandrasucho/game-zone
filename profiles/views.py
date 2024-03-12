@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Profile, Address
@@ -99,10 +101,10 @@ class ChangePrimaryAddressView(LoginRequiredMixin, View):
 class DeleteProfileView(LoginRequiredMixin, View):
     """View for deleting user profile."""
 
+    def get(self, request, *args, **kwargs):
+        return render(request, 'delete_profile.html')
+
     def post(self, request, *args, **kwargs):
         user = request.user
         user.delete()
-        return redirect('logout')
-
-    def get(self, request, *args, **kwargs):
-        return render(request, 'profiles/delete_profile.html')
+        return HttpResponseRedirect(reverse('home'))  # Redirect to home page
