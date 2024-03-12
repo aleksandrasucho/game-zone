@@ -25,119 +25,118 @@ body {
 }
 
 .container {
-    width: 100%; /* Set width to 100% */
-    padding: 0; /* Remove padding */
-    margin: 0; /* Remove margin */
-    box-sizing: border-box; /* Include padding and border in the total width */
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 .main-content {
-    flex: 1; /* Take up remaining vertical space */
+    flex: 1;
     display: flex;
 }
 
 /* Navbar links */
 .navbar-nav .nav-link {
-    color: #ffffff; /* White text color */
-    margin-right: 20px; /* Add more space between links */
-    font-size: 20px; /* Increase font size */
+    color: #ffffff;
+    margin-right: 20px;
+    font-size: 20px;
 }
 
 /* Navbar logo */
 .logo-img {
-    max-height: 80px; /* Adjust the maximum height of the logo */
+    max-height: 80px;
 }
 
 /* Navbar toggler icon */
 .navbar-toggler-icon {
-    background-color: #ffffff; /* White color for the toggler icon */
+    background-color: #ffffff;
 }
 
 /* Navbar brand text */
 .navbar-brand {
-    font-size: 26px; /* Increase font size */
+    font-size: 26px;
 }
 
 /* Active link */
 .nav-item.active .nav-link {
-    font-weight: bold; /* Bold font for active link */
+    font-weight: bold;
 }
 
 /* Adjustments for the search bar */
 .my-auto {
-    margin: auto; /* Center vertically */
+    margin: auto;
 }
 
 .input-group {
-    width: auto; /* Remove width limitation */
-    max-width: 600px; /* Updated max-width for a longer search bar */
+    width: auto;
+    max-width: 600px;
 }
 
 .form-control {
-    border-radius: 25px; /* Make the input and button round */
+    border-radius: 25px;
 }
 
 .btn {
-    border-radius: 25px; /* Make the button round */
+    border-radius: 25px;
 }
 
 
 
 /* Footer container */
 .footer {
-    background-color: #343a40; /* Dark background color */
-    color: #ffffff; /* White text color */
-    padding: 50px 0; /* Add padding top and bottom */
-  }
-  
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 50px 0;
+}
+
   /* Footer logo */
-  .footer__logo--container {
-    font-size: 24px; /* Set font size */
-    margin-bottom: 20px; /* Add space below the logo */
-  }
-  
+.footer__logo--container {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
   /* Footer contact info */
-  .footer__contact-info {
-    margin-bottom: 30px; /* Add space below contact info */
-  }
-  
-  /* Footer links container */
-  .footer__links--container {
-    margin-bottom: 30px; /* Add space below links */
-  }
-  
+.footer__contact-info {
+    margin-bottom: 30px;
+}
+
+/* Footer links container */
+.footer__links--container {
+    margin-bottom: 30px;
+}
+
   /* Footer links */
-  .footer__links--container a {
-    color: #ffffff; /* White text color for links */
-    text-decoration: none; /* Remove underline */
-  }
-  
-  .footer__links--container a:hover {
-    color: #2fcd99; /* Change link color on hover */
-  }
-  
+.footer__links--container a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.footer__links--container a:hover {
+    color: #2fcd99;
+}
+
   /* Footer social links */
-  .footer__social-links--container {
-    margin-bottom: 30px; /* Add space below social links */
-  }
-  
-  /* Social link icons */
-  .footer__social-links--container .list-inline-item a {
-    color: #ffffff; /* White text color for social icons */
-    font-size: 24px; /* Increase icon size */
-    margin-right: 20px; /* Add space between icons */
-  }
-  
+.footer__social-links--container {
+    margin-bottom: 30px;
+}
+
+/* Social link icons */
+.footer__social-links--container .list-inline-item a {
+    color: #ffffff;
+    font-size: 24px;
+    margin-right: 20px;
+}
+
   /* Attribution */
-  .footer__attribution {
-    font-size: 14px; /* Decrease font size */
-  }
-  
-  .footer__attribution a {
-    color: #ffffff; /* White text color for attribution link */
-  }
-  
-  .footer__attribution a:hover {
-    color: #2fcd99; /* Change link color on hover */
-  }
-  
+.footer__attribution {
+    font-size: 14px;
+}
+
+.footer__attribution a {
+    color: #ffffff;
+}
+
+.footer__attribution a:hover {
+    color: #2fcd99;
+}
