@@ -11,13 +11,29 @@
 /* Smooth scrolling for the entire page */
 html {
     scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
 }
 
+/* Body styling */
 body {
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
-    width: 100%;
     min-height: 100vh;
+}
+
+.container {
+    width: 100%; /* Set width to 100% */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+    box-sizing: border-box; /* Include padding and border in the total width */
+}
+
+.main-content {
+    flex: 1; /* Take up remaining vertical space */
+    display: flex;
 }
 
 /* Navbar links */
@@ -64,10 +80,6 @@ body {
 .btn {
     border-radius: 25px; /* Make the button round */
 }
-
-
-
-
 
 
 
