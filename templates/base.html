@@ -101,13 +101,6 @@
           {% if request.user.is_authenticated %}
           <li class="nav-item">
             <a href="{% url 'profile' %}" aria-label="Go to Profile page" class="nav-link">
-              <div class="profile__avatar--navbar">
-                {% if user.profile.avatar %}
-                  <img src="{{ user.profile.avatar.url }}" alt="avatar" class="avatar">
-                {% else %}
-                  <img src="{% static 'images/default_avatar.svg' %}" alt="avatar" class="avatar">
-                {% endif %}
-              </div>
               <span class="nav-link-text">Profile</span>
             </a>
           </li>

@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from cloudinary.models import CloudinaryField
 from django_countries.fields import CountryField
 
 class Profile(models.Model):
@@ -36,12 +35,6 @@ class Profile(models.Model):
         )
     )
     
-    avatar = CloudinaryField(
-        'avatar',
-        folder='avatars',
-        blank=True,
-        null=True,
-    )
     created_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name='Created at',
@@ -58,11 +51,6 @@ class Profile(models.Model):
             return self.first_name
         return self.user.username
     
-    @property
-    def avatar_url(self):
-        if self.avatar:
-            return self.avatar.url
-        return '/static/images/default_avatar.svg'
 
 
 class Address(models.Model):

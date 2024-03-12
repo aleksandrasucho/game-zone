@@ -33,30 +33,6 @@ class EditUserProfileView(LoginRequiredMixin, View):
             return redirect('profile')
         return render(request, 'profiles/edit_profile.html', {'form': form})
 
-class ResetAvatarView(LoginRequiredMixin, View):
-    """View for resetting user avatar."""
-
-    def post(self, request, *args, **kwargs):
-        profile = request.user.profile
-        if profile.avatar:
-            profile.avatar.delete()  # Delete the avatar file
-            profile.avatar = None
-            profile.save()
-        return redirect('profile')
-
-class EditAvatarAjaxView(LoginRequiredMixin, View):
-    """View for editing user avatar using AJAX."""
-
-    def post(self, request, *args, **kwargs):
-        if request.is_ajax():
-            profile = request.user.profile
-            new_avatar = request.FILES.get('avatar')
-            if new_avatar != profile.avatar:
-                profile.avatar = new_avatar
-                profile.save()
-            return JsonResponse({'status': 'success'})
-        return JsonResponse({'status': 'error'}, status=400)
-
 class AddressesView(LoginRequiredMixin, View):
     """View for displaying user addresses."""
 
@@ -108,7 +84,6 @@ class DeleteAddressView(LoginRequiredMixin, View):
     def get(self, request, address_id, *args, **kwargs):
         address = get_object_or_404(Address, pk=address_id, profile=request.user.profile)
         return render(request, 'profiles/delete_address.html', {'address': address})
-
 
 class ChangePrimaryAddressView(LoginRequiredMixin, View):
     """View for changing the primary address."""
