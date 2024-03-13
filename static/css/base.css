@@ -22,13 +22,15 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: #1c1c1c;
 }
 
 .container {
     width: 100%;
     padding: 0;
-    margin: 0;
+    margin: 0 auto; /* Centering content */
     box-sizing: border-box;
+    text-align: center; /* Centering content */
 }
 
 .main-content {
@@ -63,25 +65,46 @@ body {
     font-weight: bold;
 }
 
-/* Adjustments for the search bar */
-.my-auto {
-    margin: auto;
+/* Set fixed height for carousel images */
+.carousel-item img {
+    width: auto; /* Ensure the width adjusts automatically to maintain aspect ratio */
+    height: 800px; /* Set the desired height */
+    object-fit: cover; /* Ensure the entire image is visible without stretching */
 }
 
-.input-group {
-    width: auto;
-    max-width: 600px;
+.carousel-image-wrapper {
+    position: relative;
+    height: 800px; /* Set the same height as the carousel images */
 }
 
-.form-control {
-    border-radius: 25px;
+.carousel-caption {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+    text-align: center;
 }
 
-.btn {
-    border-radius: 25px;
+
+.overlay-text {
+    position: absolute;
+    bottom: 0; /* Changed from top to bottom */
+    left: 0; /* Changed from 50% to 0 */
+    width: 100%; /* Set width to 100% */
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    color: #fff;
+    text-align: center;
 }
 
-
+.side-image {
+    max-width: 80%;
+    height: auto;
+}
 
 /* Footer container */
 .footer {

@@ -2,23 +2,88 @@
 {% load static %}
 
 {% block content %}
-<div id="carousel" class="carousel_slide carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="3000">
-            <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710198035/csgo_ftqrqr.jpg"
-                class="d-block  img-fluid" alt="">
+{{ block.super }}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="3000">
+                        <div class="carousel-image-wrapper">
+                            <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710198035/csgo_ftqrqr.jpg"
+                                class="d-block img-fluid" alt="">
+                            <div class="overlay-text">
+                                <h2>Counter-Strike: Source</h2>
+                                <p>A legendary multiplayer first-person shooter game.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="3000">
+                        <div class="carousel-image-wrapper">
+                            <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710198317/2x1_NSwitch_HogwartsLegacy_env2rl.jpg"
+                                class="d-block img-fluid" alt="">
+                            <div class="overlay-text">
+                                <h2>Hogwarts Legacy</h2>
+                                <p>Embark on a journey to Hogwarts and experience the magic!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="3000">
+                        <div class="carousel-image-wrapper">
+                            <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710198515/helldivers-2-pc-game-steam-europe-cover_09a589f445b447978f58c5e3249265b4_s7xg5j.jpg"
+                                class="d-block img-fluid" alt="">
+                            <div class="overlay-text">
+                                <h2>Helldivers</h2>
+                                <p>Join the elite squad of Helldivers and engage in co-op mayhem against alien enemies!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="3000">
+                        <div class="carousel-image-wrapper">
+                            <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710198552/AC_20KINGDOM_20PREORDER_STANDARD_20EDITION_EPIC_Key_Art_Wide_3840x2160-3840x2160-485fe17203671386c71bde8110886c7d_zrgxim.jpg"
+                                class="d-block img-fluid" alt="">
+                            <div class="overlay-text">
+                                <h2>Assassin's Creed Valhalla</h2>
+                                <p>Explore the kingdoms of England, Norway, and beyond as a Viking warrior in this epic adventure!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
         </div>
-        <div class="carousel-item" data-bs-interval="3000">
-            <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710198317/2x1_NSwitch_HogwartsLegacy_env2rl.jpg"
-                class="d-block  img-fluid" alt="">
-        </div>
-        <div class="carousel-item" data-bs-interval="3000">
-            <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710198515/helldivers-2-pc-game-steam-europe-cover_09a589f445b447978f58c5e3249265b4_s7xg5j.jpg"
-                class="d-block  img-fluid" alt="">
-        </div>
-        <div class="carousel-item" data-bs-interval="3000">
-            <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710198552/AC_20KINGDOM_20PREORDER_STANDARD_20EDITION_EPIC_Key_Art_Wide_3840x2160-3840x2160-485fe17203671386c71bde8110886c7d_zrgxim.jpg"
-                class="d-block  img-fluid" alt="">
+        <div class="col-md-4">
+            <div class="container mt-3">
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710198035/csgo_ftqrqr.jpg"
+                            class="img-fluid side-image" alt="">
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710198317/2x1_NSwitch_HogwartsLegacy_env2rl.jpg"
+                            class="img-fluid side-image" alt="">
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710198515/helldivers-2-pc-game-steam-europe-cover_09a589f445b447978f58c5e3249265b4_s7xg5j.jpg"
+                            class="img-fluid side-image" alt="">
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710198552/AC_20KINGDOM_20PREORDER_STANDARD_20EDITION_EPIC_Key_Art_Wide_3840x2160-3840x2160-485fe17203671386c71bde8110886c7d_zrgxim.jpg"
+                            class="img-fluid side-image" alt="">
+                    </div>
+                    <!-- Add more images here -->
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -61,7 +126,6 @@
     <h2>Testimonials</h2>
     <div class="row">
         <!-- testimonials here -->
-
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
@@ -69,7 +133,7 @@
                     <footer class="blockquote-footer">John Doe</footer>
                 </div>
             </div>
-
+        </div>
     </div>
 </div>
 
