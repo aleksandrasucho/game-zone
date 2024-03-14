@@ -186,6 +186,34 @@ body {
     height: auto;
 }
 
+/* Testimonials styling */
+
+/* Testimonials container */
+.testimonials-container {
+    margin-bottom: 50px; /* Add margin to prevent touching the footer */
+}
+
+.testimonial {
+    background-color: #333333; /* Dark grey background */
+    color: #ffffff; /* Text color */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px; /* Add margin between testimonials */
+    height: 100%; /* Ensure all boxes have the same height */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.testimonial p {
+    font-size: 16px;
+    justify-content: center;
+}
+
+.testimonial footer {
+    font-size: 14px;
+    opacity: 0.7; /* Reduce opacity for footer text */
+}
+
+
 /* Footer container */
 .footer {
     background-color: #343a40;
