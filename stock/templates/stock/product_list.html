@@ -7,7 +7,7 @@
         {% for game in games %}
         <div class="col-md-3">
             <div class="game-card">
-                <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710198515/helldivers-2-pc-game-steam-europe-cover_09a589f445b447978f58c5e3249265b4_s7xg5j.jpg" class="game-image" alt="{{ game.title }}">
+                <img src="{{ game.image_url }}" class="game-image" alt="{{ game.title }}">
                 <h3 class="game-title">{{ game.title }}</h3>
                 <p class="game-description">{{ game.description }}</p>
                 <p class="game-price">${{ game.price }}</p>

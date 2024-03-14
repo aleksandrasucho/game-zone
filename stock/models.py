@@ -100,11 +100,12 @@ class Product(models.Model):
         verbose_name='Price',
         help_text='format: required'
     )
-    image = models.ImageField(
-        upload_to='products/',
+    image_url = models.URLField(
+        max_length=500,  # Adjust max_length as per your requirements
         null=True,
         blank=True,
-        verbose_name='Product Image'
+        verbose_name='Product Image URL',
+        help_text='format: optional'
     )
 
     class Meta:
