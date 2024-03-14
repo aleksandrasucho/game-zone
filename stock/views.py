@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
+from django.core.paginator import Paginator
 from .models import Category, Product
 
 class CategoryListView(ListView):
@@ -23,11 +24,22 @@ class ProductListView(ListView):
     model = Product
     template_name = 'product_list.html'
     context_object_name = 'products'
+    paginate_by = 12  # Number of products per page
 
     def get_queryset(self):
         queryset = super().get_queryset()
         # You can customize queryset here, for example, ordering by popularity or release date
         return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Paginate queryset
+        products = context['products']
+        paginator = Paginator(products, self.paginate_by)
+        page_number = self.request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        context['products'] = page_obj
+        return context
 
 class ProductDetailView(DetailView):
     model = Product

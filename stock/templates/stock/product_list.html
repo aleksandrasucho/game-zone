@@ -1,20 +1,48 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block content %}
 <div class="container">
     <div class="row">
-        {% for game in games %}
-        <div class="col-md-3">
-            <div class="game-card">
-                <img src="{{ game.image_url }}" class="game-image" alt="{{ game.title }}">
-                <h3 class="game-title">{{ game.title }}</h3>
-                <p class="game-description">{{ game.description }}</p>
-                <p class="game-price">${{ game.price }}</p>
-                <!-- Add more game details as needed -->
+        <div class="col text-center mt-3">
+            <h2 class="logo-font">Products</h2>
+            <hr class="w-50 mb-1">
+        </div>
+    </div>
+    <div class="row">
+        {% for product in page_obj %}
+        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4"> <!-- Added mb-4 class for margin bottom -->
+            <div class="card h-100 border-0">
+                <a href="{% url 'product_detail' product.id %}">
+                    <img class="card-img-top img-fluid" src="{% if product.image_url %}{{ product.image_url }}{% else %}{{ MEDIA_URL }}noimage.png{% endif %}" alt="{% if product.name %}{{ product.name }}{% else %}No Name{% endif %}">
+                </a>
+                <div class="card-body pb-2"> <!-- Increased padding bottom to ensure price is not cut off -->
+                    <h5 class="card-title">{% if product.name %}{{ product.name }}{% else %}No Name{% endif %}</h5>
+                    <p class="card-text">Category: {% if product.category %}{{ product.category.name }}{% else %}No Category{% endif %}</p>
+                    <p class="card-text">Price: ${{ product.price }}</p>
+                    <!-- Add more fields if needed -->
+                </div>
+                <div class="card-footer bg-white pt-0 border-0 text-left">
+                    <!-- Add additional details or actions if needed -->
+                </div>
             </div>
         </div>
         {% endfor %}
+    </div>
+    <!-- Pagination links -->
+    <div class="row">
+        <div class="col">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">First</a>
+                <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            {% endif %}
+        </div>
+        <div class="col text-right">
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">Next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+            {% endif %}
+        </div>
     </div>
 </div>
 {% endblock %}
