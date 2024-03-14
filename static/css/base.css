@@ -77,6 +77,87 @@ body {
     height: 800px; /* Set the same height as the carousel images */
 }
 
+.card-inner {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-description {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+}
+
+.card-description.active {
+    transform: translateY(0);
+}
+
+.card:hover .card-description {
+    transform: translateY(0);
+}
+
+.card-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price, .btn-primary {
+    color: #fff;
+}
+
+.game-card {
+    margin-bottom: 30px;
+}
+
+.best-sellers {
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #014e2a, #c9fa04);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.underline {
+    border: none;
+    border-bottom: 2px solid #fff;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    background-color: #014e2a;
+    border-color: #014e2a;
+    font-weight: bold;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #01331a;
+    border-color: #01331a;
+}
+
 .carousel-caption {
     position: absolute;
     bottom: 0;
@@ -89,12 +170,11 @@ body {
     text-align: center;
 }
 
-
 .overlay-text {
     position: absolute;
-    bottom: 0; /* Changed from top to bottom */
-    left: 0; /* Changed from 50% to 0 */
-    width: 100%; /* Set width to 100% */
+    bottom: 0;
+    left: 0;
+    width: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     padding: 20px;
     color: #fff;
@@ -113,13 +193,13 @@ body {
     padding: 50px 0;
 }
 
-  /* Footer logo */
+/* Footer logo */
 .footer__logo--container {
     font-size: 24px;
     margin-bottom: 20px;
 }
 
-  /* Footer contact info */
+/* Footer contact info */
 .footer__contact-info {
     margin-bottom: 30px;
 }
@@ -129,7 +209,7 @@ body {
     margin-bottom: 30px;
 }
 
-  /* Footer links */
+/* Footer links */
 .footer__links--container a {
     color: #ffffff;
     text-decoration: none;
@@ -139,7 +219,7 @@ body {
     color: #2fcd99;
 }
 
-  /* Footer social links */
+/* Footer social links */
 .footer__social-links--container {
     margin-bottom: 30px;
 }
@@ -151,7 +231,7 @@ body {
     margin-right: 20px;
 }
 
-  /* Attribution */
+/* Attribution */
 .footer__attribution {
     font-size: 14px;
 }
