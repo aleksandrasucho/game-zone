@@ -44,6 +44,7 @@ body {
     font-size: 20px;
     position: relative;
     transition: color 0.3s ease;
+    z-index: 1; /* Ensure navbar links are above other elements */
 }
 
 /* Navbar links hover effect */
@@ -74,22 +75,78 @@ body {
 /* Navbar logo */
 .logo-img {
     max-height: 80px;
+    z-index: 1; /* Ensure logo is above other elements */
 }
 
 /* Navbar toggler icon */
 .navbar-toggler-icon {
     background-color: #ffffff;
+    z-index: 2; /* Ensure toggler icon is above other elements */
 }
 
 /* Navbar brand text */
 .navbar-brand {
     font-size: 26px;
+    z-index: 1; /* Ensure brand text is above other elements */
 }
 
 /* Active link */
 .nav-item.active .nav-link {
     font-weight: bold;
 }
+
+/* Dropdown menu styling */
+.dropdown-menu {
+    background-color: #343a40;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.dropdown-menu a {
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+}
+
+.dropdown-menu a:hover {
+    background-color: #2fcd99;
+    color: #ffffff;
+}
+
+/* Dropdown menu icon */
+.dropdown-menu .dropdown-item-icon {
+    margin-right: 10px;
+}
+
+/* Ensure dropdown menu is visible on top of other elements */
+.dropdown-menu {
+    z-index: 9999;
+}
+
+/* Adjust positioning of dropdown menu for readability */
+@media (max-width: 767px) {
+    .dropdown-menu {
+        position: relative;
+        top: 0;
+        left: auto;
+        width: auto;
+        margin: 0;
+        background-color: #343a40;
+        border: none;
+        box-shadow: none;
+    }
+
+    .navbar-nav .dropdown-menu {
+        width: 100%;
+        left: 0;
+        border: none;
+    }
+}
+
+
+
 
 /* Set fixed height for carousel images */
 .carousel-item img {
