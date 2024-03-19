@@ -28,7 +28,9 @@ class ProductListView(ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        # You can customize queryset here, for example, ordering by popularity or release date
+        category_slug = self.request.GET.get('category')  # Retrieve category slug from URL parameter
+        if category_slug:
+            queryset = queryset.filter(category__slug=category_slug)  # Filter products by category slug
         return queryset
 
     def get_context_data(self, **kwargs):

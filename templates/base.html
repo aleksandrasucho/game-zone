@@ -69,17 +69,11 @@
                 PC
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Adventure</a></li>
-                <li><a class="dropdown-item" href="#">RPG</a></li>
-                <li><a class="dropdown-item" href="#">Strategy</a></li>
-                <li><a class="dropdown-item" href="#">Simulation</a></li>
-                <li><a class="dropdown-item" href="#">Puzzle</a></li>
-                <li><a class="dropdown-item" href="#">Racing</a></li>
-                <li><a class="dropdown-item" href="#">Sports</a></li>
-                <li><a class="dropdown-item" href="#">Survival</a></li>
-                <li><a class="dropdown-item" href="#">Horror</a></li>
-                <!-- Add more genres here -->
+                <li><a class="dropdown-item" href="{% url 'product_list' %}?category=action">Action</a></li>
+                <li><a class="dropdown-item" href="{% url 'product_list' %}?category=fantasy">Fantasy</a></li>
+                <li><a class="dropdown-item" href="{% url 'product_list' %}?category=horror">Horror</a></li>
+                <li><a class="dropdown-item" href="{% url 'product_list' %}?category=shooter">Shooter</a></li>
+                <li><a class="dropdown-item" href="{% url 'product_list' %}?category=racing">Racing</a></li>
               </ul>
             </li>
             <li class="nav-item">
