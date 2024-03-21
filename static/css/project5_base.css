@@ -296,6 +296,31 @@ body {
     opacity: 0.7; /* Reduce opacity for footer text */
 }
 
+/* Add custom styles for the page title */
+.page-title {
+    margin-top: 20px; /* Adjust as needed */
+}
+
+.page-title h2 {
+    color: #ffffff; /* White text color */
+}
+
+.sorting-menu {
+    display: flex;
+    justify-content: center; /* Center the menu horizontally */
+    align-items: center; /* Center the menu vertically */
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+}
+
+.btn-group button.active {
+    background-color: #c9fa04 !important;
+    color: #333; /* Adjusted text color for better readability */
+}
+
 /* Add to Wishlist button */
 .add-to-wishlist {
     color: #777777; /* Gray text color */

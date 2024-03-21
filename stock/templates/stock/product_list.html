@@ -3,15 +3,16 @@
 
 {% block content %}
 <div class="container">
-    <div class="row">
-        <div class="col text-center mt-5">
-            <h2 class="logo-font">Products</h2>
-            <hr class="w-50 mb-4">
+    <!-- Page title -->
+    <div class="row mb-3">
+        <div class="col text-center mt-4"> <!-- Add mt-4 class for top margin -->
+            <h2 class="text-white">Browse Our Products</h2> <!-- Add text-white class for white text -->
         </div>
     </div>
+
     <!-- Sorting menu -->
     <div class="row mb-3">
-        <div class="col-md-6 offset-md-6 text-right">
+        <div class="col-md-6 mx-auto text-center"> <!-- Center the sorting menu -->
             <label class="mr-2" for="sort">Sort by:</label>
             <div class="btn-group" role="group" aria-label="Sort by">
                 <button type="button" class="btn btn-secondary" data-sort="name_asc">Name (A-Z)</button>
@@ -19,8 +20,11 @@
                 <button type="button" class="btn btn-secondary" data-sort="price_asc">Price (Low to High)</button>
                 <button type="button" class="btn btn-secondary" data-sort="price_desc">Price (High to Low)</button>
             </div>
+            <p id="sorting-info" class="text-white mt-2"></p>
         </div>
     </div>
+
+    <!-- Product cards -->
     <div class="row">
         {% for product in page_obj %}
         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4">
@@ -42,20 +46,20 @@
         </div>
         {% endfor %}
     </div>
-    <!-- Pagination links -->
-    <div class="row">
-        <div class="col">
-            {% if page_obj.has_previous %}
-                <a href="?page=1" class="btn btn-outline-primary mr-2">First</a>
-                <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline-primary mr-2">Previous</a>
-            {% endif %}
-        </div>
-        <div class="col text-right">
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-primary mr-2">Next</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-outline-primary">Last</a>
-            {% endif %}
-        </div>
+
+<!-- Pagination links -->
+<div class="row mb-5"> <!-- Add mb-5 class for bottom margin -->
+    <div class="col">
+        {% if page_obj.has_previous %}
+            <a href="?page=1" class="btn btn-secondary mr-2">First</a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-secondary mr-2">Previous</a>
+        {% endif %}
+    </div>
+    <div class="col text-right">
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="btn btn-secondary mr-2">Next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-secondary">Last</a>
+        {% endif %}
     </div>
 </div>
 
@@ -63,8 +67,20 @@
 <script>
 $(document).ready(function() {
     $('.btn-group button').click(function() {
+        $('.btn-group button').removeClass('active');
+        $(this).addClass('active');
         var sortOption = $(this).data('sort');
+        $('#sorting-info').text('Sorting by: ' + $(this).text()); // Update sorting info
         window.location.href = window.location.pathname + '?sort=' + sortOption;
+    });
+
+    // Highlight active sorting option on page load
+    var currentSortOption = "{{ request.GET.sort }}";
+    $('.btn-group button').each(function() {
+        if ($(this).data('sort') === currentSortOption) {
+            $(this).addClass('active');
+            $('#sorting-info').text('Sorting by: ' + $(this).text()); // Update sorting info
+        }
     });
 });
 </script>
