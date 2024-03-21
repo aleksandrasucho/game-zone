@@ -41,6 +41,10 @@ class ProductListView(ListView):
         page_number = self.request.GET.get('page')
         page_obj = paginator.get_page(page_number)
         context['products'] = page_obj
+        
+        # Add product_id to context
+        context['product_id'] = self.kwargs.get('product_id')
+        
         return context
 
 class ProductDetailView(DetailView):
@@ -53,6 +57,10 @@ class ProductDetailView(DetailView):
         product = self.get_object()
         related_products = Product.objects.filter(category=product.category).exclude(slug=product.slug)[:3]
         context['related_products'] = related_products
+        
+        # Add product_id to context
+        context['product_id'] = product.id
+        
         return context
 
     def get_object(self, queryset=None):

@@ -1,7 +1,8 @@
-from .models import Wishlist
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.http import JsonResponse
+from .models import Wishlist
 from stock.models import Product
 
 @login_required
@@ -32,12 +33,15 @@ def add_to_wishlist(request, product_id):
     # Add the product to the wishlist if it's not already present
     if product not in wishlist.products.all():
         wishlist.products.add(product)
-        messages.success(request, f"{product.name} added to your wishlist.")
+        message = f"{product.name} added to your wishlist."
+        success = True
     else:
-        messages.info(request, f"{product.name} is already in your wishlist.")
+        message = f"{product.name} is already in your wishlist."
+        success = False
     
-    # Redirect to the wishlist view
-    return redirect('wishlist:view_wishlist')
+    # Display message and return JSON response
+    messages.success(request, message)
+    return JsonResponse({'success': success, 'message': message})
 
 @login_required
 def remove_from_wishlist(request, product_id):
@@ -51,12 +55,15 @@ def remove_from_wishlist(request, product_id):
     # Remove the product from the wishlist if it's present
     if product in wishlist.products.all():
         wishlist.products.remove(product)
-        messages.success(request, f"{product.name} removed from your wishlist.")
+        message = f"{product.name} removed from your wishlist."
+        success = True
     else:
-        messages.error(request, f"{product.name} is not in your wishlist.")
+        message = f"{product.name} is not in your wishlist."
+        success = False
     
-    # Redirect to the wishlist view
-    return redirect('wishlist:view_wishlist')
+    # Display message and return JSON response
+    messages.success(request, message)
+    return JsonResponse({'success': success, 'message': message})
 
 @login_required
 def clear_wishlist(request):
@@ -70,5 +77,5 @@ def clear_wishlist(request):
     # Display success message
     messages.success(request, "Wishlist cleared successfully.")
     
-    # Redirect to the wishlist view
-    return redirect('wishlist:view_wishlist')
+    # Return JSON response indicating success
+    return JsonResponse({'success': True, 'message': 'Wishlist cleared successfully.'})

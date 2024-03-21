@@ -20,7 +20,8 @@
                     <h5 class="card-title">{% if product.name %}{{ product.name }}{% else %}No Name{% endif %}</h5>
                     <p class="card-text">Category: {% if product.category %}{{ product.category.name }}{% else %}No Category{% endif %}</p>
                     <p class="card-text">Price: ${{ product.price }}</p>
-                    <!-- Add more fields if needed -->
+                    <button class="btn btn-primary add-to-bag"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+                    <a href="#" class="btn btn-outline-danger add-to-wishlist" data-product-id="{{ product.id }}"><i class="fas fa-heart"></i></a>
                 </div>
                 <div class="card-footer bg-white pt-0 border-0 text-left">
                     <!-- Add additional details or actions if needed -->
@@ -45,4 +46,5 @@
         </div>
     </div>
 </div>
+
 {% endblock %}
