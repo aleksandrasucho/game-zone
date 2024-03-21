@@ -24,28 +24,27 @@
         </div>
     </div>
 
-    <!-- Product cards -->
-    <div class="row">
-        {% for product in page_obj %}
-        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4">
-            <div class="card h-100 border-0">
-                <a href="{% url 'product_detail' product.id %}">
-                    <img class="card-img-top img-fluid" src="{% if product.image_url %}{{ product.image_url }}{% else %}{{ MEDIA_URL }}noimage.png{% endif %}" alt="{% if product.name %}{{ product.name }}{% else %}No Name{% endif %}">
-                </a>
-                <div class="card-body pb-3">
-                    <h5 class="card-title">{{ product.name|default:"No Name" }}</h5>
-                    <p class="card-text">Category: {{ product.category.name|default:"No Category" }}</p>
-                    <p class="card-text">Price: ${{ product.price }}</p>
-                    <button class="btn btn-primary add-to-bag"><i class="fas fa-shopping-cart"></i> Buy Now</button>
-                    <a href="#" class="btn btn-outline-danger add-to-wishlist" data-product-id="{{ product.id }}"><i class="fas fa-heart"></i></a>
-                </div>
-                <div class="card-footer bg-white pt-2 border-0 text-left">
-                    <!-- Add additional details or actions if needed -->
-                </div>
+<!-- Product cards -->
+<div class="row">
+    {% for product in page_obj %}
+    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4">
+        <div class="card h-100 border-0 custom-card d-flex flex-column justify-content-between">
+            <a href="{% url 'product_detail' product.id %}">
+                <img class="card-img-top img-fluid rounded card-image" src="{% if product.image_url %}{{ product.image_url }}{% else %}{{ MEDIA_URL }}noimage.png{% endif %}" alt="{% if product.name %}{{ product.name }}{% else %}No Name{% endif %}">
+            </a>
+            <div class="card-body">
+                <h5 class="card-title card-text">{{ product.name|default:"No Name" }}</h5>
+                <p class="card-text category">Category: {{ product.category.name|default:"No Category" }}</p>
+                <p class="card-text price">Price: ${{ product.price }}</p>
+            </div>
+            <div class="card-buttons">
+                <button class="btn btn-primary add-to-bag"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+                <a href="#" class="btn btn-outline-danger add-to-wishlist" data-product-id="{{ product.id }}"><i class="fas fa-heart"></i></a>
             </div>
         </div>
-        {% endfor %}
     </div>
+    {% endfor %}
+</div>
 
 <!-- Pagination links -->
 <div class="row mb-5"> <!-- Add mb-5 class for bottom margin -->

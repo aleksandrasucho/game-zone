@@ -296,29 +296,35 @@ body {
     opacity: 0.7; /* Reduce opacity for footer text */
 }
 
-/* Add custom styles for the page title */
-.page-title {
-    margin-top: 20px; /* Adjust as needed */
-}
-
-.page-title h2 {
-    color: #ffffff; /* White text color */
-}
-
-.sorting-menu {
-    display: flex;
-    justify-content: center; /* Center the menu horizontally */
-    align-items: center; /* Center the menu vertically */
-}
-
-.btn-group {
-    display: flex;
-    justify-content: center; /* Center the buttons horizontally */
-}
-
 .btn-group button.active {
     background-color: #c9fa04 !important;
+    color: #333;
+}
+
+.custom-card {
+    background-color: rgba(50, 50, 50, 0.8); /* Dark gray background with 80% opacity */
+    color: #ffffff; /* Light text color for better readability */
+    transition: background-color 0.3s ease;
+}
+
+.custom-card .card-body {
+    color: #ffffff; /* Light text color for better readability */
+}
+
+.custom-card .price {
+    color: #c9fa04; /* Highlighted color for price */
+}
+
+.custom-card .btn-primary {
+    background-color: #c9fa04; /* Highlighted color for button background */
+    border-color: #c9fa04; /* Highlighted color for button border */
     color: #333; /* Adjusted text color for better readability */
+}
+
+.custom-card .btn-primary:hover {
+    background-color: #01331a; /* Darker background color on hover */
+    border-color: #01331a; /* Darker border color on hover */
+    color: #ffffff; /* Light text color on hover */
 }
 
 /* Add to Wishlist button */
