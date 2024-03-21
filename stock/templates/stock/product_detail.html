@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card mt-4">
+                <img class="card-img-top img-fluid" src="{% if product.image_url %}{{ product.image_url }}{% else %}{{ MEDIA_URL }}noimage.png{% endif %}" alt="{% if product.name %}{{ product.name }}{% else %}No Name{% endif %}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name|default:"No Name" }}</h5>
+                    <p class="card-text">Category: {{ product.category.name|default:"No Category" }}</p>
+                    <p class="card-text">Price: ${{ product.price }}</p>
+                    <p class="card-text">{{ product.description|default:"No description available." }}</p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+                    <a href="#" class="btn btn-outline-danger"><i class="fas fa-heart"></i> Add to Wishlist</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

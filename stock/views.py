@@ -61,12 +61,14 @@ class ProductListView(ListView):
 
 class ProductDetailView(DetailView):
     model = Product
-    template_name = 'product_detail.html'
+    template_name = 'stock/product_detail.html'  # Ensure this matches the path to your template
     context_object_name = 'product'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         product = self.get_object()
+        
+        # Fetch related products (excluding the current product)
         related_products = Product.objects.filter(category=product.category).exclude(slug=product.slug)[:3]
         context['related_products'] = related_products
         
@@ -76,6 +78,7 @@ class ProductDetailView(DetailView):
         return context
 
     def get_object(self, queryset=None):
+        # Override get_object method to handle DoesNotExist exception
         try:
             return super().get_object(queryset=queryset)
         except Product.DoesNotExist:

@@ -327,6 +327,17 @@ body {
     color: #ffffff; /* Light text color on hover */
 }
 
+.product-link {
+    color: white; /* Set the color to white */
+    text-decoration: none; /* Remove default underline */
+    transition: color 0.3s ease; /* Add transition effect for color change */
+}
+
+.product-link:hover {
+    color: lightgray; /* Change color on hover */
+    text-decoration: underline; /* Add underline on hover */
+}
+
 /* Add to Wishlist button */
 .add-to-wishlist {
     color: #777777; /* Gray text color */
