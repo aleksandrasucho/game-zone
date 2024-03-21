@@ -31,6 +31,18 @@ class ProductListView(ListView):
         category_slug = self.request.GET.get('category')  # Retrieve category slug from URL parameter
         if category_slug:
             queryset = queryset.filter(category__slug=category_slug)  # Filter products by category slug
+        
+        # Sorting
+        sort_option = self.request.GET.get('sort')
+        if sort_option == 'name_asc':
+            queryset = queryset.order_by('name')
+        elif sort_option == 'name_desc':
+            queryset = queryset.order_by('-name')
+        elif sort_option == 'price_asc':
+            queryset = queryset.order_by('price')
+        elif sort_option == 'price_desc':
+            queryset = queryset.order_by('-price')
+
         return queryset
 
     def get_context_data(self, **kwargs):

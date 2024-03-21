@@ -4,26 +4,38 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col text-center mt-3">
+        <div class="col text-center mt-5">
             <h2 class="logo-font">Products</h2>
-            <hr class="w-50 mb-1">
+            <hr class="w-50 mb-4">
+        </div>
+    </div>
+    <!-- Sorting menu -->
+    <div class="row mb-3">
+        <div class="col-md-6 offset-md-6 text-right">
+            <label class="mr-2" for="sort">Sort by:</label>
+            <div class="btn-group" role="group" aria-label="Sort by">
+                <button type="button" class="btn btn-secondary" data-sort="name_asc">Name (A-Z)</button>
+                <button type="button" class="btn btn-secondary" data-sort="name_desc">Name (Z-A)</button>
+                <button type="button" class="btn btn-secondary" data-sort="price_asc">Price (Low to High)</button>
+                <button type="button" class="btn btn-secondary" data-sort="price_desc">Price (High to Low)</button>
+            </div>
         </div>
     </div>
     <div class="row">
         {% for product in page_obj %}
-        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4"> <!-- Added mb-4 class for margin bottom -->
+        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4">
             <div class="card h-100 border-0">
                 <a href="{% url 'product_detail' product.id %}">
                     <img class="card-img-top img-fluid" src="{% if product.image_url %}{{ product.image_url }}{% else %}{{ MEDIA_URL }}noimage.png{% endif %}" alt="{% if product.name %}{{ product.name }}{% else %}No Name{% endif %}">
                 </a>
-                <div class="card-body pb-2"> <!-- Increased padding bottom to ensure price is not cut off -->
-                    <h5 class="card-title">{% if product.name %}{{ product.name }}{% else %}No Name{% endif %}</h5>
-                    <p class="card-text">Category: {% if product.category %}{{ product.category.name }}{% else %}No Category{% endif %}</p>
+                <div class="card-body pb-3">
+                    <h5 class="card-title">{{ product.name|default:"No Name" }}</h5>
+                    <p class="card-text">Category: {{ product.category.name|default:"No Category" }}</p>
                     <p class="card-text">Price: ${{ product.price }}</p>
                     <button class="btn btn-primary add-to-bag"><i class="fas fa-shopping-cart"></i> Buy Now</button>
                     <a href="#" class="btn btn-outline-danger add-to-wishlist" data-product-id="{{ product.id }}"><i class="fas fa-heart"></i></a>
                 </div>
-                <div class="card-footer bg-white pt-0 border-0 text-left">
+                <div class="card-footer bg-white pt-2 border-0 text-left">
                     <!-- Add additional details or actions if needed -->
                 </div>
             </div>
@@ -34,17 +46,27 @@
     <div class="row">
         <div class="col">
             {% if page_obj.has_previous %}
-                <a href="?page=1">First</a>
-                <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                <a href="?page=1" class="btn btn-outline-primary mr-2">First</a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline-primary mr-2">Previous</a>
             {% endif %}
         </div>
         <div class="col text-right">
             {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">Next</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+                <a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-primary mr-2">Next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-outline-primary">Last</a>
             {% endif %}
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('.btn-group button').click(function() {
+        var sortOption = $(this).data('sort');
+        window.location.href = window.location.pathname + '?sort=' + sortOption;
+    });
+});
+</script>
 
 {% endblock %}
