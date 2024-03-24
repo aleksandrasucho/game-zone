@@ -62,7 +62,7 @@
                     <a href="{% url 'product_detail' slug=product.slug %}" class="product-link">{{ product.name|default:"No Name" }}</a>
                 </h5>
                 <p class="card-text category">Category: {{ product.category.name|default:"No Category" }}</p>
-                <p class="card-text price">Price: ${{ product.price }}</p>
+                <p class="card-text price">Price: £{{ product.price }}</p>
             </div>
             <div class="card-buttons">
                 <button class="btn btn-primary add-to-bag"><i class="fas fa-shopping-cart"></i> Buy Now</button>
