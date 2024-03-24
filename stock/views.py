@@ -3,23 +3,6 @@ from django.views.generic import ListView, DetailView
 from django.core.paginator import Paginator
 from .models import Category, Product
 
-class CategoryListView(ListView):
-    model = Category
-    template_name = 'category_list.html'
-    context_object_name = 'categories'
-
-class CategoryDetailView(DetailView):
-    model = Category
-    template_name = 'category_detail.html'
-    context_object_name = 'category'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        category = self.get_object()
-        related_products = Product.objects.filter(category=category).exclude(slug=self.kwargs['slug'])[:3]
-        context['related_products'] = related_products
-        return context
-
 class ProductListView(ListView):
     model = Product
     template_name = 'product_list.html'
