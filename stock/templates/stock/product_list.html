@@ -5,15 +5,15 @@
 <div class="container">
     <!-- Page title -->
     <div class="row mb-3">
-        <div class="col text-center mt-4"> <!-- Add mt-4 class for top margin -->
-            <h2 class="text-white">Browse Our Products</h2> <!-- Add text-white class for white text -->
+        <div class="col text-center mt-4">
+            <h2 class="text-white">Browse Our Products</h2>
         </div>
     </div>
 
-    <!-- Sorting menu -->
+
     <div class="row mb-3">
-        <div class="col-md-6 mx-auto text-center"> <!-- Center the sorting menu -->
-            <label class="mr-2 text-white" for="sort">Sort by:</label>
+        <div class="col-md-6 mx-auto text-center">
+            <label class="mr-2 text-white" for="category">Sort by:</label>
             <div class="btn-group" role="group" aria-label="Sort by">
                 <button type="button" class="btn btn-secondary" data-sort="name_asc">Name (A-Z)</button>
                 <button type="button" class="btn btn-secondary" data-sort="name_desc">Name (Z-A)</button>
@@ -23,13 +23,33 @@
             <p id="sorting-info" class="text-white mt-2"></p>
         </div>
     </div>
+    
+<!-- Category filter menu -->
+<div class="row mb-3">
+    <div class="col-md-6 mx-auto text-center">
+        <label class="mr-2 text-white" for="category">Filter by Category:</label>
+        <div class="dropdown d-inline-block">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="categoryDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                Categories
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="categoryDropdown">
+                <li><a class="dropdown-item" href="{% url 'product_list' %}">All</a></li> <!-- All option -->
+                <li><a class="dropdown-item" href="{% url 'product_list' %}?category=action">Action</a></li>
+                <li><a class="dropdown-item" href="{% url 'product_list' %}?category=fantasy">Fantasy</a></li>
+                <li><a class="dropdown-item" href="{% url 'product_list' %}?category=horror">Horror</a></li>
+                <li><a class="dropdown-item" href="{% url 'product_list' %}?category=shooter">Shooter</a></li>
+                <li><a class="dropdown-item" href="{% url 'product_list' %}?category=racing">Racing</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 <!-- Product cards -->
 <div class="row">
     {% for product in page_obj %}
     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4">
         <div class="card h-100 border-0 custom-card d-flex flex-column justify-content-between">
-            <a href="{% url 'product_detail' slug=product.slug %}"> <!-- Use product.slug instead of product.id -->
+            <a href="{% url 'product_detail' slug=product.slug %}">
                 <img class="card-img-top img-fluid rounded card-image" src="{% if product.image_url %}{{ product.image_url }}{% else %}{{ MEDIA_URL }}noimage.png{% endif %}" alt="{% if product.name %}{{ product.name }}{% else %}No Name{% endif %}">
             </a>
             <div class="card-body">
