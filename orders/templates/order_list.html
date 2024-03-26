@@ -1,7 +1,40 @@
 {% extends 'base.html' %}
-{% load static %}
 
 {% block content %}
-<h1>Welcome to My Website!</h1>
-<p>This is the Orders list page</p>
+    <h1 style="color: white;">Order List</h1>
+    
+    {% if orders %}
+        <ul>
+            {% for order in orders %}
+                <li>
+                    <a href="{% url 'order_detail' order.id %}" style="color: white;">Order #{{ order.order_number }}</a>
+                    <p style="color: white;">Status: {{ order.status }}</p>
+                    <p style="color: white;">Total Paid: {{ order.total_paid }}</p>
+                    <p style="color: white;">Created At: {{ order.created_at }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+
+        {% if is_paginated %}
+            <div class="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a href="?page=1" style="color: white;">&laquo; first</a>
+                        <a href="?page={{ page_obj.previous_page_number }}" style="color: white;">previous</a>
+                    {% endif %}
+
+                    <span class="current" style="color: white;">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}" style="color: white;">next</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}" style="color: white;">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+        {% endif %}
+    {% else %}
+        <p style="color: white;">No orders available.</p>
+    {% endif %}
 {% endblock %}

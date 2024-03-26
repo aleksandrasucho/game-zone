@@ -1,9 +1,3 @@
-# Import mimetypes module
-import mimetypes
-
-# Add MIME type for CSS files
-mimetypes.add_type("text/css", ".css", True)
-
 from pathlib import Path
 import os
 
