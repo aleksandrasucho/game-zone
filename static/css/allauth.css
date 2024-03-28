@@ -1,0 +1,89 @@
+/* Styles for the container */
+.container {
+    text-align: center;
+    margin-top: 50px;
+    color: #ffffff;
+}
+
+/* Styles for the logout form */
+.logout-form {
+    margin-top: 20px;
+}
+
+/* Styles for buttons */
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+    background-color: #014e2a;
+    border-color: #014e2a;
+}
+
+/* Styles for button hover state */
+.btn:hover {
+    background-color: #01331a;
+    border-color: #01331a;
+}
+
+/* Login form */
+
+/* Styles for the login container */
+.login-container {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #343a40;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.login {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.login .form-group {
+    margin-bottom: 20px;
+}
+
+.login label {
+    font-weight: bold;
+}
+
+.login input[type="text"],
+.login input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+/* Styles for primary button */
+.btn-primary {
+    background-color: #c9fa04;
+    border-color: #c9fa04;
+    color: #333;
+}
+
+.btn-primary:hover {
+    background-color: #01331a;
+    border-color: #01331a;
+    color: #ffffff;
+}
+
+/* Neon green color for links */
+.neon-green {
+    color: #c9fa04;
+}
+
+.neon-green:hover {
+    color: #a0c418;
+}
