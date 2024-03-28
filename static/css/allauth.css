@@ -103,3 +103,16 @@
         border-radius: 4px;
         box-sizing: border-box;
     }
+
+/* Override conflicting styles for the button */
+.password-reset-form input[type="submit"].btn-primary {
+    background-color: #c9fa04;
+    border-color: #c9fa04;
+    color: #333;
+}
+
+.password-reset-form input[type="submit"].btn-primary:hover {
+    background-color: #01331a;
+    border-color: #01331a;
+    color: #ffffff;
+}
