@@ -1,8 +1,12 @@
 /* Styles for the container */
 .container {
     text-align: center;
-    margin-top: 50px;
     color: #ffffff;
+    background-color: #343a40; /* Updated background color */
+    max-width: 600px; /* Adjusted max-width */
+    margin: 50px auto; /* Centering the container and adding space from the top */
+    padding: 20px; /* Adding padding */
+    border-radius: 8px; /* Adding border radius */
 }
 
 /* Styles for the logout form */
@@ -87,3 +91,15 @@
 .neon-green:hover {
     color: #a0c418;
 }
+
+    /* Additional CSS for form inputs */
+    .signup.account__form input[type="text"],
+    .signup.account__form input[type="email"],
+    .signup.account__form input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin: 2px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
