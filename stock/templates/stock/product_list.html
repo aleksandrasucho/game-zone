@@ -65,7 +65,7 @@
                 <p class="card-text price">Price: £{{ product.price }}</p>
             </div>
             <div class="card-buttons">
-                <button class="btn btn-primary add-to-bag"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+                <a href="{% url 'add_to_bag' product_id=product.id %}" class="btn btn-primary" data-product-id="{{ product.id }}"><i class="fas fa-shopping-cart"></i> Buy Now</a>
                 <a href="#" class="btn btn-outline-danger add-to-wishlist" data-product-id="{{ product.id }}"><i class="fas fa-heart"></i></a>
             </div>
         </div>
@@ -108,9 +108,13 @@ $(document).ready(function() {
             $('#sorting-info').text('Sorting by: ' + $(this).text()); // Update sorting info
         }
     });
-});
 
-$(document).ready(function() {
+    // Event listener for dropdown items
+    $('.dropdown-item').click(function() {
+        var categoryName = $(this).text();
+        updateCategoryName(categoryName);
+    });
+
     // Variable to hold the selected category name
     var category_name = '';
 
@@ -119,12 +123,6 @@ $(document).ready(function() {
         category_name = name;
         $('#categoryDropdown').text(name);
     }
-
-    // Event listener for dropdown items
-    $('.dropdown-item').click(function() {
-        var categoryName = $(this).text();
-        updateCategoryName(categoryName);
-    });
 
     // Initialize category name on page load if category is selected
     var currentCategory = "{{ request.GET.category }}";
@@ -135,6 +133,31 @@ $(document).ready(function() {
             }
         });
     }
+
+// Event listener for "Buy Now" button click
+$('.btn-primary').click(function() {
+    var productId = $(this).data('product-id');
+    addToBag(productId);
+});
+
+// Function to add product to the bag
+function addToBag(productId) {
+    $.ajax({
+        type: 'POST',
+        url: '/add-to-bag/' + productId + '/',
+        data: {
+            'csrfmiddlewaretoken': '{{ csrf_token }}'  // Include CSRF token
+        },
+        success: function(response) {
+            // Redirect to the bag page after successful addition
+            window.location.href = '/view-bag/';
+        },
+        error: function(xhr, status, error) {
+            // Handle errors here
+            console.error(xhr.responseText);
+        }
+    });
+}
 });
 </script>
 

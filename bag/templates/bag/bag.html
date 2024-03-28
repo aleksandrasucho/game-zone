@@ -3,21 +3,21 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h1 class="text-center mb-4">Shopping Bag</h1>
+    <h1 class="text-center mb-4 text-white">Shopping Bag</h1>
     {% if products %}
     <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col">Product Name</th>
-                <th scope="col">Price</th>
-                <th scope="col">Action</th>
+                <th scope="col" class="text-white">Product Name</th>
+                <th scope="col" class="text-white">Price</th>
+                <th scope="col" class="text-white">Action</th>
             </tr>
         </thead>
         <tbody>
             {% for product in products %}
             <tr>
-                <td>{{ product.name }}</td>
-                <td>${{ product.price }}</td>
+                <td class="text-white">{{ product.name }}</td>
+                <td class="text-white">${{ product.price }}</td>
                 <td>
                     <a href="{% url 'remove_from_bag' product.id %}" class="btn btn-danger btn-sm">Remove</a>
                 </td>
@@ -29,7 +29,7 @@
         <a href="{% url 'checkout' %}" class="btn btn-primary">Proceed to Checkout</a>
     </div>
     {% else %}
-    <p>Your bag is empty.</p>
+    <p class="text-white">Your bag is empty.</p>
     {% endif %}
 </div>
 {% endblock %}

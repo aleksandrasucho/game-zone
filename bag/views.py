@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from stock.models import Product
+from django.shortcuts import render
 from django.urls import reverse
+from django.http import JsonResponse
 
 def add_to_bag(request, product_id):
     if 'bag' not in request.session:
@@ -18,8 +20,8 @@ def add_to_bag(request, product_id):
     # Save the updated bag in the session
     request.session['bag'] = bag
 
-    # Redirect to the product detail page
-    return redirect(reverse('product_detail', kwargs={'pk': product_id}))
+    # Redirect to the bag page
+    return redirect('view_bag')
 
 def remove_from_bag(request, product_id):
     if 'bag' in request.session:
@@ -34,12 +36,14 @@ def remove_from_bag(request, product_id):
     return HttpResponse("Product not found in the bag.")
 
 def view_bag(request):
-    if 'bag' in request.session:
-        bag = request.session['bag']
+    # Check if 'bag' key exists in the session
+    bag = request.session.get('bag', [])
 
-        # Retrieve the products from the database based on the product IDs stored in the session
-        products = Product.objects.filter(pk__in=bag)
+    # Retrieve the products from the database based on the product IDs stored in the session
+    products = Product.objects.filter(pk__in=bag)
 
-        return render(request, 'bag.html', {'products': products})
-    else:
-        return HttpResponse("Your bag is empty.")  # Handle the case when the bag is empty
+    return render(request, 'bag/bag.html', {'products': products})
+
+def checkout(request):
+    # Add your checkout logic here
+    return render(request, 'bag/checkout.html')  # Render the checkout page template
