@@ -226,11 +226,9 @@ body {
 }
 
 .btn-primary {
-    background-color: #014e2a;
-    border-color: #014e2a;
-    color: #ffffff;
-    font-weight: bold;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    background-color: #c9fa04; /* Highlighted color for button background */
+    border-color: #c9fa04; /* Highlighted color for button border */
+    color: #333; /* Adjusted text color for better readability */
 }
 
 .btn-primary:hover {
@@ -352,8 +350,9 @@ body {
 }
 
 .newsletter .btn-outline-primary {
-    border-color: #c9fa04;
-    color: #ffffff; /* Text color */
+    background-color: #c9fa04; /* Highlighted color for button background */
+    border-color: #c9fa04; /* Highlighted color for button border */
+    color: #333; /* Adjusted text color for better readability */
 }
 
 .newsletter .btn-outline-primary:hover {
