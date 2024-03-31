@@ -1,7 +1,14 @@
 {% extends 'base.html' %}
-{% load static %}
 
 {% block content %}
-<h1>Welcome to My Website!</h1>
-<p>This is the Orders list page</p>
+    <div class="container success-message-container">
+        <div class="success-message">
+            <h1>Subscription Successful!</h1>
+            <p>Thank you for subscribing to our newsletter. You're now part of our community!</p>
+            <p>Stay tuned for exciting updates, news, and offers.</p>
+            <p>If you have any questions or feedback, feel free to reach out to us.</p>
+            <p>Happy gaming!</p>
+            <button class="neon-green-button" onclick="window.location.href = '/';">Back to Home</button>
+        </div>
+    </div>
 {% endblock %}

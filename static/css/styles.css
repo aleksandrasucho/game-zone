@@ -144,9 +144,6 @@ body {
     }
 }
 
-
-
-
 /* Set fixed height for carousel images */
 .carousel-item img {
     width: auto; /* Ensure the width adjusts automatically to maintain aspect ratio */
@@ -338,6 +335,44 @@ body {
     text-decoration: underline; /* Add underline on hover */
 }
 
+/* Newsletter Section */
+.newsletter {
+    color: #ffffff; /* Text color */
+    padding: 50px 0;
+}
+
+.newsletter h4,
+.newsletter p {
+    color: #ffffff; /* Text color */
+}
+
+.newsletter .form-control {
+    color: #ffffff; /* Text color */
+    border-radius: 0;
+}
+
+.newsletter .btn-outline-primary {
+    border-color: #c9fa04;
+    color: #ffffff; /* Text color */
+}
+
+.newsletter .btn-outline-primary:hover {
+    background-color: #c9fa04;
+    border-color: #c9fa04;
+    color: #000000; /* Change text color on hover */
+}
+
+.newsletter .input-group-text {
+    background-color: #2fcd99;
+    border-color: #2fcd99;
+    color: #ffffff; /* Text color */
+}
+
+.newsletter .input-group-text:hover {
+    background-color: #29b382;
+    border-color: #29b382;
+}
+
 /* Add to Wishlist button */
 .add-to-wishlist {
     color: #777777; /* Gray text color */
@@ -409,4 +444,41 @@ body {
 
 .footer__attribution a:hover {
     color: #2fcd99;
+}
+
+/* Success message container */
+.success-message-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Success message */
+.success-message {
+    color: white;
+    font-size: 20px;
+    border: 2px solid #c9fa04;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Neon green button */
+.neon-green-button {
+    background-color: #c9fa04;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.neon-green-button:hover {
+    background-color: #01331a;
+    color: #ffffff;
 }

@@ -273,5 +273,26 @@
     </div>
 </div>
 
+<!-- Newsletter Section -->
+<section class="newsletter">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h4>Subscribe to Our Newsletter</h4>
+          <p>Stay updated with our latest offers and promotions!</p>
+        </div>
+        <div class="col-md-6">
+          <!-- Newsletter Form -->
+          <form action="{% url 'subscribe' %}" method="post">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+              <input type="email" class="form-control" placeholder="Enter your email" aria-label="Email" name="email" required>
+              <button class="btn btn-primary" type="submit">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
 {% endblock %}
