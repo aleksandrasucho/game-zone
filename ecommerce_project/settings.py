@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'wishlist',
     'stock',
     'bag',
+    'checkout',
 ]
 
 MIDDLEWARE = [
@@ -109,7 +110,8 @@ LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'ecommerce_project.wsgi.application'
 
-
+STRIPE_PUBLIC_KEY = 'your-stripe-public-key'
+STRIPE_SECRET_KEY = 'your-stripe-secret-key'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
