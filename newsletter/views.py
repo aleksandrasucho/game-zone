@@ -8,12 +8,15 @@ def subscribe(request):
         form = SubscriberForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data['email']
-            # Check if the email already exists in the database
-            if not Subscriber.objects.filter(email=email).exists():
-                # If email doesn't exist, create a new subscriber
-                subscriber = Subscriber(email=email)
-                subscriber.save()
-            return redirect('success')
+            existing_subscriber = Subscriber.objects.filter(email=email).exists()
+            if existing_subscriber:
+                # If email already exists, include the error message in the form context
+                form.add_error('email', 'You have already subscribed using this email.')
+                return render(request, 'subscribe.html', {'form': form})  # Return the form with the error message
+            else:
+                # Save the form if the email is not already subscribed
+                form.save()
+                return redirect('success')
     else:
         form = SubscriberForm()
     return render(request, 'subscribe.html', {'form': form})
