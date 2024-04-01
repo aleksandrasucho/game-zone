@@ -107,6 +107,11 @@ class Product(models.Model):
         verbose_name='Product Image URL',
         help_text='format: optional'
     )
+    is_best_seller = models.BooleanField(
+        default=False,
+        verbose_name='Is Best Seller',
+        help_text='Check this box if the product is a best seller.'
+    )
 
     class Meta:
         """Meta class for Product model"""
