@@ -193,27 +193,31 @@
     </div>
 </div>
 
-<!-- Newsletter Section -->
-<section class="newsletter mt-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h2 class="mb-3">Subscribe to Our Newsletter</h2>
-                <p>Stay updated with our latest offers and promotions!</p>
-            </div>
-            <div class="col-md-6">
-                <!-- Newsletter Form -->
-                <form action="{% url 'subscribe' %}" method="post">
-                    {% csrf_token %}
-                    <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Enter your email" aria-label="Email" name="email" required>
-                        <button class="btn btn-primary" type="submit">Subscribe</button>
-                    </div>
-                </form>
+<hr class="underline">
+<!-- Centered Newsletter Section -->
+<div class="d-flex justify-content-center">
+    <section class="newsletter mt-5 testimonial text-white p-4 rounded shadow" style="margin-bottom: 50px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="mb-3">Subscribe to Our Newsletter</h2>
+                    <p>Stay updated with our latest offers and promotions!</p>
+                </div>
+                <div class="col-md-6">
+                    <!-- Newsletter Form -->
+                    <form action="{% url 'subscribe' %}" method="post">
+                        {% csrf_token %}
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Enter your email" aria-label="Email" name="email" required>
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</div>
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
