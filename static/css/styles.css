@@ -387,6 +387,12 @@ body {
     border-color: #333333; /* Darker border color on hover */
 }
 
+.toast-header .close {
+    margin-left: auto; /* Move close button to the right */
+}
+
+
+
 /* Footer container */
 .footer {
     background-color: #343a40;

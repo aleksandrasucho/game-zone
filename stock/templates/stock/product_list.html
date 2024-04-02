@@ -66,12 +66,29 @@
             </div>
             <div class="card-buttons">
                 <a href="{% url 'add_to_bag' product_id=product.id %}" class="btn btn-primary" data-product-id="{{ product.id }}"><i class="fas fa-shopping-cart"></i> Buy Now</a>
-                <a href="#" class="btn btn-outline-danger add-to-wishlist" data-product-id="{{ product.id }}"><i class="fas fa-heart"></i></a>
+                <button class="btn btn-outline-danger add-to-wishlist" data-product-id="{{ product.id }}"><i class="fas fa-heart"></i> Add to Wishlist</button>
             </div>
         </div>
     </div>
     {% endfor %}
 </div>
+
+<!-- Toast Notification -->
+<div class="toast" id="wishlist-toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000" style="position: fixed; top: 120px; right: 20px; border: 2px solid #f8f9fa; border-radius: 8px;">
+    <div class="toast-header" style="background-color: #f8f9fa; color: #000;">
+        <strong class="mr-auto">Wishlist Notification</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close" style="color: #000; border: none; background-color: transparent;">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="toast-body" style="background-color: #f8f9fa; color: #000;">
+        <!-- Wishlist message will be displayed here -->
+    </div>
+</div>
+
+
+
+
 
 <!-- Pagination links -->
 <div class="row mb-5"> <!-- Add mb-5 class for bottom margin -->
@@ -134,30 +151,46 @@ $(document).ready(function() {
         });
     }
 
-// Event listener for "Buy Now" button click
-$('.btn-primary').click(function() {
-    var productId = $(this).data('product-id');
-    addToBag(productId);
-});
+    // Function to display toast notification
+    function displayToast(message) {
+        $('.toast-body').text(message);
+        $('#wishlist-toast').toast('show');
+    }
 
-// Function to add product to the bag
-function addToBag(productId) {
-    $.ajax({
-        type: 'POST',
-        url: '/add-to-bag/' + productId + '/',
-        data: {
-            'csrfmiddlewaretoken': '{{ csrf_token }}'  // Include CSRF token
-        },
-        success: function(response) {
-            // Redirect to the bag page after successful addition
-            window.location.href = '/view-bag/';
-        },
-        error: function(xhr, status, error) {
-            // Handle errors here
-            console.error(xhr.responseText);
-        }
+    // Event listener for "Add to Wishlist" button click
+    $('.add-to-wishlist').click(function() {
+        var productId = $(this).data('product-id');
+        addToWishlist(productId);
     });
-}
+
+    // Function to add product to the wishlist
+    function addToWishlist(productId) {
+        $.ajax({
+            type: 'POST',
+            url: '/wishlist/add/' + productId + '/',
+            data: {
+                'csrfmiddlewaretoken': '{{ csrf_token }}'  // Include CSRF token
+            },
+            success: function(response) {
+                // Display toast notification
+                displayToast(response.message);
+            },
+            error: function(xhr, status, error) {
+                // Handle errors here
+                console.error(xhr.responseText);
+            }
+        });
+    }
+
+    // Close toast notification when close button is clicked
+    $('.close').click(function() {
+        $('#wishlist-toast').toast('hide');
+    });
+
+    // Close toast notification after delay
+    $('#wishlist-toast').on('hidden.bs.toast', function() {
+        $('#wishlist-toast').toast('dispose');
+    });
 });
 </script>
 
