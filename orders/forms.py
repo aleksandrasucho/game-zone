@@ -14,8 +14,7 @@ class OrderForm(forms.ModelForm):
             'county_region', 
             'country', 
             'zip_code', 
-            'total_paid', 
-            'status'
+            'total_paid',
         ]
 
 
