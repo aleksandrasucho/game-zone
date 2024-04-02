@@ -387,8 +387,22 @@ body {
     border-color: #333333; /* Darker border color on hover */
 }
 
+.image-container:hover {
+    /* Add your hover effect here */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    filter: brightness(90%); /* Example: Reducing brightness on hover */
+}
+
+.text-white {
+    color: #fff; /* Set text color to white */
+}
+
 .toast-header .close {
     margin-left: auto; /* Move close button to the right */
+}
+
+.text-color-333 {
+    color: #333; /* Set text color to #333 */
 }
 
 

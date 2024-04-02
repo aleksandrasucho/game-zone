@@ -12,7 +12,7 @@
 
         <!-- Display messages -->
         {% for message in messages %}
-            <div>{{ message }}</div>
+            <div class="text-white">{{ message }}</div>
         {% endfor %}
 
         <!-- Display wishlist items -->
@@ -21,24 +21,18 @@
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-6 col-lg-3">
                         <div class="image-container mt-5">
-                            {% if product.image %}
-                                <a href="{% url 'product_detail' product.id %}">
-                                    <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}">
-                                </a>
-                            {% else %}
-                                <a href="{% url 'product_detail' product.id %}">
-                                    <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
-                                </a>
-                            {% endif %}
+                            <a href="{% url 'product_detail' slug=product.slug %}">
+                                <img class="card-img-top img-fluid rounded card-image" src="{% if product.image_url %}{{ product.image_url }}{% else %}{{ MEDIA_URL }}noimage.png{% endif %}" alt="{% if product.name %}{{ product.name }}{% else %}No Name{% endif %}">
+                            </a>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="products-detail-container my-5">
-                            <h3 class="mb-4 pt-md-5 text-black font-weight-bold">{{ product.name }}</h3>
-                            <h4 class="text-black lead mb-2 text-left font-weight-bold">£{{ product.price }}</h4>
+                            <h3 class="mb-4 pt-md-5 text-white font-weight-bold">{{ product.name }}</h3>
+                            <h4 class="text-white lead mb-2 text-left font-weight-bold">£{{ product.price }}</h4>
                             {% if product.category %}
                                 <p class="small">
-                                    <a class="text-muted text-black font-weight-bold"
+                                    <a class="text-muted text-white font-weight-bold"
                                         href="{% url 'product_list' %}?category={{ product.category.name }}">
                                         <i class="fas fa-hashtag"></i> {{ product.category.friendly_name }}
                                     </a>
@@ -47,10 +41,10 @@
                         </div>
                         <!-- Buttons -->
                         <div class="text-center">
-                            <a class="btn btn-info btn-width mt-3" href="{% url 'product_detail' product.id %}">
+                            <a class="btn neon-green-button btn-width mt-3 text-color-333" href="{% url 'product_detail' slug=product.slug %}">
                                 <span class="text-uppercase font-weight-bold">Product Details</span>
                             </a>
-                            <a class="btn btn-info btn-width mt-3" href="{% url 'wishlist:remove_from_wishlist' product.id %}">
+                            <a class="btn neon-green-button btn-width mt-3 text-color-333" href="{% url 'wishlist:remove_from_wishlist' product.id %}">
                                 <span class="text-uppercase font-weight-bold">Remove from wishlist</span>
                             </a>
                             
@@ -60,21 +54,23 @@
             {% endfor %}
             <div class="row justify-content-center">
                 <div class="col text-center">
-                    <button id="clear-wishlist" class="btn btn-danger btn-width mt-5">Clear Wishlist</button>
+                    <button id="clear-wishlist" class="btn btn-danger btn-width mt-5 text-color-333">Clear Wishlist</button>
                 </div>
             </div>
         {% else %}
-            <div class="row justify-content-center">
-                <div class="col text-center mt-3">
-                    <h3 class="font-weight-bold text-uppercase">Your wishlist is empty.</h3>
-                    <a class="btn btn-light btn-lg mt-5" href="{% url 'home' %}">
-                        <span class="icon">
-                            <i class="text-info fas fa-chevron-left"></i>
-                        </span>
-                        <span class="text-uppercase font-weight-bold text-info">Back to Home</span>
-                    </a>
-                </div>
+        <div class="row justify-content-center">
+            <div class="col text-center mt-3">
+                <h3 class="font-weight-bold text-uppercase text-white">Your wishlist is empty.</h3>
+                <a class="btn neon-green-button btn-width mt-5" href="{% url 'home' %}">
+                    <span class="icon text-color-333">
+                        <i class="fas fa-chevron-left"></i>
+                    </span>
+                    <span class="text-uppercase font-weight-bold text-color-333">Back to Home</span>
+                </a>
             </div>
+        </div>
+        
+        
         {% endif %}
     </div>
 {% endblock %}
