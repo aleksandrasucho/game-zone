@@ -124,6 +124,21 @@ body {
     z-index: 9999;
 }
 
+/* Shopping bag count indicator */
+#shopping-bag-count {
+    position: absolute;
+    top: 0;
+    right: -10px;
+    background-color: #c9fa04;
+    color: #333;
+    border-radius: 50%;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
 /* Adjust positioning of dropdown menu for readability */
 @media (max-width: 767px) {
     .dropdown-menu {
