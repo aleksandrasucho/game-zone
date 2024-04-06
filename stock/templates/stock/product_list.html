@@ -49,6 +49,7 @@
 </div>
 
 <!-- Product cards -->
+...
 <div class="row">
     {% for product in page_obj %}
     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4">
@@ -57,7 +58,6 @@
                 <img class="card-img-top img-fluid rounded card-image" src="{% if product.image_url %}{{ product.image_url }}{% else %}{{ MEDIA_URL }}noimage.png{% endif %}" alt="{% if product.name %}{{ product.name }}{% else %}No Name{% endif %}">
             </a>
             <div class="card-body">
-                <!-- Apply custom style to the product title link -->
                 <h5 class="card-title card-text">
                     <a href="{% url 'product_detail' slug=product.slug %}" class="product-link">{{ product.name|default:"No Name" }}</a>
                 </h5>
@@ -65,7 +65,11 @@
                 <p class="card-text price"> £{{ product.price }}</p>
             </div>
             <div class="card-buttons">
+                {% if request.user.is_authenticated %}
                 <a href="{% url 'add_to_bag' product_id=product.id %}" class="btn btn-primary" data-product-id="{{ product.id }}"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+                {% else %}
+                <a href="{% url 'account_login' %}" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+                {% endif %}
                 <button class="btn btn-outline-danger add-to-wishlist" data-product-id="{{ product.id }}"><i class="fas fa-heart"></i> Add to Wishlist</button>
             </div>
         </div>
