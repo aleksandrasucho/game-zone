@@ -93,12 +93,14 @@
                 <span class="nav-link-text">Store</span>
               </a>
             </li>
+            {% if request.user.is_authenticated %}
             <li class="nav-item">
               <a href="{% url 'wishlist:view_wishlist' %}" aria-label="Go to Wishlist page" class="nav-link">
                 <i class="fas fa-heart"></i>
                 <span class="nav-link-text">Wishlist</span>
               </a>
             </li>
+            {% endif %}
             {% if request.user.is_authenticated %}
             <li class="nav-item">
               <a href="{% url 'view_bag' %}" aria-label="Go to Bag page" class="nav-link">
