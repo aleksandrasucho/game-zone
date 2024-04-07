@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4 text-white">My Profile</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card bg-dark text-white p-4">
+                <h2 class="text-center mb-3">{{ profile.user.username }}</h2>
+                <!-- Edit Profile Link -->
+                <a href="{% url 'profiles:edit_profile' %}" class="btn btn-primary btn-block">Edit Profile</a>
+                
+                <!-- Delete Profile Link -->
+                <a href="{% url 'profiles:delete_profile' %}" class="btn btn-danger btn-block mt-3">Delete Profile</a>
+                
+                <!-- Link to Order History -->
+                <a href="{% url 'order_list' %}" class="btn btn-primary btn-block mt-3">Order History</a>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card bg-dark text-white p-4">
+                <!-- Addresses -->
+                <h2>Addresses</h2>
+                <ul class="list-group">
+                    {% for address in addresses %}
+                        <li class="list-group-item">{{ address }}</li>
+                    {% endfor %}
+                </ul>
+                
+                <!-- Add Address Form -->
+                <h3 class="mt-4">Add Address</h3>
+                <a href="{% url 'profiles:add_address' %}" class="btn btn-primary btn-block mt-3">Add Address</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

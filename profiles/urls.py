@@ -5,6 +5,8 @@ from .views import (
     ChangePrimaryAddressView, DeleteProfileView
 )
 
+app_name = 'profiles'
+
 urlpatterns = [
     path('profile/', ProfileView.as_view(), name='profile'),
     path('edit_profile/', EditUserProfileView.as_view(), name='edit_profile'),

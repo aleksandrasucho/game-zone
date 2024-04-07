@@ -4,9 +4,9 @@
 {% block content %}
 <h1>Delete Profile</h1>
 <p>Are you sure you want to delete your profile?</p>
-<form action="{% url 'delete_profile' %}" method="post">
+<form action="{% url 'profiles:delete_profile' %}" method="post">
   {% csrf_token %}
   <input type="submit" value="Delete">
-  <a href="{% url 'profile' %}"><button type="button">Cancel</button></a>
+  <a href="{% url 'profiles:profile' %}"><button type="button">Cancel</button></a>
 </form>
 {% endblock %}

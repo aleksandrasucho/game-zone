@@ -117,7 +117,7 @@
             {% endif %}
             {% if request.user.is_authenticated %}
             <li class="nav-item">
-              <a href="{% url 'profile' %}" aria-label="Go to Profile page" class="nav-link" alt="Profile">
+              <a href="{% url 'profiles:profile' %}" aria-label="Go to Profile page" class="nav-link" alt="Profile">
                 <span class="nav-link-text">Profile</span>
               </a>
             </li>

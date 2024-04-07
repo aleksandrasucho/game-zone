@@ -15,7 +15,7 @@ class ProfileView(LoginRequiredMixin, View):
         if request.user.is_authenticated:
             profile = request.user.profile
             addresses = profile.addresses.all()
-            return render(request, 'profile.html', {'profile': profile, 'addresses': addresses})
+            return render(request, 'profiles/profile.html', {'profile': profile, 'addresses': addresses})
         else:
             return render(request, 'account/login.html')
 
@@ -23,9 +23,12 @@ class EditUserProfileView(LoginRequiredMixin, View):
     """View for editing user profile."""
 
     def get(self, request, *args, **kwargs):
-        profile = request.user.profile
-        form = ProfileForm(instance=profile)
-        return render(request, 'profiles/edit_profile.html', {'form': form})
+        if request.user.is_authenticated:
+            profile = request.user.profile
+            form = ProfileForm(instance=profile)
+            return render(request, 'profiles/edit_profile.html', {'form': form})
+        else:
+            return render(request, 'account/login.html')
 
     def post(self, request, *args, **kwargs):
         profile = request.user.profile
@@ -102,7 +105,7 @@ class DeleteProfileView(LoginRequiredMixin, View):
     """View for deleting user profile."""
 
     def get(self, request, *args, **kwargs):
-        return render(request, 'delete_profile.html')
+        return render(request, 'profiles/delete_profile.html')
 
     def post(self, request, *args, **kwargs):
         user = request.user
