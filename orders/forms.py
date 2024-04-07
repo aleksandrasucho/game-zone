@@ -13,22 +13,18 @@ class OrderForm(forms.ModelForm):
             'city', 
             'country', 
             'zip_code', 
-            'total_paid',
         ]
+
     def __init__(self, *args, **kwargs):
-        """
-        Add placeholders and classes, remove auto-generated
-        labels and set autofocus on first field
-        """
         super().__init__(*args, **kwargs)
         placeholders = {
-            'full_name': 'Full Name',
-            'email': 'Email Address',
-            'phone_number': 'Phone Number',
-            'zip_code': 'Postal Code',
-            'town_or_city': 'Town or City',
-            'street_address1': 'Street Address 1',
-            'street_address2': 'Street Address 2',
+        'full_name': 'Full Name',
+        'email': 'Email Address',
+        'phone_number': 'Phone Number',
+        'zip_code': 'Postal Code',
+        'city': 'Town or City',
+        'address_1': 'Street Address 1',
+        'address_2': 'Street Address 2',
         }
 
         self.fields['full_name'].widget.attrs['autofocus'] = True
@@ -42,8 +38,7 @@ class OrderForm(forms.ModelForm):
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
             self.fields[field].label = False
 
-        self.fields['country'].widget.attrs['title'] = "Country Selection"
-
+            self.fields['country'].widget.attrs['title'] = "Country Selection"
 
 class OrderItemForm(forms.ModelForm):
     class Meta:

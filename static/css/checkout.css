@@ -1,0 +1,113 @@
+#card-element,
+.stripe-style-input {
+    border: 1px solid #ffffff !important;
+    border-radius: 0.25rem !important;
+    margin: 0.5rem 0 0.5rem 0 !important;
+    color: #ffffff; /* Set text color to white */
+}
+
+#card-element:focus,
+.stripe-style-input:focus {
+    border: 1px solid #c9fa04 !important;
+    box-shadow: 0 0 0 0.25rem rgba(247, 224, 175, 0.5) !important;
+} 
+
+#card-element:hover,
+.stripe-style-input:hover {
+    border: 1px solid #c9fa04 !important;
+    background-color: #eebd962c;
+} 
+
+.form-check-input:checked {
+    background-color: #c9fa04;
+    border-color: #080808;
+    color: #ffffff; /* Set text color to white */
+}
+.summary-container {
+    background-color: #f1f1f1;
+    color: #ffffff; /* Set text color to white */
+}
+
+.success-msg-container,
+#checkout-summary {
+    min-height: 400px;
+    color: #ffffff; /* Set text color to white */
+}
+
+.product-title-txt {
+    max-width: 180px;
+    color: #ffffff; /* Set text color to white */
+}
+
+.item-row:hover {
+    background-color: white;
+}
+
+select,
+select option {
+    padding: 0 10px !important;
+    color: #ffffff; /* Set text color to white */
+}
+
+select:invalid,
+select option[value=""] {
+    color: #aab7c4 !important; 
+}
+
+/* Source: Boutique Ado walkthrough project */
+/* ------- Loading Spinner ----------- */
+#loading-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    color: #ffffff; /* Set text color to white */
+}
+
+.loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    height: 100%;
+}
+
+/* -------- Stripe ---------- */
+.StripeElement,
+.stripe-style-input {
+  box-sizing: border-box;
+  height: 40px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 0px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+  color: #ffffff; /* Set text color to white */
+}
+
+.StripeElement--focus,
+.stripe-style-input:focus,
+.stripe-style-input:active {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+.stripe-style-input::placeholder {
+    color: #aab7c4;
+}
+
+@media (max-width: 576px) {
+    .order-conf-img img {
+        width: 100% !important;
+    }
+}
