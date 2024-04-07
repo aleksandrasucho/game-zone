@@ -420,46 +420,99 @@ body {
     color: #333; /* Set text color to #333 */
 }
 
-/* Additional styles for profile template */
 
-.card {
-    border: none; /* Remove default card border */
+
+/* Footer container */
+.footer {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 50px 0;
 }
 
-.card-header {
-    background-color: transparent; /* Make card header transparent */
+/* Footer logo */
+.footer__logo--container {
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
-.card-footer {
-    background-color: transparent; /* Make card footer transparent */
+/* Footer contact info */
+.footer__contact-info {
+    margin-bottom: 30px;
 }
 
-.card-body {
-    padding: 20px; /* Add padding to card body */
+/* Footer links container */
+.footer__links--container {
+    margin-bottom: 30px;
 }
 
-.list-group-item {
-    background-color: transparent; /* Make list group item transparent */
-    border: none; /* Remove default list group item border */
+/* Footer links */
+.footer__links--container a {
+    color: #ffffff;
+    text-decoration: none;
 }
 
-.form-group {
-    margin-bottom: 1rem; /* Add margin bottom to form group */
+.footer__links--container a:hover {
+    color: #2fcd99;
 }
 
-.btn-primary,
-.btn-danger {
-    width: 100%; /* Make buttons full width */
+/* Footer social links */
+.footer__social-links--container {
+    margin-bottom: 30px;
 }
 
-.btn-success {
-    width: 100%; /* Make button full width */
+/* Social link icons */
+.footer__social-links--container .list-inline-item a {
+    color: #ffffff;
+    font-size: 24px;
+    margin-right: 20px;
 }
 
-/* Responsive styling */
-@media (max-width: 768px) {
-    .col-md-4,
-    .col-md-8 {
-        margin-bottom: 20px; /* Add margin bottom to columns for better spacing on small screens */
-    }
+/* Attribution */
+.footer__attribution {
+    font-size: 14px;
+}
+
+.footer__attribution a {
+    color: #ffffff;
+}
+
+.footer__attribution a:hover {
+    color: #2fcd99;
+}
+
+/* Success message container */
+.success-message-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Success message */
+.success-message {
+    color: white;
+    font-size: 20px;
+    border: 2px solid #c9fa04;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Neon green button */
+.neon-green-button {
+    background-color: #c9fa04;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.neon-green-button:hover {
+    background-color: #01331a;
+    color: #ffffff;
 }
