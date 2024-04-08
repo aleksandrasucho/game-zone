@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import View
@@ -46,9 +45,6 @@ class EditUserProfileView(LoginRequiredMixin, View):
             return redirect('profiles:edit_profile')  # Stay on the edit_profile page
         return render(request, 'profiles/edit_profile.html', {'profile_form': profile_form, 'address_form': address_form})
 
-
-
-
 class AddressesView(LoginRequiredMixin, View):
     """View for displaying user addresses."""
 
@@ -57,21 +53,6 @@ class AddressesView(LoginRequiredMixin, View):
         addresses = profile.addresses.all()
         return render(request, 'profiles/addresses.html', {'profile': profile, 'addresses': addresses})
 
-class AddAddressView(LoginRequiredMixin, View):
-    """View for adding a new address."""
-
-    def get(self, request, *args, **kwargs):
-        form = AddressForm()
-        return render(request, 'profiles/add_address.html', {'form': form})
-
-    def post(self, request, *args, **kwargs):
-        form = AddressForm(request.POST)
-        if form.is_valid():
-            address = form.save(commit=False)
-            address.profile = request.user.profile
-            address.save()
-            return redirect('addresses')
-        return render(request, 'profiles/add_address.html', {'form': form})
 
 class EditAddressView(LoginRequiredMixin, View):
     """View for editing an existing address."""
