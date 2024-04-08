@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django_countries.fields import CountryField
+from cloudinary_storage.storage import RawMediaCloudinaryStorage
 
 class Profile(models.Model):
     """Model for the profiles."""
@@ -11,9 +12,7 @@ class Profile(models.Model):
         on_delete=models.CASCADE,
         related_name='profile',
         verbose_name='User',
-        help_text=(
-            'format: required, unique=True'
-        )
+        help_text='format: required, unique=True'
     )
     
     first_name = models.CharField(
@@ -21,18 +20,20 @@ class Profile(models.Model):
         blank=True,
         null=True,
         verbose_name='First name',
-        help_text=(
-            'format: not required, max_length=50'
-        )
+        help_text='format: not required, max_length=50'
     )
     last_name = models.CharField(
         max_length=50,
         blank=True,
         null=True,
         verbose_name='Last name',
-        help_text=(
-            'format: not required, max_length=50'
-        )
+        help_text='format: not required, max_length=50'
+    )
+    profile_picture = models.ImageField(
+        upload_to='profile_pictures/',
+        null=True,
+        blank=True,
+        storage=RawMediaCloudinaryStorage()
     )
     
     created_at = models.DateTimeField(

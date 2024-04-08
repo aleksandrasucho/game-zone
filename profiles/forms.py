@@ -5,22 +5,25 @@ class ProfileForm(forms.ModelForm):
     """Form for the Profile model."""
     class Meta:
         model = Profile
-        fields = ['first_name', 'last_name']
+        fields = ['first_name', 'last_name', 'profile_picture']
+        help_texts = {
+            'first_name': '',  # Remove help text for first_name
+            'last_name': '',   # Remove help text for last_name
+        }
         widgets = {
             'first_name': forms.TextInput(
                 attrs={
                     'class': 'form-control',
-                    'title': 'not required, max_length=50',
                     'placeholder': 'First name',
                 }
             ),
             'last_name': forms.TextInput(
                 attrs={
                     'class': 'form-control',
-                    'title': 'not required, max_length=50',
                     'placeholder': 'Last name',
                 }
             ),
+            'profile_picture': forms.HiddenInput(),  # Hide the profile picture input
         }
 
 
@@ -37,16 +40,19 @@ class AddressForm(forms.ModelForm):
             'phone_number',
             'is_primary'
         ]
+        help_texts = {
+            field: '' for field in fields  # Remove help text for all fields
+        }
         widgets = {
             'country': forms.Select(
                 attrs={'class': 'form-control'},
             ),
-            'county_region': forms.Select(attrs={'class': 'form-control'}),
-            'city': forms.Select(attrs={'class': 'form-control'}),
-            'address_line': forms.TextInput(attrs={'class': 'form-control'}),
-            'zip_code': forms.TextInput(attrs={'class': 'form-control'}),
+            'county_region': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'County/Region'}),
+            'city': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'City'}),
+            'address_line': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Address Line'}),
+            'zip_code': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Zip Code'}),
             'phone_number': forms.TextInput(
-                attrs={'class': 'form-control', 'maxlength': '20'}
+                attrs={'class': 'form-control', 'maxlength': '20', 'placeholder': 'Phone Number'}
             ),
             'is_primary': forms.CheckboxInput(
                 attrs={'class': 'form-check-input'}
@@ -55,8 +61,3 @@ class AddressForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(AddressForm, self).__init__(*args, **kwargs)
-        self.fields['country'].widget.attrs.pop('maxlength', None)
-        self.fields['county_region'].widget.attrs.pop('maxlength', None)
-        self.fields['city'].widget.attrs.pop('maxlength', None)
-        self.fields['address_line'].widget.attrs.pop('maxlength', None)
-        self.fields['phone_number'].widget.attrs.pop('maxlength', None)

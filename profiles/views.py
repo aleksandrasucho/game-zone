@@ -24,19 +24,23 @@ class EditUserProfileView(LoginRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            profile = request.user.profile
-            form = ProfileForm(instance=profile)
-            return render(request, 'profiles/edit_profile.html', {'form': form, 'profile': profile})  # Add 'profile' to context
+            profile = get_object_or_404(Profile, user=request.user)
+            profile_form = ProfileForm(instance=profile)
+            address_form = AddressForm(instance=profile.addresses.first())
+            return render(request, 'profiles/edit_profile.html', {'profile_form': profile_form, 'address_form': address_form})  # Pass both forms to context
         else:
             return render(request, 'account/login.html')
 
     def post(self, request, *args, **kwargs):
         profile = request.user.profile
-        form = ProfileForm(request.POST, request.FILES, instance=profile)
-        if form.is_valid():
-            form.save()
+        profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
+        address_form = AddressForm(request.POST, instance=profile.addresses.first())
+        if profile_form.is_valid() and address_form.is_valid():
+            profile_form.save()
+            address_form.save()
             return redirect('profile')
-        return render(request, 'profiles/edit_profile.html', {'form': form})
+        return render(request, 'profiles/edit_profile.html', {'profile_form': profile_form, 'address_form': address_form})
+
 
 class AddressesView(LoginRequiredMixin, View):
     """View for displaying user addresses."""
