@@ -74,7 +74,7 @@
                     {% csrf_token %}
                     <!-- Personal Details -->
                     <fieldset class="checkout-fieldset">
-                        <legend class="fieldset-label text-white">Personal Details</legend>
+                        <legend class="fieldset-label" style="text-align: left;">Personal Details</legend>
                         <div class="form-group">
                             {{ order_form.full_name }}
                         </div>
@@ -84,7 +84,7 @@
                     </fieldset>
                     <!-- Delivery Information -->
                     <fieldset class="checkout-fieldset">
-                        <legend class="fieldset-label">Delivery Information</legend>
+                        <legend class="fieldset-label" style="text-align: left;">Delivery Information</legend>
                         <div class="form-group">
                             {{ order_form.phone_number }}
                         </div>
@@ -118,18 +118,18 @@
                     </fieldset>
                     <!-- Payment Information -->
                     <fieldset class="checkout-fieldset">
-                        <legend class="fieldset-label">Payment Information</legend>
-                        <!-- Stripe card -->
-                        <div class="form-group">
-                            <div class="mb-3" id="card-element"></div>
-                            <!-- Stripe card errors -->
-                            <div class="text-danger" id="card-errors" role="alert"></div>
+                        <legend class="fieldset-label" style="text-align: left;">Payment Information</legend>
+                        <label for="card-element">Credit or debit card</label>
+                        <div id="card-element" class="form-control form-control-payment">
+                            <!-- Payment elements will appear here -->
                         </div>
-                        <input type="hidden" value="{{ client_secret }}" name="client_secret">
+                        <hr class="my-4">
+                        <!-- Error messages in this element -->
+                        <div id="card-errors" class="alert-danger" role="alert"></div>
                     </fieldset>
                     <!-- Submit Button -->
                     <div class="submit-button mt-5">
-                        <button id="submit-button" class="btn btn-primary btn-block">Buy Now</button>
+                        <button id="submit-button" class="btn btn-primary btn-block" data-secret="{{ client_secret }}" data-sum="{{ total_sum }}">Buy Now</button>
                         <!-- Order Total Information -->
                         <p class="small text-danger mt-3">
                             <span class="icon"><i class="fas fa-exclamation-circle"></i></span>
@@ -143,24 +143,10 @@
 </div>
 {% endblock %}
 
-{% block postload_js %}
-{{ block.super }}
-{{ stripe_public_key|json_script:"id_stripe_public_key" }}
-{{ client_secret|json_script:"id_client_secret" }}
-<script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
-
+{% block postloadjs_extra %}
 <script>
-    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-        var popover = new bootstrap.Popover(popoverTriggerEl);
-
-        popoverTriggerEl.addEventListener('shown.bs.popover', function () {
-            setTimeout(function () {
-                popover.hide();
-            }, 1000);
-        });
-
-        return popover;
-    });
+    let CSRF_TOKEN = '{{ csrf_token }}';
+    let stripe_public_key = '{{ stripe_public_key }}';
 </script>
+<script src="{% static 'js/payment.js' %}"></script>
 {% endblock %}

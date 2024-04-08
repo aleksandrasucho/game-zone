@@ -16,8 +16,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'SECRET_KEY'
+# secret key
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -113,8 +113,9 @@ LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'ecommerce_project.wsgi.application'
 
-STRIPE_PUBLIC_KEY = 'your-stripe-public-key'
-STRIPE_SECRET_KEY = 'your-stripe-secret-key'
+STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY")
+STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
+STRIPE_ENDPOINT_SECRET = os.environ.get("STRIPE_ENDPOINT_SECRET")
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 

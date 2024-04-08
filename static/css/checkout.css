@@ -12,11 +12,7 @@
     box-shadow: 0 0 0 0.25rem rgba(247, 224, 175, 0.5) !important;
 } 
 
-#card-element:hover,
-.stripe-style-input:hover {
-    border: 1px solid #c9fa04 !important;
-    background-color: #eebd962c;
-} 
+
 
 .form-check-input:checked {
     background-color: #c9fa04;
@@ -200,10 +196,7 @@ select option[value=""] {
     box-shadow: 0 0 0 0.25rem rgba(247, 224, 175, 0.5); /* Adjust box shadow */
 }
 
-#card-element:hover {
-    border-color: #c9fa04; /* Adjust border color when hovered */
-    background-color: #eebd962c; /* Adjust background color when hovered */
-}
+
 
 #card-errors {
     margin-top: 10px;
@@ -226,4 +219,48 @@ select option[value=""] {
         margin-bottom: 10px;
     }
 
-    
+/* Adjust text color for form fields */
+.checkout-form-container input[type="text"],
+.checkout-form-container input[type="email"],
+.checkout-form-container input[type="tel"],
+.checkout-form-container input[type="number"],
+.checkout-form-container input[type="password"],
+.checkout-form-container textarea {
+    color: #000; /* Change text color to black */
+}
+
+/* Adjust placeholder color for form fields */
+.checkout-form-container input::placeholder,
+.checkout-form-container textarea::placeholder {
+    color: #666; /* Change placeholder text color to a darker shade */
+}
+
+/* Ensure sufficient contrast between text and background */
+#card-element,
+.stripe-style-input {
+    background-color: #fff; /* Change background color to white */
+    color: #000; /* Change text color to black */
+}
+
+/* Additional adjustments */
+
+/* Adjust error message color */
+#card-errors {
+    margin-top: 10px;
+    color: #d9534f; /* Change text color for errors to a contrasting color */
+}
+
+/* Adjust consistency */
+.item-row,
+.product-title-txt,
+.summary-container,
+.success-msg-container,
+#checkout-summary {
+    color: #000; /* Change text color to black */
+}
+
+/* Ensure placeholder text is clearly visible */
+.stripe-style-input::placeholder,
+#card-element::placeholder {
+    color: #aab7c4; /* Change placeholder text color to a shade of grey */
+}

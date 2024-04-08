@@ -2,10 +2,9 @@ import uuid
 from django.db import models
 from django.db.models import Sum
 from django.conf import settings
-from django_countries.fields import CountryField
-from decimal import Decimal
 from django.contrib.auth.models import User
-from stock.models import  Product, ProductInventory
+from stock.models import Product, ProductInventory
+from decimal import Decimal
 
 class Order(models.Model):
     """Model for Order."""
@@ -90,9 +89,21 @@ class Order(models.Model):
         """Generate a random, unique order number using UUID"""
         return uuid.uuid4().hex.upper()
 
-    def get_order_items(self):
-        """Get the order items for the order."""
-        return self.order_items.all()
+    def get_total(self):
+        """
+        Calculate and return the total amount of the order,
+        including any discounts and delivery costs.
+        """
+        order_items_total = sum(item.lineitem_total for item in self.lineitems.all())
+        total_discount = self.discount if hasattr(self, 'discount') else 0
+        total_delivery_cost = self.delivery_cost if hasattr(self, 'delivery_cost') else 0
+        total_vat = self.vat if hasattr(self, 'vat') else 0
+
+        grand_total = (
+            order_items_total + total_delivery_cost - total_discount + total_vat
+        )
+
+        return grand_total
 
 class OrderItem(models.Model):
     """Model for OrderItem."""
