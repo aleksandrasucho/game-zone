@@ -1,5 +1,8 @@
 from django import forms
+from django_countries.fields import CountryField
+from django_countries.widgets import CountrySelectWidget
 from .models import Profile, Address
+from django_countries import countries
 
 class ProfileForm(forms.ModelForm):
     """Form for the Profile model."""
@@ -28,7 +31,11 @@ class ProfileForm(forms.ModelForm):
 
 
 class AddressForm(forms.ModelForm):
-    """Form for the Address model."""
+    country = CountryField().formfield(
+        widget=CountrySelectWidget(attrs={'class': 'form-control'}),
+        choices=countries  # Provide the list of countries
+    )
+
     class Meta:
         model = Address
         fields = [
@@ -44,9 +51,6 @@ class AddressForm(forms.ModelForm):
             field: '' for field in fields  # Remove help text for all fields
         }
         widgets = {
-            'country': forms.Select(
-                attrs={'class': 'form-control'},
-            ),
             'county_region': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'County/Region'}),
             'city': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'City'}),
             'address_line': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Address Line'}),
@@ -54,10 +58,5 @@ class AddressForm(forms.ModelForm):
             'phone_number': forms.TextInput(
                 attrs={'class': 'form-control', 'maxlength': '20', 'placeholder': 'Phone Number'}
             ),
-            'is_primary': forms.CheckboxInput(
-                attrs={'class': 'form-check-input'}
-            )
+            'is_primary': forms.CheckboxInput(attrs={'class': 'form-check-input'})
         }
-
-    def __init__(self, *args, **kwargs):
-        super(AddressForm, self).__init__(*args, **kwargs)

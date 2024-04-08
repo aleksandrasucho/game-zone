@@ -27,19 +27,24 @@ class EditUserProfileView(LoginRequiredMixin, View):
             profile = get_object_or_404(Profile, user=request.user)
             profile_form = ProfileForm(instance=profile)
             address_form = AddressForm(instance=profile.addresses.first())
-            return render(request, 'profiles/edit_profile.html', {'profile_form': profile_form, 'address_form': address_form})  # Pass both forms to context
+            return render(request, 'profiles/edit_profile.html', {'profile_form': profile_form, 'address_form': address_form})
         else:
             return render(request, 'account/login.html')
 
     def post(self, request, *args, **kwargs):
         profile = request.user.profile
         profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
-        address_form = AddressForm(request.POST, instance=profile.addresses.first())
+        address_instance = profile.addresses.first() if profile.addresses.exists() else None
+        address_form = AddressForm(request.POST, instance=address_instance)
         if profile_form.is_valid() and address_form.is_valid():
-            profile_form.save()
-            address_form.save()
-            return redirect('profile')
+            profile_instance = profile_form.save()
+            address_instance = address_form.save(commit=False)
+            address_instance.profile = profile_instance
+            address_instance.save()
+            return redirect('profiles:profile')
         return render(request, 'profiles/edit_profile.html', {'profile_form': profile_form, 'address_form': address_form})
+
+
 
 
 class AddressesView(LoginRequiredMixin, View):

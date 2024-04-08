@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 from django_countries.fields import CountryField
 from cloudinary_storage.storage import RawMediaCloudinaryStorage
 
@@ -51,7 +49,6 @@ class Profile(models.Model):
         if self.first_name:
             return self.first_name
         return self.user.username
-    
 
 
 class Address(models.Model):
@@ -80,12 +77,12 @@ class Address(models.Model):
         )
     )
     country = CountryField(
-    blank_label='Country *',
-    null=False,
-    blank=False,
-    verbose_name='Country',
-    help_text='format: required, max_length=50'
-)
+        blank_label='Country *',
+        null=False,
+        blank=False,
+        verbose_name='Country',
+        help_text='format: required'
+    )
     county_region = models.CharField(
         max_length=50,
         verbose_name='County/Region',
@@ -134,4 +131,3 @@ class Address(models.Model):
             for address in self.profile.addresses.all().exclude(id=self.id):
                 address.is_primary = False
                 address.save()
-
