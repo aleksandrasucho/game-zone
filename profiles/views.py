@@ -26,7 +26,7 @@ class EditUserProfileView(LoginRequiredMixin, View):
         if request.user.is_authenticated:
             profile = request.user.profile
             form = ProfileForm(instance=profile)
-            return render(request, 'profiles/edit_profile.html', {'form': form})
+            return render(request, 'profiles/edit_profile.html', {'form': form, 'profile': profile})  # Add 'profile' to context
         else:
             return render(request, 'account/login.html')
 

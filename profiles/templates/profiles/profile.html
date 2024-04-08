@@ -1,38 +1,46 @@
 {% extends 'base.html' %}
-{% load static %}
 
 {% block content %}
-<div class="container mt-5">
-    <h1 class="text-center mb-4 text-white">My Profile</h1>
+<div class="container" style="max-width: 400px; margin: 50px auto 0; background-color: rgba(55, 55, 55, 0.8); border-radius: 10px; padding: 20px;">
     <div class="row">
-        <div class="col-md-4">
-            <div class="card bg-dark text-white p-4">
-                <h2 class="text-center mb-3">{{ profile.user.username }}</h2>
-                <!-- Edit Profile Link -->
-                <a href="{% url 'profiles:edit_profile' %}" class="btn btn-primary btn-block">Edit Profile</a>
-                
-                <!-- Delete Profile Link -->
-                <a href="{% url 'profiles:delete_profile' %}" class="btn btn-danger btn-block mt-3">Delete Profile</a>
-                
-                <!-- Link to Order History -->
-                <a href="{% url 'order_list' %}" class="btn btn-primary btn-block mt-3">Order History</a>
-            </div>
-        </div>
-        <div class="col-md-8">
-            <div class="card bg-dark text-white p-4">
-                <!-- Addresses -->
-                <h2>Addresses</h2>
-                <ul class="list-group">
-                    {% for address in addresses %}
-                        <li class="list-group-item">{{ address }}</li>
-                    {% endfor %}
-                </ul>
-                
-                <!-- Add Address Form -->
-                <h3 class="mt-4">Add Address</h3>
-                <a href="{% url 'profiles:add_address' %}" class="btn btn-primary btn-block mt-3">Add Address</a>
+        <div class="col-md-12">
+            <h2 class="text-center text-white">Welcome, {{ user.username }}</h2>
+            <!-- Display user's name here -->
+            <!-- Display user's profile image here -->
+            <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1712528218/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju_yedqkn.jpg" alt="User Image" class="img-fluid rounded-circle mb-3 mx-auto d-block">
+            <hr>
+            <h3 class="text-center text-white">Profile Options:</h3>
+            <div class="vertical-links">
+                <div><a href="{% url 'profiles:edit_profile' %}" class="btn btn-primary"><i class="bi bi-pencil" style="color: black;"></i> Edit Profile</a></div>
+                <div><a href="{% url 'profiles:addresses' %}" class="btn btn-primary"><i class="bi bi-house" style="color: black;"></i> My Addresses</a></div>
+                <div><a href="{% url 'profiles:add_address' %}" class="btn btn-primary"><i class="bi bi-plus" style="color: black;"></i> Add Address</a></div>
+                <div><a href="{% url 'user_order_list' %}" class="btn btn-primary"><i class="bi bi-bag" style="color: black;"></i> My Orders</a></div>
+                <div><a href="{% url 'wishlist:view_wishlist' %}" class="btn btn-primary"><i class="bi bi-heart" style="color: black;"></i> My Wishlist</a></div>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+    .vertical-links {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .vertical-links div {
+        margin-bottom: 20px; /* Add some space between the links */
+    }
+
+    .vertical-links .btn {
+        width: 100%; /* Make buttons fill the width of the container */
+        text-align: left; /* Align button text to the left */
+        display: flex; /* Use flexbox for icon and text alignment */
+        align-items: center; /* Center items vertically */
+        justify-content: center; /* Center items horizontally */
+    }
+
+    .vertical-links .btn i {
+        margin-right: 10px; /* Add some space between the icon and text */
+    }
+</style>
 {% endblock %}

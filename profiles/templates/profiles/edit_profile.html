@@ -2,6 +2,9 @@
 {% load static %}
 
 {% block content %}
-<h1>Welcome to My Website!</h1>
-<p>This is the home page content.</p>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}  <!-- Render form fields -->
+    <button type="submit">Submit</button>
+</form>
 {% endblock %}
