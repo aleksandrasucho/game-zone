@@ -7,6 +7,7 @@ from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Profile, Address
 from .forms import ProfileForm, AddressForm
+from django.contrib import messages
 
 class ProfileView(LoginRequiredMixin, View):
     """View for displaying user profile."""
@@ -41,7 +42,8 @@ class EditUserProfileView(LoginRequiredMixin, View):
             address_instance = address_form.save(commit=False)
             address_instance.profile = profile_instance
             address_instance.save()
-            return redirect('profiles:profile')
+            messages.success(request, 'Changes have been saved.')  # Display success message
+            return redirect('profiles:edit_profile')  # Stay on the edit_profile page
         return render(request, 'profiles/edit_profile.html', {'profile_form': profile_form, 'address_form': address_form})
 
 

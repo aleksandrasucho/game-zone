@@ -53,6 +53,33 @@
     #id_profile_picture + label {
         display: none;
     }
+
+    /* Toastify message styling */
+    .toast-container {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 9999;
+    }
+
+    .toastify {
+        background-color: #1c1c1c;
+        color: #ffffff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .toastify-success {
+        background-color: #c9fa04;
+        color: #333;
+    }
+
+    .toastify-error {
+        background-color: #ff6347;
+        color: #ffffff;
+    }
 </style>
 
 <script>
@@ -67,6 +94,25 @@
             var profilePicture = document.querySelector('.img-fluid.rounded-circle.mb-3');
             profilePicture.src = "https://res.cloudinary.com/ds7qsnpge/image/upload/v1712528218/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju_yedqkn.jpg";
         }
+    });
+
+    // Add event listener to the form submission
+    document.querySelector('form').addEventListener('submit', function(event) {
+        // Prevent the default form submission behavior
+        event.preventDefault();
+
+        // Show toast notification
+        Toastify({
+            text: "Changes have been saved.",
+            duration: 5000,
+            close: false,
+            backgroundColor: "linear-gradient(to right, #014e2a, #c9fa04)",
+            gravity: "bottom",
+            position: "center",
+        }).showToast();
+
+        // After displaying the message, submit the form
+        this.submit();
     });
 </script>
 {% endblock %}
