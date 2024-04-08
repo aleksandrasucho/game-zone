@@ -318,68 +318,68 @@ body {
 }
 
 .custom-card .card-body {
-    color: #ffffff; /* Light text color for better readability */
+    color: #ffffff;
 }
 
 .custom-card .price {
-    color: #c9fa04; /* Highlighted color for price */
+    color: #c9fa04;
 }
 
 .custom-card .btn-primary {
-    background-color: #c9fa04; /* Highlighted color for button background */
-    border-color: #c9fa04; /* Highlighted color for button border */
-    color: #333; /* Adjusted text color for better readability */
+    background-color: #c9fa04;
+    border-color: #c9fa04;
+    color: #333;
 }
 
 .custom-card .btn-primary:hover {
-    background-color: #01331a; /* Darker background color on hover */
-    border-color: #01331a; /* Darker border color on hover */
-    color: #ffffff; /* Light text color on hover */
+    background-color: #01331a;
+    border-color: #01331a;
+    color: #ffffff;
 }
 
 .product-link {
-    color: white; /* Set the color to white */
-    text-decoration: none; /* Remove default underline */
-    transition: color 0.3s ease; /* Add transition effect for color change */
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .product-link:hover {
-    color: lightgray; /* Change color on hover */
-    text-decoration: underline; /* Add underline on hover */
+    color: lightgray;
+    text-decoration: underline;
 }
 
 /* Newsletter Section */
 .newsletter {
-    color: #ffffff; /* Text color */
+    color: #ffffff;
     padding: 50px 0;
 }
 
 .newsletter h4,
 .newsletter p {
-    color: #ffffff; /* Text color */
+    color: #ffffff;
 }
 
 .newsletter .form-control {
-    color: #ffffff; /* Text color */
+    color: #333;
     border-radius: 0;
 }
 
 .newsletter .btn-outline-primary {
-    background-color: #c9fa04; /* Highlighted color for button background */
-    border-color: #c9fa04; /* Highlighted color for button border */
-    color: #333; /* Adjusted text color for better readability */
+    background-color: #c9fa04;
+    border-color: #c9fa04;
+    color: #333;
 }
 
 .newsletter .btn-outline-primary:hover {
     background-color: #c9fa04;
     border-color: #c9fa04;
-    color: #000000; /* Change text color on hover */
+    color: #000000;
 }
 
 .newsletter .input-group-text {
     background-color: #2fcd99;
     border-color: #2fcd99;
-    color: #ffffff; /* Text color */
+    color: #ffffff;
 }
 
 .newsletter .input-group-text:hover {
@@ -389,35 +389,34 @@ body {
 
 /* Add to Wishlist button */
 .add-to-wishlist {
-    color: #777777; /* Gray text color */
-    background-color: transparent; /* Transparent background */
-    border: 1px solid #777777; /* Gray border */
-    border-radius: 4px; /* Rounded corners */
-    padding: 8px 12px; /* Adjust padding */
-    transition: border-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+    color: #777777;
+    background-color: transparent;
+    border: 1px solid #777777;
+    border-radius: 4px;
+    padding: 8px 12px;
+    transition: border-color 0.3s ease, color 0.3s ease;
 }
 
 .add-to-wishlist:hover {
-    color: #333333; /* Darker text color on hover */
-    border-color: #333333; /* Darker border color on hover */
+    color: #333333;
+    border-color: #333333;
 }
 
 .image-container:hover {
-    /* Add your hover effect here */
-    cursor: pointer; /* Change cursor to pointer on hover */
-    filter: brightness(90%); /* Example: Reducing brightness on hover */
+    cursor: pointer;
+    filter: brightness(90%);
 }
 
 .text-white {
-    color: #fff; /* Set text color to white */
+    color: #fff;
 }
 
 .toast-header .close {
-    margin-left: auto; /* Move close button to the right */
+    margin-left: auto;
 }
 
 .text-color-333 {
-    color: #333; /* Set text color to #333 */
+    color: #333;
 }
 
 
