@@ -37,6 +37,10 @@
             </div>
         </div>
         <div class="col-md-12 text-center mt-5">
+            <a href="{% url 'profiles:profile' %}" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i>
+                Go back to profile
+            </a>
             <button type="submit" class="btn btn-primary">Save Changes</button>
             <a href="{% url 'profiles:delete_profile' %}" class="btn btn-danger">Delete Profile</a>
         </div>
