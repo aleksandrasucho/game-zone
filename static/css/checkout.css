@@ -39,8 +39,13 @@
     color: #ffffff; /* Set text color to white */
 }
 
+.item-row {
+    color: #ffffff; /* Set text color to white */
+}
+
+/* Remove hover effect */
 .item-row:hover {
-    background-color: white;
+    background-color: transparent; /* Change to transparent background */
 }
 
 select,
@@ -111,3 +116,114 @@ select option[value=""] {
         width: 100% !important;
     }
 }
+
+.summary-container {
+    background-color: #2f2f2f; /* Charcoal grey background color */
+    color: #ffffff; /* White text color */
+    padding: 20px; /* Add padding for spacing */
+    border-radius: 8px; /* Add border radius for rounded corners */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); /* Add a subtle shadow */
+    margin-bottom: 30px; /* Add margin to separate from other content */
+}
+
+.summary-container p {
+    margin-bottom: 10px; /* Add margin between paragraphs */
+}
+
+.summary-container hr {
+    border-color: #ffffff; /* White color for horizontal rule */
+    margin: 20px 0; /* Adjust margin for spacing */
+}
+
+.summary-container .price {
+    color: #ffffff; /* Set text color to white for price */
+}
+
+.product-image {
+    width: 80px; /* Adjust according to your preference */
+    height: auto; /* This maintains aspect ratio */
+}
+
+.product-image {
+    width: 100px !important; /* Adjust according to your preference */
+    height: auto !important; /* This maintains aspect ratio */
+}
+
+/* Checkout Form Styles */
+.checkout-form-container {
+    color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 30px; /* Add margin to separate from other content */
+}
+
+.checkout-section-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.checkout-fieldset {
+    border: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.fieldset-label {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.save-info-checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.save-info-checkbox input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+#card-element {
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #fff; /* Add border to match styling */
+    margin-bottom: 15px; /* Add margin to separate from other elements */
+}
+
+#card-element:focus {
+    border-color: #c9fa04; /* Adjust border color when focused */
+    box-shadow: 0 0 0 0.25rem rgba(247, 224, 175, 0.5); /* Adjust box shadow */
+}
+
+#card-element:hover {
+    border-color: #c9fa04; /* Adjust border color when hovered */
+    background-color: #eebd962c; /* Adjust background color when hovered */
+}
+
+#card-errors {
+    margin-top: 10px;
+    color: #c9fa04; /* Adjust text color for errors */
+}
+
+.submit-button {
+    text-align: center;
+}
+
+    /* Adjust input field width */
+    .checkout-form-container input[type="text"],
+    .checkout-form-container input[type="email"],
+    .checkout-form-container input[type="tel"],
+    .checkout-form-container input[type="number"],
+    .checkout-form-container input[type="password"],
+    .checkout-form-container textarea {
+        width: calc(100% - 20px); /* Adjust the width as needed */
+        padding: 8px;
+        margin-bottom: 10px;
+    }
+
+    
