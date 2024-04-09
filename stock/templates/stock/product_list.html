@@ -90,25 +90,60 @@
     </div>
 </div>
 
-
-
-
-
 <!-- Pagination links -->
-<div class="row mb-5"> <!-- Add mb-5 class for bottom margin -->
+<div class="row mb-5">
     <div class="col">
-        {% if page_obj.has_previous %}
-            <a href="?page=1" class="btn btn-secondary mr-2">First</a>
-            <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-secondary mr-2">Previous</a>
-        {% endif %}
-    </div>
-    <div class="col text-right">
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}" class="btn btn-secondary mr-2">Next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-secondary">Last</a>
-        {% endif %}
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                <li class="page-item {% if not page_obj.has_previous %}disabled{% endif %}">
+                    <a class="page-link neon-green-btn" href="{% if page_obj.has_previous %}?page=1{% else %}#{% endif %}" aria-label="First">
+                        <span aria-hidden="true">&laquo;&laquo;</span>
+                        <span class="sr-only">First</span>
+                    </a>
+                </li>
+                <li class="page-item {% if not page_obj.has_previous %}disabled{% endif %}">
+                    <a class="page-link neon-green-btn" href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% else %}#{% endif %}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item"><span class="page-link neon-green-btn">{{ page_obj.number }}</span></li>
+                <li class="page-item"><span class="page-link neon-green-btn">of {{ page_obj.paginator.num_pages }}</span></li>
+                <li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
+                    <a class="page-link neon-green-btn" href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }}{% else %}#{% endif %}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+                <li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
+                    <a class="page-link neon-green-btn" href="{% if page_obj.has_next %}?page={{ page_obj.paginator.num_pages }}{% else %}#{% endif %}" aria-label="Last">
+                        <span aria-hidden="true">&raquo;&raquo;</span>
+                        <span class="sr-only">Last</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </div>
+
+<style>
+    .neon-green-btn {
+        background-color: #777777;
+        border-color: #777777;
+        color: #ffff;
+    }
+
+    .neon-green-btn:hover {
+        border-color: #01331a;
+    }
+
+    /* Add hover effect to the area between pagination buttons */
+    .page-item:hover .page-link {
+        background-color: #f8f9fa;
+        color: #333;
+    }
+</style>
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
