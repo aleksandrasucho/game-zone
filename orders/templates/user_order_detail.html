@@ -1,0 +1,37 @@
+<!-- user_order_detail.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-white">Order Details - Order Number: {{ order.order_number }}</h2>
+    <div class="card bg-dark text-white">
+        <div class="card-body">
+            <h5 class="card-title">Order Date: {{ order.created_at }}</h5>
+            <h5 class="card-title">Status: {{ order.status }}</h5>
+            <!-- Add more order details here as needed -->
+            <h3 class="mt-4 mb-3">Order Items</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Product</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in order.items.all %}
+                    <tr>
+                        <td>{{ item.product }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.price }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <p>Total Price: {{ order.total_price }}</p>
+            <!-- Add more order summary details here as needed -->
+        </div>
+    </div>
+</div>
+{% endblock %}
