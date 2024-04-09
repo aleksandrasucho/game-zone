@@ -55,6 +55,7 @@
             {% endfor %}
             <div class="row justify-content-center">
                 <div class="col text-center">
+                    <!-- Button to clear wishlist -->
                     <button id="clear-wishlist" class="btn btn-danger btn-width mt-5 text-color-333">Clear Wishlist</button>
                 </div>
             </div>
@@ -74,4 +75,27 @@
         
         {% endif %}
     </div>
+    <!-- Script for handling clearing wishlist -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const clearButton = document.getElementById('clear-wishlist');
+
+            clearButton.addEventListener('click', function () {
+                // Send AJAX request to clear wishlist
+                fetch("{% url 'wishlist:clear_wishlist' %}", {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}',
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Reload the page to reflect the updated wishlist state
+                    location.reload();
+                })
+                .catch(error => console.error('Error:', error));
+            });
+        });
+    </script>
 {% endblock %}

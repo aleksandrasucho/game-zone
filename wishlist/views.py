@@ -61,9 +61,12 @@ def remove_from_wishlist(request, product_id):
         message = f"{product.name} is not in your wishlist."
         success = False
     
-    # Display message and return JSON response
+    # Display message
     messages.success(request, message)
-    return JsonResponse({'success': success, 'message': message})
+    
+    # Redirect back to the wishlist view
+    return redirect('wishlist:view_wishlist')
+
 
 @login_required
 def clear_wishlist(request):
