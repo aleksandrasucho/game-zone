@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from stock.models import Product
 from django.shortcuts import render
+from django.contrib import messages
 from django.urls import reverse
 from django.http import JsonResponse
 
@@ -14,14 +15,20 @@ def add_to_bag(request, product_id):
     # Assuming product_id is passed as a parameter
     product = get_object_or_404(Product, pk=product_id)
 
-    # Add the product to the bag
-    bag.append(product.id)
-
-    # Save the updated bag in the session
-    request.session['bag'] = bag
-
-    # Redirect to the bag page
-    return redirect('view_bag')
+    # Check if the product is already in the bag
+    if product.id not in bag:
+        # Add the product to the bag if it's not already there
+        bag.append(product.id)
+        # Save the updated bag in the session
+        request.session['bag'] = bag
+        # Inform the user that the product has been added to the bag
+        messages.success(request, f"{product.name} has been added to your bag.")
+        # Redirect to the bag page
+        return redirect('view_bag')
+    else:
+        # Inform the user that the product is already in the bag
+        messages.info(request, f"{product.name} is already in your bag.")
+        return redirect('product_list')  # Redirect to a different page or stay on the same page
 
 def remove_from_bag(request, product_id):
     if 'bag' in request.session:

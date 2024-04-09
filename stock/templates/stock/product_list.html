@@ -2,6 +2,12 @@
 {% load static %}
 
 {% block content %}
+<!-- Messages -->
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }}">
+    {{ message }}
+</div>
+{% endfor %}
 <div class="container">
     <!-- Page title -->
     <div class="row mb-3">
@@ -148,95 +154,110 @@
         width: 100%;
         margin-top: 0.5rem;
     }
+
+    .alert {
+        background-color: #333333; /* Charcoal grey color */
+        color: white; /* Text color */
+        padding: 10px;
+        border-radius: 5px;
+        border: 2px solid #c9fa04;;
+    }
 </style>
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-$(document).ready(function() {
-    $('.btn-group button').click(function() {
-        $('.btn-group button').removeClass('active');
-        $(this).addClass('active');
-        var sortOption = $(this).data('sort');
-        $('#sorting-info').text('Sorting by: ' + $(this).text()); // Update sorting info
-        window.location.href = window.location.pathname + '?sort=' + sortOption;
-    });
+    $(document).ready(function() {
+        // Function to update category name and button text
+        function updateCategoryName(name) {
+            category_name = name;
+            $('#categoryDropdown').text(name);
+        }
 
-    // Highlight active sorting option on page load
-    var currentSortOption = "{{ request.GET.sort }}";
-    $('.btn-group button').each(function() {
-        if ($(this).data('sort') === currentSortOption) {
+        // Function to display toast notification
+        function displayToast(message) {
+            $('.toast-body').text(message);
+            $('#wishlist-toast').toast('show');
+        }
+
+        // Function to hide messages after a timeout
+        function hideMessages() {
+            $('.alert').delay(3000).fadeOut('slow');
+        }
+
+        // Call hideMessages function on page load
+        hideMessages();
+
+        // Event listener for dropdown items
+        $('.dropdown-item').click(function() {
+            var categoryName = $(this).text();
+            updateCategoryName(categoryName);
+        });
+
+        // Event listener for "Add to Wishlist" button click
+        $('.add-to-wishlist').click(function() {
+            var productId = $(this).data('product-id');
+            addToWishlist(productId);
+        });
+
+        // Function to add product to the wishlist
+        function addToWishlist(productId) {
+            $.ajax({
+                type: 'POST',
+                url: '/wishlist/add/' + productId + '/',
+                data: {
+                    'csrfmiddlewaretoken': '{{ csrf_token }}' // Include CSRF token
+                },
+                success: function(response) {
+                    // Display toast notification
+                    displayToast(response.message);
+                },
+                error: function(xhr, status, error) {
+                    // Handle errors here
+                    console.error(xhr.responseText);
+                }
+            });
+        }
+
+        // Close toast notification when close button is clicked
+        $('.close').click(function() {
+            $('#wishlist-toast').toast('hide');
+        });
+
+        // Close toast notification after delay
+        $('#wishlist-toast').on('hidden.bs.toast', function() {
+            $('#wishlist-toast').toast('dispose');
+        });
+
+        // Event listener for sorting buttons
+        $('.btn-group button').click(function() {
+            $('.btn-group button').removeClass('active');
             $(this).addClass('active');
+            var sortOption = $(this).data('sort');
             $('#sorting-info').text('Sorting by: ' + $(this).text()); // Update sorting info
+            window.location.href = window.location.pathname + '?sort=' + sortOption;
+        });
+
+        // Highlight active sorting option on page load
+        var currentSortOption = "{{ request.GET.sort }}";
+        $('.btn-group button').each(function() {
+            if ($(this).data('sort') === currentSortOption) {
+                $(this).addClass('active');
+                $('#sorting-info').text('Sorting by: ' + $(this).text()); // Update sorting info
+            }
+        });
+
+        // Initialize category name on page load if category is selected
+        var currentCategory = "{{ request.GET.category }}";
+        if (currentCategory) {
+            $('.dropdown-item').each(function() {
+                if ($(this).attr('href').includes(currentCategory)) {
+                    updateCategoryName($(this).text());
+                }
+            });
         }
     });
-
-    // Event listener for dropdown items
-    $('.dropdown-item').click(function() {
-        var categoryName = $(this).text();
-        updateCategoryName(categoryName);
-    });
-
-    // Variable to hold the selected category name
-    var category_name = '';
-
-    // Function to update category name and button text
-    function updateCategoryName(name) {
-        category_name = name;
-        $('#categoryDropdown').text(name);
-    }
-
-    // Initialize category name on page load if category is selected
-    var currentCategory = "{{ request.GET.category }}";
-    if (currentCategory) {
-        $('.dropdown-item').each(function() {
-            if ($(this).attr('href').includes(currentCategory)) {
-                updateCategoryName($(this).text());
-            }
-        });
-    }
-
-    // Function to display toast notification
-    function displayToast(message) {
-        $('.toast-body').text(message);
-        $('#wishlist-toast').toast('show');
-    }
-
-    // Event listener for "Add to Wishlist" button click
-    $('.add-to-wishlist').click(function() {
-        var productId = $(this).data('product-id');
-        addToWishlist(productId);
-    });
-
-    // Function to add product to the wishlist
-    function addToWishlist(productId) {
-        $.ajax({
-            type: 'POST',
-            url: '/wishlist/add/' + productId + '/',
-            data: {
-                'csrfmiddlewaretoken': '{{ csrf_token }}'  // Include CSRF token
-            },
-            success: function(response) {
-                // Display toast notification
-                displayToast(response.message);
-            },
-            error: function(xhr, status, error) {
-                // Handle errors here
-                console.error(xhr.responseText);
-            }
-        });
-    }
-
-    // Close toast notification when close button is clicked
-    $('.close').click(function() {
-        $('#wishlist-toast').toast('hide');
-    });
-
-    // Close toast notification after delay
-    $('#wishlist-toast').on('hidden.bs.toast', function() {
-        $('#wishlist-toast').toast('dispose');
-    });
-});
 </script>
+
 
 {% endblock %}
