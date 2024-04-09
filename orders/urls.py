@@ -11,6 +11,8 @@ from .views import (
     UserOrderDetailsView,
 )
 
+app_name = 'orders'
+
 urlpatterns = [
     path('orders/', OrdersView.as_view(), name='order_list'),
     path('orders/<int:pk>/', OrderDetailsView.as_view(), name='order_detail'),
