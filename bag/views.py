@@ -43,13 +43,14 @@ def remove_from_bag(request, product_id):
     return HttpResponse("Product not found in the bag.")
 
 def view_bag(request):
-    # Check if 'bag' key exists in the session
     bag = request.session.get('bag', [])
-
-    # Retrieve the products from the database based on the product IDs stored in the session
     products = Product.objects.filter(pk__in=bag)
 
-    return render(request, 'bag/bag.html', {'products': products})
+    # Calculate the total price of all products in the bag
+    total_price = sum(product.price for product in products)
+
+    return render(request, 'bag/bag.html', {'products': products, 'total_price': total_price})
+
 
 def checkout(request):
     # Add your checkout logic here
