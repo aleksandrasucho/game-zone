@@ -12,7 +12,7 @@
 
         <!-- Display messages -->
         {% for message in messages %}
-            <div class="text-white">{{ message }}</div>
+            <div class="text-white message">{{ message }}</div>
         {% endfor %}
 
         <!-- Display wishlist items -->
@@ -97,5 +97,17 @@
                 .catch(error => console.error('Error:', error));
             });
         });
+            // Function to remove messages after 3 seconds
+    function removeMessages() {
+        const messages = document.querySelectorAll('.message');
+        messages.forEach(message => {
+            setTimeout(function () {
+                message.remove();
+            }, 3000); // 3 seconds timeout
+        });
+    }
+
+    // Call the function after the DOM is loaded
+    document.addEventListener('DOMContentLoaded', removeMessages);
     </script>
 {% endblock %}
