@@ -434,6 +434,16 @@ body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Make the heart icon always red */
+.add-to-wishlist .fa-heart {
+    color: red;
+}
+
+/* Scale up heart icon when hovering */
+.add-to-wishlist:hover .fa-heart {
+    transform: scale(1.1); /* Increase the size by 10% */
+}
+
 /* Footer container */
 .footer {
     background-color: #343a40;
