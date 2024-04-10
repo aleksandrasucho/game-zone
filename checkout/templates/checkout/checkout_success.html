@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-white">Order Placed Successfully!</h1>
+    <p class="text-white">Your order has been successfully placed. Below are the details:</p>
+    
+    <h2 class="text-white">Order Details</h2>
+    <p class="text-white"><strong>Order ID:</strong> {{ order.id }}</p>
+    <p class="text-white"><strong>Total Amount:</strong> £{{ order.total }}</p>
+    <!-- You can display more order details here as needed -->
+    
+    <p class="text-white">Thank you for shopping with us!</p>
+</div>
+{% endblock %}

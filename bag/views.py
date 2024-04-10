@@ -51,7 +51,3 @@ def view_bag(request):
 
     return render(request, 'bag/bag.html', {'products': products, 'total_price': total_price})
 
-
-def checkout(request):
-    # Add your checkout logic here
-    return render(request, 'bag/checkout.html')  # Render the checkout page template
