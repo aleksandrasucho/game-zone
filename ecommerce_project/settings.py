@@ -113,9 +113,10 @@ LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'ecommerce_project.wsgi.application'
 
+STRIPE_CURRENCY = 'gbp'
 STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY")
 STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
-STRIPE_ENDPOINT_SECRET = os.environ.get("STRIPE_ENDPOINT_SECRET")
+
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
