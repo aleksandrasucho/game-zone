@@ -1,9 +1,53 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
+import json
+import stripe
+
+from django.shortcuts import (
+    render, redirect, reverse, get_object_or_404, HttpResponse
+    )
+from django.views.decorators.http import require_POST
+from django.contrib import messages
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 from orders.forms import OrderForm
 from stock.models import Product
-import stripe
+import logging
+
+# Define logger
+logger = logging.getLogger(__name__)
+
+@require_POST
+def cache_checkout_data(request):
+    try:
+        print("POST request data:", request.POST)  # Debugging statement
+        # Retrieve the PaymentIntent ID from the POST request
+        client_secret = request.POST.get('client_secret', '')
+        pid = client_secret.split('_secret')[0]
+        print("PaymentIntent ID (pid):", pid)  # Debugging statement
+        
+        # Log the received PaymentIntent ID
+        logger.info('Received PaymentIntent ID: %s', pid)
+        
+        # Set the Stripe API key
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        
+        # Modify the PaymentIntent metadata to cache checkout data
+        stripe.PaymentIntent.modify(pid, metadata={
+            'bag': json.dumps(request.session.get('bag', {})),
+            'save_info': request.POST.get('save_info'),
+            'username': str(request.user),  # Convert user object to string
+        })
+        
+        # Return a success response
+        return HttpResponse(status=200)
+    except Exception as e:
+        # Log any exceptions that occur
+        logger.exception('Error occurred while caching checkout data: %s', e)
+        
+        # Handle exceptions
+        messages.error(request, 'Sorry, your payment cannot be processed right now. Please try again later.')
+        return HttpResponse(content=str(e), status=400)
+
+
 
 @login_required
 def checkout(request):
