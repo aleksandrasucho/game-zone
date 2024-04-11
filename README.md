@@ -192,3 +192,71 @@ With those color codes, you can create a sleek and modern design. This scheme pr
   [WoWder Wireframes](documentation/design/wireframes/New%20Project%201.pdf)
 
 ---
+## Agile Methodology
+
+### GitHub Project Management
+
+  ![GitHub Project Management](documentation/agile/project-agile.PNG)
+
+GitHub Project Management was used to manage the project. If it hadn't been for the GitHub project management, I wouldn't have been able to manage the development of the application. It helped me to prioritize the tasks and to keep track of my progress.
+
+![GitHub Project Management](documentation/agile/user-stories-agile.PNG)
+
+---
+
+## Information Architecture
+
+### Database
+
+* During the earliest stages of the project, the database was created using SQLite.
+* The database was then migrated to PostgreSQL.
+
+### Entity-Relationship Diagram
+
+![ERD](documentation/erd.PNG)
+
+---
+## Testing
+
+Please refer to the [TESTING.md](TESTING.md) file for all test-related documentation.
+
+---
+
+
+
+## Deployment
+
+
+- The app was deployed to [Heroku](https://www.heroku.com/).
+- The database was deployed to [ElephantSQL](https://www.elephantsql.com/).
+
+- The app can be reached by the [link](#).
+
+Please refer to the [DEPLOYMENT.md](DEPLOYMENT.md) file for all deployment-related documentation.
+
+---
+
+## Credits
+
+- [GitHub](https://github.com/) for giving the idea of the project's design.
+- [Django](https://www.djangoproject.com/) for the framework.
+- [ElephantSQL](https://www.elephantsql.com/): for the free hosting of the database.
+- [Font awesome](https://fontawesome.com/): for the free access to icons.
+- [Heroku](https://www.heroku.com/): for the free hosting of the website.
+- [jQuery](https://jquery.com/): for providing varieties of tools to make standard HTML code look appealing.
+- [Coolors](https://coolors.co/): for providing a free platform to generate your own palette.
+- [Icons8](https://icons8.com/): for providing free access to amazing icons and illustrations.
+- [Postgresql](https://www.postgresql.org/): for providing a free database.
+- [Codemy.com](https://www.youtube.com/watch?v=N-PB-HMFmdo): for providing a free video on how to implement pagination in the project.
+- [Responsive Viewer](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb/related?hl=en): for providing a free platform to test website responsiveness
+- [GoFullPage](chrome://extensions/?id=fdpohaocaechififmbbbbbknoalclacl): for allowing to create free full web page screenshots;
+- [Favicon Generator. For real.](https://realfavicongenerator.net/): for providing a free platform to generate favicons.
+
+---
+
+## Acknowledgments
+
+
+- [Juliia Konovalova ](https://github.com/IuliiaKonovalova) was a great supporter. She guided me through the development of the project and helped me to learn a lot of new things by challenging me to do something new.
+- [Code Institute](https://codeinstitute.net/) tutors and Slack community members for their support and help.
+- [Very Academy Youtube Channel](https://www.youtube.com/c/veryacademy) provided great insight on the implementation of the database with multi-values products, precise explanations of the stripe API, and many other things! This Youtube channel has plenty of brilliant tutorials that shed light on Django's most curious and useful aspects.
