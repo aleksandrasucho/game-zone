@@ -125,4 +125,31 @@ Usability was tested with the below user acceptance testing, sent to new users t
 | 1 | Click on the View my orders button | User will be redirected to the My Orders page | Y | |
 
 
+## Testing User Story
 
+| First Time Visitor Goals | Requirement met | Image |
+| ------------------------- | --------------- | ----- |
+| As a First Time Visitor, I want to be able to register my account,, so that I can learn the benefits of the app as a user. | Y | ![Signup Page](documentation/features/signup.png) |
+|  As a First Time Visitor I want to easily navigate the website to explore available video games. | Y | ![Home Page](documentation/features/navbar/navbar-logged-in.PNG) |
+| As a First Time Visitor,, I want to be able to find the app useful, so that I can use it according to my needs. | Y | ![Navigation](documentation/features/home/home-page.png) |
+|As a First Time Visitor, I want to be informed clearly if I am making any errors when registering my account to promptly rectify any mistakes, ensuring a seamless registration process. | Y | ![Benefits](documentation/features/signup.png)|
+| As a First Time Visitor, I want to be informed clearly if I am making any errors when registering my account, so that I can be able to fix any errors quickly if I make some. | Y | ![Signup Page](documentation/features/allauth_access/sign_up.png) |
+| As a First Time Visitor, I want to be able to see the list of products, so that I can learn the benefits of the app as a user.| Y | ![Products](documentation/features/store/store-page.png) |
+
+| Frequent Visitor Goals    | Requirement met | Image |
+| ------------------------- | --------------- | ----- |
+| As a Regular User, I want to easily log in to my account to access personalized features and preferences. | Y | ![Login Page](documentation/features/login-page.png) |
+| As a Regular User, I want to be able to access my account without having to log in every time, so that I can quickly buy a product that I need. | Y | ![Login Page](documentation/features/login-page.png) |
+| 	As a Regular User, I want to be able to easily check my account details and past orders for reference.| Y | ![My Orders](documentation/features/edit-profile/edit-profile.png) |
+| 	As a Regular User, I want to be able to add, edit, and save address details for faster ordering.| Y | ![My Orders](documentation/features/edit-profile/edit-profile.png) |
+| 	As a Regular User, I want to be able to sort products by category, so that I can find the best option to buy.| Y | ![My Orders](documentation/features/store/store-page.png) |
+| 	As a Customer, I want to Access detailed product descriptions, including images, options, and pricing, for informed decisions.| Y | ![My Orders](documentation/features/product-details/product-details.png) |
+| As a Customer, I want to be able to get notified via email about special offers, promotions, and discounts.| Y | ![My Orders](documentation/web_marketing/newsletter/newsletter.PNG) |
+| 	As a Customer, I want to be able to add or remove products from my wish list for convenient planning.| Y | ![My Orders](documentation/features/wishlist/wishlist.png) |
+| 	As a Customer, I want to be able to view products saved in my wish list to plan purchases effectively.| Y | ![My Orders](documentation/features/wishlist/wishlist.png) |
+| 	As a Customer, I want to be able to easily add products to my bag for streamlined shopping.| Y | ![My Orders](documentation/features/wishlist/wishlist.png) |
+| 	As a Customer, I want to be able to see the total cost of selected products to manage expenses.| Y | ![My Orders](documentation/features/checkout.png) |
+| 	As a Customer, I want to be able to check the total cost of products in my bag for budget planning.| Y | ![My Orders](documentation/features/checkout.png) |
+| 	As a Customer, I want to be able to delete products from my bag to adjust purchases.| Y | ![My Orders](documentation/features/checkout.png) |
+| 	As a Regular user, I want to be able to change my profile data, so that I can keep my profile up to date.| Y | ![My Orders](documentation/features/edit-profile/edit-profile.png) |
+| 	As a Regular User, I want to be able to choose a primary address without editing it for faster selection.| Y | ![My Orders](documentation/features/edit-profile/edit-profile.png) |
