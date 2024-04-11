@@ -1,11 +1,7 @@
 # E-commerce website
 
-**Deployed website: [Link to website](#)**
+**Deployed website: [Link to website](https://game-zone171-5159875123fa.herokuapp.com/)**
 
-
-![Main image](#)
-
-**Card number for payment testing: **
 ## About
 
 "Game Zone" is an e-commerce website that allows customers to buy online PC games. It provides a seamless experience with its login system, shopping cart, checkout system, and secure payment system. In addition, Game Zone features a comprehensive personnel system tailored for administrators. This system grants admins full control over managing the website's operations, including inventory management, user account administration, and site settings customization. With a focus on user experience and efficient backend management, Game Zone aims to redefine the way gamers shop for their favorite titles online.
@@ -230,7 +226,7 @@ Please refer to the [TESTING.md](TESTING.md) file for all test-related documenta
 - The app was deployed to [Heroku](https://www.heroku.com/).
 - The database was deployed to [ElephantSQL](https://www.elephantsql.com/).
 
-- The app can be reached by the [link](#).
+- The app can be reached by the [link](https://game-zone171-5159875123fa.herokuapp.com/).
 
 Please refer to the [DEPLOYMENT.md](DEPLOYMENT.md) file for all deployment-related documentation.
 
