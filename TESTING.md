@@ -194,47 +194,29 @@ A combination of Bootstrap classes, custom CSS, and template syntax played a piv
 
 ### Home Page
 
-![Lighthouse Report. Home Page](documentation/lighthouse-reports/)
+![Lighthouse Report. Home Page](documentation/lighthouse-reports/lighthouse-home.PNG)
 
-### Menu Page
+### StorePage
 
-![Lighthouse Report. Menu Page](documentation/lighthouse-reports/menupage-lighthouse.png)
+![Lighthouse Report. Store Page](documentation/lighthouse-reports/lighthouse-store.PNG)
 
-### Information Page
+### Wishlist Page
 
-![Lighthouse Report. Information Page](documentation/lighthouse-reports/infopage-lighthouse.png)
+![Lighthouse Report. Wishlist Page](documentation/lighthouse-reports/lighthouse-wishlist.PNG)
 
 ### Login Page
 
-![Lighthouse Report. Login Page](documentation/lighthouse-reports/login-lighthouse.png)
+![Lighthouse Report. Login Page](documentation/lighthouse-reports/lighthouse-login.PNG)
 
 ### Signup Page
 
-![Lighthouse Report. Signup Page](documentation/lighthouse-reports/signup-lighthouse.png)
+![Lighthouse Report. Signup Page](documentation/lighthouse-reports/lighthouse-signup.PNG)
 
-### Reset Password Page
 
-![Lighthouse Report. Reset Password Page](documentation/lighthouse-reports/reset-password-lighthouse.png)
+### Bag Page
 
-### Book a Table Page
+![Lighthouse Report. Book a Table Page](documentation/lighthouse-reports/lighthouse-bag.PNG)
 
-![Lighthouse Report. Book a Table Page](documentation/lighthouse-reports/book-a-table-lighthouse.png)
-
-### Your Reservations
-
-![Lighthouse Report. Your Reservations Page](documentation/lighthouse-reports/your-reservatrions-lighthouse.png)
-
-### Update Reservation
-
-![Lighthouse Report. Update Reservation Page](documentation/lighthouse-reports/update-lighthouse.png)
-
-### Delete Reservation
-
-![Lighthouse Report. Delete Reservation Page](documentation/lighthouse-reports/delete-lighthouse.png)
-
-### Logout Page
-
-![Lighthouse Report. Logout Page](documentation/lighthouse-reports/LOGOUT-LIGHTHOUSE.png)
 
 ---
 
