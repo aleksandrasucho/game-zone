@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /accounts/
+Disallow: /bag/
+Disallow: https://game-zone171-5159875123fa.herokuapp.com/sitemap.xml

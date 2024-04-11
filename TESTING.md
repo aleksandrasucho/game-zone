@@ -153,3 +153,37 @@ Usability was tested with the below user acceptance testing, sent to new users t
 | 	As a Customer, I want to be able to delete products from my bag to adjust purchases.| Y | ![My Orders](documentation/features/checkout.png) |
 | 	As a Regular user, I want to be able to change my profile data, so that I can keep my profile up to date.| Y | ![My Orders](documentation/features/edit-profile/edit-profile.png) |
 | 	As a Regular User, I want to be able to choose a primary address without editing it for faster selection.| Y | ![My Orders](documentation/features/edit-profile/edit-profile.png) |
+
+## Responsiveness Testing
+
+The deployed website underwent extensive testing across a spectrum of devices and screen sizes to guarantee its responsiveness and adaptability. Developer Tools were instrumental in simulating diverse screen dimensions, facilitating a comprehensive evaluation of the website's behavior on various devices.
+A combination of Bootstrap classes, custom CSS, and template syntax played a pivotal role in crafting the desired design. This strategic implementation not only ensured visual consistency but also maintained functional integrity across different platforms. By leveraging these tools and techniques, the website is poised to deliver an optimized user experience, regardless of the device being used.
+
+![Am I Responsive](/documentation/)
+
+## Validation
+
+### HTML Validation:
+- No errors or warnings were found when passing through the official [W3C](https://validator.w3.org/) validator. This checking was done manually by copying the view page source code (Ctrl+U) and pasting it into the validator.
+
+- [Bag app HTML validation report](documentation/validation/bag_html_validation.pdf)
+
+- [EmailNotification app HTML validation report](documentation/validation/email_notification_html_validation.pdf)
+
+- [Home app HTML validation report](documentation/validation/home_html_validation.pdf)
+
+- [Inventory app HTML validation report](documentation/validation/inventory_html_validation.pdf)
+
+- [Orders app HTML validation report](documentation/validation/orders_html_validation.pdf)
+
+- [Payment app HTML validation report](documentation/validation/payment_html_validation.pdf)
+
+- [Profiles app HTML validation report](documentation/validation/profiles_html_validation.pdf)
+
+- [Promotions app HTML validation report](documentation/validation/promotions_html_validation.pdf)
+
+- [Reviews app HTML validation report](documentation/validation/reviews_html_validation.pdf)
+
+- [Wishlist app HTML validation report](documentation/validation/wishlist_html_validation.pdf)
+
+- [Allauth app HTML validation report](documentation/validation/allauth_html_validation.pdf)

@@ -68,39 +68,39 @@
                 PC
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="{% url 'product_list' %}?category=action" alt="Action">Action</a></li>
-                <li><a class="dropdown-item" href="{% url 'product_list' %}?category=fantasy" alt="Fantasy">Fantasy</a></li>
-                <li><a class="dropdown-item" href="{% url 'product_list' %}?category=horror" alt="Horror">Horror</a></li>
-                <li><a class="dropdown-item" href="{% url 'product_list' %}?category=shooter" alt="Shooter">Shooter</a></li>
-                <li><a class="dropdown-item" href="{% url 'product_list' %}?category=racing" alt="Racing">Racing</a></li>
+                <li><a class="dropdown-item" href="{% url 'product_list' %}?category=action">Action</a></li>
+                <li><a class="dropdown-item" href="{% url 'product_list' %}?category=fantasy">Fantasy</a></li>
+                <li><a class="dropdown-item" href="{% url 'product_list' %}?category=horror">Horror</a></li>
+                <li><a class="dropdown-item" href="{% url 'product_list' %}?category=shooter">Shooter</a></li>
+                <li><a class="dropdown-item" href="{% url 'product_list' %}?category=racing">Racing</a></li>
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'home' %}#best-sellers" alt="Best Sellers">Best Sellers</a>
+              <a class="nav-link" href="{% url 'home' %}#best-sellers">Best Sellers</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="{% url 'home' %}#coming-soon" alt="Coming Soon">Coming Soon</a>
+              <a class="nav-link" href="{% url 'home' %}#coming-soon">Coming Soon</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="{% url 'home' %}#testimonials" alt="Testimonials">Testimonials</a>
+              <a class="nav-link" href="{% url 'home' %}#testimonials">Testimonials</a>
           </li>
           </ul>
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a href="{% url 'home' %}" class="nav-link" alt="Home">
+              <a href="{% url 'home' %}" class="nav-link">
                   <i class="fas fa-home"></i>
                   <span class="nav-link-text">Home</span>
               </a>
           </li>
             <li class="nav-item">
-              <a href="{% url 'product_list' %}" aria-label="Go to Products page" class="nav-link" alt="Store">
+              <a href="{% url 'product_list' %}" aria-label="Go to Products page" class="nav-link">
                 <i class="fas fa-store"></i>
                 <span class="nav-link-text">Store</span>
               </a>
             </li>
             {% if request.user.is_authenticated %}
             <li class="nav-item">
-              <a href="{% url 'wishlist:view_wishlist' %}" aria-label="Go to Wishlist page" class="nav-link" alt="Wishlist">
+              <a href="{% url 'wishlist:view_wishlist' %}" aria-label="Go to Wishlist page" class="nav-link">
                 <i class="fas fa-heart"></i>
                 <span class="nav-link-text">Wishlist</span>
               </a>
@@ -108,7 +108,7 @@
             {% endif %}
             {% if request.user.is_authenticated %}
             <li class="nav-item">
-              <a href="{% url 'view_bag' %}" aria-label="Go to Bag page" class="nav-link" alt="Bag">
+              <a href="{% url 'view_bag' %}" aria-label="Go to Bag page" class="nav-link">
                 <i class="fas fa-shopping-bag"></i><span id="shopping-bag-count">{{ product_count }}</span>
                 <span class="nav-link-text">Bag</span>
               </a>
@@ -116,22 +116,22 @@
             {% endif %}
             {% if request.user.is_authenticated %}
             <li class="nav-item">
-              <a href="{% url 'profiles:profile' %}" aria-label="Go to Profile page" class="nav-link" alt="Profile">
+              <a href="{% url 'profiles:profile' %}" aria-label="Go to Profile page" class="nav-link">
                 <span class="nav-link-text">Profile</span>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{% url 'account_logout' %}" aria-label="Logout" class="nav-link" alt="Logout">
+              <a href="{% url 'account_logout' %}" aria-label="Logout" class="nav-link">
                 <i class="fas fa-sign-out-alt"></i>
                 <span class="nav-link-text">Logout</span>
               </a>
             </li>
             {% elif not request.user.is_authenticated %}
             <li class="nav-item">
-              <a href="{% url 'account_signup' %}" class="nav-link" alt="SignUp">SignUp</a>
+              <a href="{% url 'account_signup' %}" class="nav-link">SignUp</a>
             </li>
             <li class="nav-item">
-              <a href="{% url 'account_login' %}" class="nav-link" alt="Login">Login</a>
+              <a href="{% url 'account_login' %}" class="nav-link">Login</a>
             </li>
             {% endif %}
           </ul>
@@ -164,9 +164,9 @@
           <div class="col-md-6">
               <h5>Follow Us</h5>
               <ul class="list-unstyled">
-                <li><a href="https://www.facebook.com/" target="_blank" alt="Facebook"><i class="fab fa-facebook"></i> Facebook</a></li>
-                <li><a href="https://twitter.com/" target="_blank" alt="Twitter"><i class="fab fa-twitter"></i> Twitter</a></li>
-                <li><a href="https://www.instagram.com/" target="_blank" alt="Instagram"><i class="fab fa-instagram"></i> Instagram</a></li>
+                <li><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
+                <li><a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+                <li><a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
               </ul>
           </div>
       </div>
