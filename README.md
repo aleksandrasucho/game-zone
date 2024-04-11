@@ -89,3 +89,35 @@ Game Zone distinguishes itself in the competitive online gaming market through i
 Please see  [SEO and Marketing](SEO_MARKETING.md) for an extensive overview of the marketing research for this project.
 
 ---
+## Future Development
+
+#### AI-Powered Customer Support
+
+Game Zone envisions implementing AI-powered customer support to revolutionize user assistance. Leveraging cutting-edge technology, this feature will provide instant responses to common queries and seamlessly escalate complex issues to human agents for personalized assistance.
+
+#### Sorting products by rating and reviews
+
+This feature is fully dependent on the business requirements. And not all business requirements include this feature due to the customers' personal preferences.
+#### Third-party registration
+
+Facebook and Twitter were not considered for future development at this stage as they require additional information from the business. 
+Google is the most popular third-party registration service that is easy to implement; however, it is not available in all countries and regions (like China).
+
+#### Payment system
+
+I want to implement PayPal payment system in the future as many customers prefer it.
+
+#### Augmented Reality Game Previews
+
+Game Zone is paving the way for augmented reality (AR) game previews, allowing gamers to experience trailers, gameplay snippets, and interactive demos in their real-world environment. This immersive approach provides a glimpse into the gameplay mechanics and graphics quality before making a purchase decision.
+
+#### Order cancellation
+
+This feature requires more research time to implement, which is why it is not implemented at this stage.
+
+#### Social Gaming Events
+
+In the future, Game Zone will host social gaming events, bringing together gamers from around the world for tournaments, challenges, and community-driven activities. These events will foster camaraderie, competition, and collaboration among players, enriching the gaming experience beyond solo gameplay.
+
+
+---
