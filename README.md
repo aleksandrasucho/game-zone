@@ -57,3 +57,29 @@ This online store is tailored for PC gamers seeking to purchase a diverse select
 | [#33](https://github.com/aleksandrasucho/game-zone/issues/33) |As a Regular User, I want to be able to choose a primary address without editing it for faster selection.|
 
 
+## Business Model
+
+Game Zone operates on a B2C business model, catering exclusively to customers who seek to purchase online PC games. The focus lies on individual transactions, ensuring a seamless experience from browsing to checkout.
+
+### A Persona Summary of the customer
+
+Game Zone targets a wide range of gamers, acknowledging their diverse preferences and interests. With a minimum age requirement of 18, the platform aims to deliver exceptional service by facilitating easy navigation, presenting an extensive selection of games, and prioritizing user satisfaction.
+
+### A persona summary of the store personnel
+
+Game Zone serves as a platform for game developers and publishers seeking to market their products online. Whether it's a fledgling indie studio or a renowned AAA company, Game Zone offers robust personnel functionality to manage all aspects of the storefront, from categorization and tagging to inventory management and order processing, fostering potential growth opportunities.
+
+### Strategy Trade-Off
+
+Game Zone distinguishes itself in the competitive online gaming market through its comprehensive offerings and competitive pricing. Key strategic trade-offs include:
+
+- Wide variety of game offerings
+- Availability of popular titles
+- Commitment to high-quality gaming experiences
+- Diverse product choices to cater to different gaming preferences
+- Emphasis on user-friendly interface and smooth shopping experience
+- Exceptional customer service and support
+- Fostering customer loyalty through personalized services and tailored recommendations
+
+
+---
