@@ -177,3 +177,14 @@ Please refer to the [FEATURES.md](FEATURES.md) file for all test-related documen
 
 
 ---
+## Design
+
+The design of Game Zone is inspired by Material Design principles, with a focus on delivering an exceptional user experience. The color palette chosen for the website/application is carefully curated to align with Material Design principles, ensuring coherence and visual harmony.
+
+### Color Scheme
+
+With those color codes, you can create a sleek and modern design. This scheme provides a high contrast between the text and background, with pops of neon green for highlighted elements and a range of green tones for accents. The varying opacity levels of black can be used for subtle depth and shadow effects.
+
+  ![Color Scheme](documentation/design/color-scheme.PNG)
+
+  
