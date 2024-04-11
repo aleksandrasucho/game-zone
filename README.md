@@ -19,3 +19,41 @@ The website was created to be eye-catching and user-friendly. The user is given 
 
 This online store is tailored for PC gamers seeking to purchase a diverse selection of digital games. Whether you're into action, adventure, strategy, or simulation games, this platform offers an extensive collection to cater to all gaming preferences. The website is designed to engage gamers of all ages and experience levels, providing easy access to the latest releases and classic titles alike. The user interface is intuitively crafted for effortless navigation, ensuring a seamless browsing and purchasing experience.
 
+### User Stories
+
+#### First Time Visitor
+
+| Issue ID    | User Story |
+|-------------|-------------|
+|[#1](https://github.com/aleksandrasucho/game-zone/issues/1)| As a First Time Visitor, I want to be able to register my account,, so that I can learn the benefits of the app as a user. |
+|[#2](https://github.com/aleksandrasucho/game-zone/issues/2)|As a First Time Visitor I want to easily navigate the website to explore available video games.|
+|[#3](https://github.com/aleksandrasucho/game-zone/issues/3)|As a First Time Visitor,, I want to be able to find the app useful, so that I can use it according to my needs.|
+|[#4](https://github.com/aleksandrasucho/game-zone/issues/4)|As a First Time Visitor, I want to be informed clearly if I am making any errors when registering my account to promptly rectify any mistakes, ensuring a seamless registration process.|
+|[#5](https://github.com/aleksandrasucho/game-zone/issues/5)|As a First Time Visitor, I want to be able to see the list of products, so that I can learn the benefits of the app as a user.|
+|[#13]()||
+|[#10]()||
+
+#### Regular User (Customer)
+
+| Issue ID    | User Story |
+|-------------|-------------|
+| [#6](https://github.com/aleksandrasucho/game-zone/issues/6) | As a Regular User, I want to easily log in to my account to access personalized features and preferences.|
+| [#7](https://github.com/aleksandrasucho/game-zone/issues/7) |  As a Regular User, I want to be able to access my account without having to log in every time, so that I can quickly buy a product that I need.|
+| [#8](https://github.com/aleksandrasucho/game-zone/issues/8) | As a Regular User, I want to be sure that my account details are protected, so that I can safely make purchases. |
+| [#9](https://github.com/aleksandrasucho/game-zone/issues/9) |As a Regular User, I want to be able to easily check my account details and past orders for reference.|
+| [#10](https://github.com/aleksandrasucho/game-zone/issues/10) |As a Regular User, I want to be able to add, edit, and save address details for faster ordering.|
+| [#12](https://github.com/aleksandrasucho/game-zone/issues/12) | As a Regular User, I want to be able to sort products by category, so that I can find the best option to buy.|
+| [#18](https://github.com/aleksandrasucho/game-zone/issues/18) | As a Customer, I want to Access detailed product descriptions, including images, options, and pricing, for informed decisions. |
+| [#19](https://github.com/aleksandrasucho/game-zone/issues/19) |As a Customer, I want to be able to get notified via email about special offers, promotions, and discounts.|
+| [#21](https://github.com/aleksandrasucho/game-zone/issues/21) |As a Customer, I want to be able to add or remove products from my wish list for convenient planning.|
+| [#22](https://github.com/aleksandrasucho/game-zone/issues/22) |As a Customer, I want to be able to view products saved in my wish list to plan purchases effectively.|
+| [#23](https://github.com/aleksandrasucho/game-zone/issues/23) |As a Customer, I want to be able to easily add products to my bag for streamlined shopping.|
+| [#24](https://github.com/aleksandrasucho/game-zone/issues/24) |As a Customer, I want to be able to see the total cost of selected products to manage expenses.|
+| [#25](https://github.com/aleksandrasucho/game-zone/issues/25) |As a Customer, I want to be able to check the total cost of products in my bag for budget planning.|
+| [#26](https://github.com/aleksandrasucho/game-zone/issues/26) |As a Customer, I want to be able to delete products from my bag to adjust purchases.|
+| [#28](https://github.com/aleksandrasucho/game-zone/issues/28) |As a Customer, I want to be able to check the status of my order to track its progress.|
+| [#29](https://github.com/aleksandrasucho/game-zone/issues/29) |As a Customer, I want to receive confirmation after checkout to verify purchase details.|
+| [#31](https://github.com/aleksandrasucho/game-zone/issues/31) |As a Regular user, I want to be able to change my profile data, so that I can keep my profile up to date.|
+| [#33](https://github.com/aleksandrasucho/game-zone/issues/33) |As a Regular User, I want to be able to choose a primary address without editing it for faster selection.|
+
+

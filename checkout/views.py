@@ -18,32 +18,21 @@ logger = logging.getLogger(__name__)
 @require_POST
 def cache_checkout_data(request):
     try:
-        # Retrieve the PaymentIntent ID from the POST request
-        client_secret = request.POST.get('client_secret', '')
-        pid = client_secret.split('_secret')[0]
-        
-        # Log the received PaymentIntent ID
-        logger.info('Received PaymentIntent ID: %s', pid)
-        
-        # Set the Stripe API key
+        pid = request.POST.get('client_secret').split('_secret')[0]
+        print(pid, '#22')
         stripe.api_key = settings.STRIPE_SECRET_KEY
-        
-        # Modify the PaymentIntent metadata to cache checkout data
+        print(stripe.api_key, '#33')
         stripe.PaymentIntent.modify(pid, metadata={
             'bag': json.dumps(request.session.get('bag', {})),
             'save_info': request.POST.get('save_info'),
-            'username': str(request.user),  # Convert user object to string
+            'username': request.user,
         })
-        
-        # Return a success response
         return HttpResponse(status=200)
     except Exception as e:
-        # Log any exceptions that occur
-        logger.exception('Error occurred while caching checkout data: %s', e)
-        
-        # Handle exceptions
-        messages.error(request, 'Sorry, your payment cannot be processed right now. Please try again later.')
-        return HttpResponse(content=str(e), status=400)
+        print(e, '#1')
+        messages.error(request, 'Sorry, your payment cannot be \
+            processed right now. Please try again later.')
+        return HttpResponse(content=e, status=400)
 
 
 @login_required
