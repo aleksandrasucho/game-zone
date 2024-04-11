@@ -159,8 +159,17 @@ Usability was tested with the below user acceptance testing, sent to new users t
 The deployed website underwent extensive testing across a spectrum of devices and screen sizes to guarantee its responsiveness and adaptability. Developer Tools were instrumental in simulating diverse screen dimensions, facilitating a comprehensive evaluation of the website's behavior on various devices.
 A combination of Bootstrap classes, custom CSS, and template syntax played a pivotal role in crafting the desired design. This strategic implementation not only ensured visual consistency but also maintained functional integrity across different platforms. By leveraging these tools and techniques, the website is poised to deliver an optimized user experience, regardless of the device being used.
 
-## Validation
+## Bugs
 
+### Solved bugs
+
+There were plenty of bugs during the development process since this project was a learning platform for me and allowed me to improve my skills and knowledge significantly.
+
+1. Django Improperly Configured Error: I encountered the django.core.exceptions.ImproperlyConfigured: allauth.account.middleware.AccountMiddleware must be added to settings.MIDDLEWARE error.
+- *Solutions:* The issue has been addressed by adding allauth.account.middleware.AccountMiddleware to the settings.MIDDLEWARE as per the Django configuration requirements.
+
+2. gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3> django
+- *Solutions:* The issue has been resolved by investigating and fixing the underlying cause, allowing the Gunicorn server to start successfully.
 
 ---
 ## Lighthouse Report
