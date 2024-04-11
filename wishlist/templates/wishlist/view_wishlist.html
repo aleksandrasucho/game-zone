@@ -39,17 +39,20 @@
                                 </p>
                             {% endif %}
                         </div>
-                        <!-- Buttons -->
-                        <div class="text-center">
-                            <a class="btn neon-green-button btn-width mt-3 text-color-333" href="{% url 'wishlist:remove_from_wishlist' product.id %}">
-                                <span class="text-uppercase font-weight-bold">Remove from wishlist</span>
-                            </a>
-                                <!-- Add Buy Now button -->
-                            <a class="btn neon-green-button btn-width mt-3 text-color-333" href="{% url 'checkout' %}">
-                                <span class="text-uppercase font-weight-bold">Buy Now</span>
-                            </a>
-                            
-                        </div>
+                    <!-- Buttons -->
+                    <div class="text-center">
+                        <!-- Remove from Wishlist button -->
+                        <a class="btn btn-primary btn-block mt-3" href="{% url 'wishlist:remove_from_wishlist' product.id %}">
+                            <i class="fas fa-trash-alt"></i> <!-- Trash icon -->
+                            <span class="ml-2">Remove from Wishlist</span>
+                        </a>
+                        <!-- Add Buy Now button -->
+                        <a href="{% url 'add_to_bag' product_id=product.id %}" class="btn btn-primary btn-block mt-3" data-product-id="{{ product.id }}">
+                            <i class="fas fa-shopping-cart"></i> <!-- Shopping cart icon -->
+                            <span class="ml-2">Buy Now</span>
+                        </a>
+                    </div>
+
                     </div>
                 </div>
             {% endfor %}
