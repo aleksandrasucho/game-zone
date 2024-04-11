@@ -187,4 +187,8 @@ With those color codes, you can create a sleek and modern design. This scheme pr
 
   ![Color Scheme](documentation/design/color-scheme.PNG)
 
-  
+### Wireframes
+
+  [WoWder Wireframes](documentation/design/wireframes/New%20Project%201.pdf)
+
+---
