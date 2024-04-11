@@ -83,3 +83,9 @@ Game Zone distinguishes itself in the competitive online gaming market through i
 
 
 ---
+
+## SEO and Marketing
+
+Please see  [SEO and Marketing](SEO_MARKETING.md) for an extensive overview of the marketing research for this project.
+
+---
