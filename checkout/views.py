@@ -71,6 +71,17 @@ def checkout(request):
                 return redirect(reverse('checkout_success', args=[order.order_number]))
             else:
                 logger.warning("Payment intent status: %s", intent.status)
+                # Disable pay button and show message to the user
+                messages.info(request, 'Payment cannot be processed right now. Please try again later.')
+                context = {
+                    'order_form': order_form,
+                    'products': products,
+                    'stripe_public_key': stripe_public_key,
+                    'total_price': total_amount,
+                    'client_secret': intent.client_secret,
+                    'payment_error': True,
+                }
+                return render(request, 'checkout/checkout.html', context)
     else:
         order_form = OrderForm()
 
