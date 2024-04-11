@@ -9,12 +9,12 @@
     border-radius: 8px; /* Adding border radius */
 }
 
-/* Styles for the logout form */
+  /* Styles for the logout form */
 .logout-form {
     margin-top: 20px;
 }
 
-/* Styles for buttons */
+  /* Styles for buttons */
 .btn {
     display: inline-block;
     font-weight: 400;
@@ -23,24 +23,25 @@
     vertical-align: middle;
     cursor: pointer;
     border: 1px solid transparent;
-    padding: .375rem .75rem;
+    padding: 0.375rem 0.75rem;
     font-size: 1rem;
     line-height: 1.5;
-    border-radius: .25rem;
-    transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     background-color: #014e2a;
     border-color: #014e2a;
 }
 
-/* Styles for button hover state */
+  /* Styles for button hover state */
 .btn:hover {
     background-color: #01331a;
     border-color: #01331a;
 }
 
-/* Login form */
+  /* Login form */
 
-/* Styles for the login container */
+  /* Styles for the login container */
 .login-container {
     max-width: 400px;
     margin: 0 auto;
@@ -70,7 +71,7 @@
     border-radius: 4px;
 }
 
-/* Styles for primary button */
+  /* Styles for primary button */
 .btn-primary {
     background-color: #c9fa04;
     border-color: #c9fa04;
@@ -83,7 +84,7 @@
     color: #ffffff;
 }
 
-/* Neon green color for links */
+  /* Neon green color for links */
 .neon-green {
     color: #c9fa04;
 }
@@ -92,19 +93,19 @@
     color: #a0c418;
 }
 
-    /* Additional CSS for form inputs */
-    .signup.account__form input[type="text"],
-    .signup.account__form input[type="email"],
-    .signup.account__form input[type="password"] {
-        width: 100%;
-        padding: 10px;
-        margin: 2px 0;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
+  /* Additional CSS for form inputs */
+.signup.account__form input[type="text"],
+.signup.account__form input[type="email"],
+.signup.account__form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 2px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
 
-/* Override conflicting styles for the button */
+  /* Override conflicting styles for the button */
 .password-reset-form input[type="submit"].btn-primary {
     background-color: #c9fa04;
     border-color: #c9fa04;

@@ -1,24 +1,23 @@
 #card-element,
 .stripe-style-input {
-    border: 1px solid #ffffff !important;
-    border-radius: 0.25rem !important;
-    margin: 0.5rem 0 0.5rem 0 !important;
-    color: #ffffff; /* Set text color to white */
+  border: 1px solid #ffffff !important;
+  border-radius: 0.25rem !important;
+  margin: 0.5rem 0 0.5rem 0 !important;
+  color: #ffffff; /* Set text color to white */
 }
 
 #card-element:focus,
 .stripe-style-input:focus {
     border: 1px solid #c9fa04 !important;
     box-shadow: 0 0 0 0.25rem rgba(247, 224, 175, 0.5) !important;
-} 
-
-
+}
 
 .form-check-input:checked {
     background-color: #c9fa04;
     border-color: #080808;
     color: #ffffff; /* Set text color to white */
 }
+
 .summary-container {
     background-color: #f1f1f1;
     color: #ffffff; /* Set text color to white */
@@ -52,7 +51,7 @@ select option {
 
 select:invalid,
 select option[value=""] {
-    color: #aab7c4 !important; 
+  color: #aab7c4 !important;
 }
 
 /* Source: Boutique Ado walkthrough project */
@@ -81,36 +80,36 @@ select option[value=""] {
 /* -------- Stripe ---------- */
 .StripeElement,
 .stripe-style-input {
-  box-sizing: border-box;
-  height: 40px;
-  padding: 10px 12px;
-  border: 1px solid transparent;
-  border-radius: 0px;
-  background-color: #ffffff;
-  box-shadow: 0 1px 3px 0 #e6ebf1;
-  -webkit-transition: box-shadow 150ms ease;
-  transition: box-shadow 150ms ease;
-  color: #ffffff; /* Set text color to white */
+    box-sizing: border-box;
+    height: 40px;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    border-radius: 0px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+    color: #ffffff; /* Set text color to white */
 }
 
 .StripeElement--focus,
 .stripe-style-input:focus,
 .stripe-style-input:active {
-  box-shadow: 0 1px 3px 0 #cfd7df;
+    box-shadow: 0 1px 3px 0 #cfd7df;
 }
 
 .StripeElement--webkit-autofill {
-  background-color: #fefde5 !important;
+    background-color: #fefde5 !important;
 }
 
 .stripe-style-input::placeholder {
-    color: #aab7c4;
+     color: #aab7c4;
 }
 
 @media (max-width: 576px) {
     .order-conf-img img {
-        width: 100% !important;
-    }
+    width: 100% !important;
+}
 }
 
 .summary-container {
@@ -187,37 +186,35 @@ select option[value=""] {
     color: #fff;
     padding: 15px;
     border-radius: 5px;
-    border: 1px solid #fff; /* Add border to match styling */
-    margin-bottom: 15px; /* Add margin to separate from other elements */
+    border: 1px solid #fff;
+    margin-bottom: 15px;
 }
 
 #card-element:focus {
-    border-color: #c9fa04; /* Adjust border color when focused */
-    box-shadow: 0 0 0 0.25rem rgba(247, 224, 175, 0.5); /* Adjust box shadow */
+    border-color: #c9fa04;
+    box-shadow: 0 0 0 0.25rem rgba(247, 224, 175, 0.5);
 }
-
-
 
 #card-errors {
     margin-top: 10px;
-    color: #c9fa04; /* Adjust text color for errors */
+    color: #c9fa04;
 }
 
 .submit-button {
     text-align: center;
 }
 
-    /* Adjust input field width */
-    .checkout-form-container input[type="text"],
-    .checkout-form-container input[type="email"],
-    .checkout-form-container input[type="tel"],
-    .checkout-form-container input[type="number"],
-    .checkout-form-container input[type="password"],
-    .checkout-form-container textarea {
-        width: calc(100% - 20px); /* Adjust the width as needed */
-        padding: 8px;
-        margin-bottom: 10px;
-    }
+/* Adjust input field width */
+.checkout-form-container input[type="text"],
+.checkout-form-container input[type="email"],
+.checkout-form-container input[type="tel"],
+.checkout-form-container input[type="number"],
+.checkout-form-container input[type="password"],
+.checkout-form-container textarea {
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin-bottom: 10px;
+}
 
 /* Adjust text color for form fields */
 .checkout-form-container input[type="text"],
@@ -226,20 +223,20 @@ select option[value=""] {
 .checkout-form-container input[type="number"],
 .checkout-form-container input[type="password"],
 .checkout-form-container textarea {
-    color: #000; /* Change text color to black */
+    color: #000;
 }
 
 /* Adjust placeholder color for form fields */
 .checkout-form-container input::placeholder,
 .checkout-form-container textarea::placeholder {
-    color: #666; /* Change placeholder text color to a darker shade */
+         color: #666;
 }
 
 /* Ensure sufficient contrast between text and background */
 #card-element,
 .stripe-style-input {
-    background-color: #fff; /* Change background color to white */
-    color: #000; /* Change text color to black */
+    background-color: #fff;
+    color: #000;
 }
 
 /* Additional adjustments */
@@ -247,7 +244,7 @@ select option[value=""] {
 /* Adjust error message color */
 #card-errors {
     margin-top: 10px;
-    color: #d9534f; /* Change text color for errors to a contrasting color */
+    color: #d9534f;
 }
 
 /* Adjust consistency */
@@ -256,11 +253,11 @@ select option[value=""] {
 .summary-container,
 .success-msg-container,
 #checkout-summary {
-    color: #000; /* Change text color to black */
+    color: #000;
 }
 
 /* Ensure placeholder text is clearly visible */
 .stripe-style-input::placeholder,
 #card-element::placeholder {
-    color: #aab7c4; /* Change placeholder text color to a shade of grey */
+    color: #aab7c4;
 }

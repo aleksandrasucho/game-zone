@@ -1,297 +1,263 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block content %}
-{{ block.super }}
-
+{% extends 'base.html' %} {% load static %} {% block content %} {{ block.super }}
 <div class="container mt-5">
-    <div class="row">
-        <div class="col-md-8">
-            <div id="carousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <!-- Dead by Daylight -->
-                    <div class="carousel-item active" data-bs-interval="3000">
-                        <div class="carousel-image-wrapper">
-                            <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710436635/EGS_DeadbyDaylight_BehaviourInteractive_S1_2560x1440-a32581cf9948a9a2e24b2ff15c1577c7_kvyfhw.jpg"
-                                class="d-block img-fluid" alt="Dead by Daylight - Multiplayer Horror Game">
-                            <div class="overlay-text">
-                                <h2>Dead by Daylight</h2>
-                                <p>A thrilling asymmetrical multiplayer horror game where players take on the roles of both survivors trying to escape and a killer hunting them down.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Hogwarts Legacy -->
-                    <div class="carousel-item" data-bs-interval="3000">
-                        <div class="carousel-image-wrapper">
-                            <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710198317/2x1_NSwitch_HogwartsLegacy_env2rl.jpg"
-                                class="d-block img-fluid" alt="Hogwarts Legacy game">
-                            <div class="overlay-text">
-                                <h2>Hogwarts Legacy</h2>
-                                <p>Embark on a journey to Hogwarts and experience the magic!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Helldivers II -->
-                    <div class="carousel-item" data-bs-interval="3000">
-                        <div class="carousel-image-wrapper">
-                            <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710198515/helldivers-2-pc-game-steam-europe-cover_09a589f445b447978f58c5e3249265b4_s7xg5j.jpg"
-                                class="d-block img-fluid" alt="Helldivers II game">
-                            <div class="overlay-text">
-                                <h2>Helldivers II</h2>
-                                <p>Join the elite squad of Helldivers and engage in co-op mayhem against alien enemies!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Forza Horizon 5 -->
-                    <div class="carousel-item" data-bs-interval="3000">
-                        <div class="carousel-image-wrapper">
-                            <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710437373/capsule_616x353_uinrpu.jpg"
-                                class="d-block img-fluid" alt="Forza Horizon 5 game">
-                            <div class="overlay-text">
-                                <h2>Forza Horizon 5</h2>
-                                <p>Experience the thrill of open-world racing across diverse landscapes and stunning environments in the latest installment of the acclaimed racing series!</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carousel"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carousel"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+  <div class="row">
+    <div class="col-md-8">
+      <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <!-- Dead by Daylight -->
+          <div class="carousel-item active" data-bs-interval="3000">
+            <div class="carousel-image-wrapper">
+              <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710436635/EGS_DeadbyDaylight_BehaviourInteractive_S1_2560x1440-a32581cf9948a9a2e24b2ff15c1577c7_kvyfhw.jpg" class="d-block img-fluid" alt="Dead by Daylight - Multiplayer Horror Game">
+              <div class="overlay-text">
+                <h2>Dead by Daylight</h2>
+                <p>A thrilling asymmetrical multiplayer horror game where players take on the roles of both survivors trying to escape and a killer hunting them down.</p>
+              </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="container mt-3">
-                <div class="row">
-                    <!-- Dead by Daylight side image -->
-                    <div class="col-md-12 mb-3">
-                        <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710436635/EGS_DeadbyDaylight_BehaviourInteractive_S1_2560x1440-a32581cf9948a9a2e24b2ff15c1577c7_kvyfhw.jpg"
-                            class="img-fluid side-image" alt="Dead by Daylight - Multiplayer Horror Game">
-                    </div>
-                    <!-- Hogwarts Legacy side image -->
-                    <div class="col-md-12 mb-3">
-                        <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710198317/2x1_NSwitch_HogwartsLegacy_env2rl.jpg"
-                            class="img-fluid side-image" alt="Hogwarts Legacy game">
-                    </div>
-                    <!-- Helldivers II side image -->
-                    <div class="col-md-12 mb-3">
-                        <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710198515/helldivers-2-pc-game-steam-europe-cover_09a589f445b447978f58c5e3249265b4_s7xg5j.jpg"
-                            class="img-fluid side-image" alt="Helldivers II game">
-                    </div>
-                    <!-- Forza Horizon 5 side image -->
-                    <div class="col-md-12 mb-3">
-                        <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710437373/capsule_616x353_uinrpu.jpg"
-                            class="img-fluid side-image" alt="Forza Horizon 5 game">
-                    </div>
-                </div>
+          </div>
+          <!-- Hogwarts Legacy -->
+          <div class="carousel-item" data-bs-interval="3000">
+            <div class="carousel-image-wrapper">
+              <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710198317/2x1_NSwitch_HogwartsLegacy_env2rl.jpg" class="d-block img-fluid" alt="Hogwarts Legacy game">
+              <div class="overlay-text">
+                <h2>Hogwarts Legacy</h2>
+                <p>Embark on a journey to Hogwarts and experience the magic!</p>
+              </div>
             </div>
+          </div>
+          <!-- Helldivers II -->
+          <div class="carousel-item" data-bs-interval="3000">
+            <div class="carousel-image-wrapper">
+              <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710198515/helldivers-2-pc-game-steam-europe-cover_09a589f445b447978f58c5e3249265b4_s7xg5j.jpg" class="d-block img-fluid" alt="Helldivers II game">
+              <div class="overlay-text">
+                <h2>Helldivers II</h2>
+                <p>Join the elite squad of Helldivers and engage in co-op mayhem against alien enemies!</p>
+              </div>
+            </div>
+          </div>
+          <!-- Forza Horizon 5 -->
+          <div class="carousel-item" data-bs-interval="3000">
+            <div class="carousel-image-wrapper">
+              <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710437373/capsule_616x353_uinrpu.jpg" class="d-block img-fluid" alt="Forza Horizon 5 game">
+              <div class="overlay-text">
+                <h2>Forza Horizon 5</h2>
+                <p>Experience the thrill of open-world racing across diverse landscapes and stunning environments in the latest installment of the acclaimed racing series!</p>
+              </div>
+            </div>
+          </div>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     </div>
+    <div class="col-md-4">
+      <div class="container mt-3">
+        <div class="row">
+          <!-- Dead by Daylight side image -->
+          <div class="col-md-12 mb-3">
+            <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710436635/EGS_DeadbyDaylight_BehaviourInteractive_S1_2560x1440-a32581cf9948a9a2e24b2ff15c1577c7_kvyfhw.jpg" class="img-fluid side-image" alt="Dead by Daylight - Multiplayer Horror Game">
+          </div>
+          <!-- Hogwarts Legacy side image -->
+          <div class="col-md-12 mb-3">
+            <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710198317/2x1_NSwitch_HogwartsLegacy_env2rl.jpg" class="img-fluid side-image" alt="Hogwarts Legacy game">
+          </div>
+          <!-- Helldivers II side image -->
+          <div class="col-md-12 mb-3">
+            <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710198515/helldivers-2-pc-game-steam-europe-cover_09a589f445b447978f58c5e3249265b4_s7xg5j.jpg" class="img-fluid side-image" alt="Helldivers II game">
+          </div>
+          <!-- Forza Horizon 5 side image -->
+          <div class="col-md-12 mb-3">
+            <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710437373/capsule_616x353_uinrpu.jpg" class="img-fluid side-image" alt="Forza Horizon 5 game">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
 <!-- Best Sellers Section -->
 <div class="container mt-5" id="best-sellers">
-    <h2 class="best-sellers">Best Sellers</h2>
-    <hr class="underline">
-    <div class="row">
-        {% for product in best_sellers %}
-        <div class="col-md-4 game-card">
-            <div class="card">
-                <div class="card-inner">
-                    <img src="{{ product.image_url }}" class="card-img-top" alt="{{ product.name }}">
-                    <div class="card-description">
-                        <h5 class="card-title">{{ product.name }}</h5>
-                        <p class="card-text">{{ product.description }}</p>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <p class="price">£{{ product.price }}</p>
-                    <a href="{% url 'add_to_bag' product_id=product.id %}" class="btn btn-primary" data-product-id="{{ product.id }}"><i class="fas fa-shopping-cart"></i> Buy Now</a>
-                    <button class="btn btn-outline-danger btn-block add-to-wishlist" data-product-id="{{ product.id }}"><i class="fas fa-heart"></i> Add to Wishlist</button>
-                </div>
-            </div>
+  <h2 class="best-sellers">Best Sellers</h2>
+  <hr class="underline">
+  <div class="row"> {% for product in best_sellers %} <div class="col-md-4 game-card">
+      <div class="card">
+        <div class="card-inner">
+          <img src="{{ product.image_url }}" class="card-img-top" alt="{{ product.name }}">
+          <div class="card-description">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.description }}</p>
+          </div>
         </div>
-        {% endfor %}
-    </div>
+        <div class="card-footer">
+          <p class="price">£{{ product.price }}</p>
+          <a href="{% url 'add_to_bag' product_id=product.id %}" class="btn btn-primary" data-product-id="{{ product.id }}">
+            <i class="fas fa-shopping-cart"></i> Buy Now </a>
+          <button class="btn btn-outline-danger btn-block add-to-wishlist" data-product-id="{{ product.id }}">
+            <i class="fas fa-heart"></i> Add to Wishlist </button>
+        </div>
+      </div>
+    </div> {% endfor %} </div>
 </div>
-
-
 <div class="container mt-5" id="coming-soon">
-    <h2 class="best-sellers">Coming Soon</h2>
-    <hr class="underline">
-    <div class="row">
-        <div class="col-md-4 game-card">
-            <div class="card">
-                <div class="card-inner">
-                    <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710447130/capsule_616x353_g8r5q4.jpg" class="card-img-top" alt="Manor Lords game">
-                    <div class="card-description">
-                        <h5 class="card-title">Manor Lords</h5>
-                        <p class="card-text">Manor Lords is a medieval strategy game featuring in-depth city building, large-scale tactical battles, and complex economic and social simulations. Rule your lands as a medieval lord -- the seasons pass, the weather changes, and cities rise and fall.</p>
-                    </div>
-                </div>
-            </div>
+  <h2 class="best-sellers">Coming Soon</h2>
+  <hr class="underline">
+  <div class="row">
+    <div class="col-md-4 game-card">
+      <div class="card">
+        <div class="card-inner">
+          <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710447130/capsule_616x353_g8r5q4.jpg" class="card-img-top" alt="Manor Lords game">
+          <div class="card-description">
+            <h5 class="card-title">Manor Lords</h5>
+            <p class="card-text">Manor Lords is a medieval strategy game featuring in-depth city building, large-scale tactical battles, and complex economic and social simulations. Rule your lands as a medieval lord -- the seasons pass, the weather changes, and cities rise and fall.</p>
+          </div>
         </div>
-        <div class="col-md-4 game-card">
-            <div class="card">
-                <div class="card-inner">
-                    <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710447160/capsule_616x353_mbzfnq.jpg" class="card-img-top" alt="Black Myth: Wukong game">
-                    <div class="card-description">
-                        <h5 class="card-title">Black Myth: Wukong</h5>
-                        <p class="card-text">Black Myth: Wukong is an action RPG rooted in Chinese mythology. You shall set out as the Destined One to venture into the challenges and marvels ahead, to uncover the obscured truth beneath the veil of a glorious legend from the past.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 game-card">
-            <div class="card">
-                <div class="card-inner">
-                    <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710447183/capsule_616x353_tqiurd.jpg" class="card-img-top" alt="The First Descendant game">
-                    <div class="card-description">
-                        <h5 class="card-title">The First Descendant</h5>
-                        <p class="card-text">The First Descendant is a third-person looter shooter powered by Unreal Engine 5. Become a Descendant. Fight for the survival of humanity. Descendants have unique abilities to tackle both solo and co-op missions. Up to 4 players use varied mechanics to defeat giant bosses. </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="col-md-4 game-card">
+      <div class="card">
+        <div class="card-inner">
+          <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710447160/capsule_616x353_mbzfnq.jpg" class="card-img-top" alt="Black Myth: Wukong game">
+          <div class="card-description">
+            <h5 class="card-title">Black Myth: Wukong</h5>
+            <p class="card-text">Black Myth: Wukong is an action RPG rooted in Chinese mythology. You shall set out as the Destined One to venture into the challenges and marvels ahead, to uncover the obscured truth beneath the veil of a glorious legend from the past.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 game-card">
+      <div class="card">
+        <div class="card-inner">
+          <img src="https://res.cloudinary.com/ds7qsnpge/image/upload/v1710447183/capsule_616x353_tqiurd.jpg" class="card-img-top" alt="The First Descendant game">
+          <div class="card-description">
+            <h5 class="card-title">The First Descendant</h5>
+            <p class="card-text">The First Descendant is a third-person looter shooter powered by Unreal Engine 5. Become a Descendant. Fight for the survival of humanity. Descendants have unique abilities to tackle both solo and co-op missions. Up to 4 players use varied mechanics to defeat giant bosses. </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
 <div class="container mt-5 testimonials-container" id="testimonials">
-    <h2 class="best-sellers">Testimonials</h2>
-    <hr class="underline">
-    <div class="row">
-        <!-- Testimonials here -->
-        <div class="col-md-4">
-            <div class="card testimonial">
-                <div class="card-body">
-                    <p class="card-text">"Amazing selection of games and excellent customer service. Highly recommend!"</p>
-                    <footer class="blockquote-footer">Emily Johnson</footer>
-                </div>
-            </div>
+  <h2 class="best-sellers">Testimonials</h2>
+  <hr class="underline">
+  <div class="row">
+    <!-- Testimonials here -->
+    <div class="col-md-4">
+      <div class="card testimonial">
+        <div class="card-body">
+          <p class="card-text">"Amazing selection of games and excellent customer service. Highly recommend!"</p>
+          <footer class="blockquote-footer">Emily Johnson</footer>
         </div>
-        <div class="col-md-4">
-            <div class="card testimonial">
-                <div class="card-body">
-                    <p class="card-text">"The quality of the games and the ease of purchase make this my go-to site for all my gaming needs."</p>
-                    <footer class="blockquote-footer">Michael Smith</footer>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card testimonial">
-                <div class="card-body">
-                    <p class="card-text">"Outstanding service! Will definitely be coming back for more games!"</p>
-                    <footer class="blockquote-footer">Sophia Williams</footer>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="col-md-4">
+      <div class="card testimonial">
+        <div class="card-body">
+          <p class="card-text">"The quality of the games and the ease of purchase make this my go-to site for all my gaming needs."</p>
+          <footer class="blockquote-footer">Michael Smith</footer>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card testimonial">
+        <div class="card-body">
+          <p class="card-text">"Outstanding service! Will definitely be coming back for more games!"</p>
+          <footer class="blockquote-footer">Sophia Williams</footer>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
 <hr class="underline">
 <!-- Centered Newsletter Section -->
 <div class="d-flex justify-content-center">
-    <section class="newsletter mt-5 testimonial text-white p-4 rounded shadow" style="margin-bottom: 50px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2 class="mb-3">Subscribe to Our Newsletter</h2>
-                    <p>Stay updated with our latest offers and promotions!</p>
-                </div>
-                <div class="col-md-6">
-                    <!-- Newsletter Form -->
-                    <form action="{% url 'subscribe' %}" method="post">
-                        {% csrf_token %}
-                        <div class="input-group mb-3">
-                            <input type="email" class="form-control" placeholder="Enter your email" aria-label="Email" name="email" required>
-                            <button class="btn btn-primary" type="submit">Subscribe</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+  <section class="newsletter mt-5 testimonial text-white p-4 rounded shadow" style="margin-bottom: 50px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h2 class="mb-3">Subscribe to Our Newsletter</h2>
+          <p>Stay updated with our latest offers and promotions!</p>
         </div>
-    </section>
+        <div class="col-md-6">
+          <!-- Newsletter Form -->
+          <form action="{% url 'subscribe' %}" method="post"> {% csrf_token %} <div class="input-group mb-3">
+              <input type="email" class="form-control" placeholder="Enter your email" aria-label="Email" name="email" required>
+              <button class="btn btn-primary" type="submit">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
-
 <!-- Toast Notification -->
 <div class="toast" id="wishlist-toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000" style="position: fixed; top: 120px; right: 20px; border: 2px solid #f8f9fa; border-radius: 8px;">
-    <div class="toast-header" style="background-color: #f8f9fa; color: #000;">
-        <strong class="mr-auto">Wishlist Notification</strong>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close" style="color: #000; border: none; background-color: transparent;">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="toast-body" style="background-color: #f8f9fa; color: #000;">
-        <!-- Wishlist message will be displayed here -->
-    </div>
-</div>
-
-    <!-- Back to Top button -->
-    <button onclick="topFunction()" id="myBtn" title="Back to Top">
-        <i class="fas fa-arrow-up"></i>
+  <div class="toast-header" style="background-color: #f8f9fa; color: #000;">
+    <strong class="mr-auto">Wishlist Notification</strong>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close" style="color: #000; border: none; background-color: transparent;">
+      <span aria-hidden="true">&times;</span>
     </button>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        // Function to add product to the wishlist
-        function addToWishlist(productId) {
-            $.ajax({
-                type: 'POST',
-                url: '/wishlist/add/' + productId + '/',
-                data: {
-                    'csrfmiddlewaretoken': '{{ csrf_token }}' // Include CSRF token
-                },
-                success: function(response) {
-                    // Display toast notification
-                    displayToast(response.message);
-                },
-                error: function(xhr, status, error) {
-                    // Handle errors here
-                    console.error(xhr.responseText);
-                }
-            });
-        }
-    
-        $(document).ready(function() {
-            // Event listener for "Add to Wishlist" button click
-            $('.add-to-wishlist').click(function(event) {
-                event.preventDefault(); // Prevent the default action of following the link
-                var productId = $(this).data('product-id');
-                addToWishlist(productId);
-            });
-    
-            // Close toast notification when close button is clicked
-            $('.close').click(function() {
-                $('#wishlist-toast').toast('hide');
-            });
-    
-            // Close toast notification after delay
-            $('#wishlist-toast').on('hidden.bs.toast', function() {
-                $('#wishlist-toast').toast('dispose');
-            });
-        });
-
-        // Function to display toast notification
-        function displayToast(message) {
-            $('.toast-body').text(message);
-            $('#wishlist-toast').toast('show');
-            setTimeout(function() {
-                $('#wishlist-toast').toast('hide');
-            }, 3000); // 3 seconds timeout
-        }
-
-        // Function to hide messages after a timeout
-        function hideMessages() {
-            $('.alert').delay(3000).fadeOut('slow');
-        }
-
-        // Call hideMessages function on page load
-        hideMessages();
-    </script>
-    {% endblock %}
+  </div>
+  <div class="toast-body" style="background-color: #f8f9fa; color: #000;">
+    <!-- Wishlist message will be displayed here -->
+  </div>
+</div>
+<!-- Back to Top button -->
+<button onclick="topFunction()" id="myBtn" title="Back to Top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  // Function to add product to the wishlist
+  function addToWishlist(productId) {
+    $.ajax({
+      type: 'POST',
+      url: '/wishlist/add/' + productId + '/',
+      data: {
+        'csrfmiddlewaretoken': '{{ csrf_token }}' // Include CSRF token
+      },
+      success: function(response) {
+        // Display toast notification
+        displayToast(response.message);
+      },
+      error: function(xhr, status, error) {
+        // Handle errors here
+        console.error(xhr.responseText);
+      }
+    });
+  }
+  $(document).ready(function() {
+    // Event listener for "Add to Wishlist" button click
+    $('.add-to-wishlist').click(function(event) {
+      event.preventDefault(); // Prevent the default action of following the link
+      var productId = $(this).data('product-id');
+      addToWishlist(productId);
+    });
+    // Close toast notification when close button is clicked
+    $('.close').click(function() {
+      $('#wishlist-toast').toast('hide');
+    });
+    // Close toast notification after delay
+    $('#wishlist-toast').on('hidden.bs.toast', function() {
+      $('#wishlist-toast').toast('dispose');
+    });
+  });
+  // Function to display toast notification
+  function displayToast(message) {
+    $('.toast-body').text(message);
+    $('#wishlist-toast').toast('show');
+    setTimeout(function() {
+      $('#wishlist-toast').toast('hide');
+    }, 3000); // 3 seconds timeout
+  }
+  // Function to hide messages after a timeout
+  function hideMessages() {
+    $('.alert').delay(3000).fadeOut('slow');
+  }
+  // Call hideMessages function on page load
+  hideMessages();
+</script> {% endblock %}
