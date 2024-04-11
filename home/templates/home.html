@@ -113,13 +113,14 @@
                 <div class="card-footer">
                     <p class="price">£{{ product.price }}</p>
                     <a href="{% url 'add_to_bag' product_id=product.id %}" class="btn btn-primary" data-product-id="{{ product.id }}"><i class="fas fa-shopping-cart"></i> Buy Now</a>
-                    <a href="#" class="btn btn-outline-danger add-to-wishlist" data-product-id="{{ product.id }}"><i class="fas fa-heart"></i></a>
+                    <button class="btn btn-outline-danger btn-block add-to-wishlist" data-product-id="{{ product.id }}"><i class="fas fa-heart"></i> Add to Wishlist</button>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
 </div>
+
 
 <div class="container mt-5" id="coming-soon">
     <h2 class="best-sellers">Coming Soon</h2>
@@ -218,48 +219,37 @@
     </section>
 </div>
 
+<!-- Toast Notification -->
+<div class="toast" id="wishlist-toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000" style="position: fixed; top: 120px; right: 20px; border: 2px solid #f8f9fa; border-radius: 8px;">
+    <div class="toast-header" style="background-color: #f8f9fa; color: #000;">
+        <strong class="mr-auto">Wishlist Notification</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close" style="color: #000; border: none; background-color: transparent;">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="toast-body" style="background-color: #f8f9fa; color: #000;">
+        <!-- Wishlist message will be displayed here -->
+    </div>
+</div>
+
     <!-- Back to Top button -->
     <button onclick="topFunction()" id="myBtn" title="Back to Top">
         <i class="fas fa-arrow-up"></i>
     </button>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-       // When the user scrolls down 20px from the top of the document, show the button
-    window.onscroll = function() {scrollFunction()};
-
-    function scrollFunction() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            document.getElementById("myBtn").style.display = "block";
-        } else {
-            document.getElementById("myBtn").style.display = "none";
-        }
-    }
-
-    // When the user clicks on the button, scroll to the top of the document
-    function topFunction() {
-        document.body.scrollTop = 0; // For Safari
-        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-    }
-    $(document).ready(function() {
-        // Event listener for "Buy Now" link click
-        $('.add-to-bag').click(function(event) {
-            event.preventDefault(); // Prevent the default action of following the link
-            var productId = $(this).data('product-id');
-            addToBag(productId);
-        });
-    
-        // Function to add product to the bag
-        function addToBag(productId) {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Function to add product to the wishlist
+        function addToWishlist(productId) {
             $.ajax({
                 type: 'POST',
-                url: '/add-to-bag/' + productId + '/',
+                url: '/wishlist/add/' + productId + '/',
                 data: {
-                    'csrfmiddlewaretoken': '{{ csrf_token }}'  // Include CSRF token
+                    'csrfmiddlewaretoken': '{{ csrf_token }}' // Include CSRF token
                 },
                 success: function(response) {
-                    // Redirect to the bag page after successful addition
-                    window.location.href = '/view-bag/';
+                    // Display toast notification
+                    displayToast(response.message);
                 },
                 error: function(xhr, status, error) {
                     // Handle errors here
@@ -267,7 +257,41 @@
                 }
             });
         }
-    });
-    </script>
+    
+        $(document).ready(function() {
+            // Event listener for "Add to Wishlist" button click
+            $('.add-to-wishlist').click(function(event) {
+                event.preventDefault(); // Prevent the default action of following the link
+                var productId = $(this).data('product-id');
+                addToWishlist(productId);
+            });
+    
+            // Close toast notification when close button is clicked
+            $('.close').click(function() {
+                $('#wishlist-toast').toast('hide');
+            });
+    
+            // Close toast notification after delay
+            $('#wishlist-toast').on('hidden.bs.toast', function() {
+                $('#wishlist-toast').toast('dispose');
+            });
+        });
 
-{% endblock %}
+        // Function to display toast notification
+        function displayToast(message) {
+            $('.toast-body').text(message);
+            $('#wishlist-toast').toast('show');
+            setTimeout(function() {
+                $('#wishlist-toast').toast('hide');
+            }, 3000); // 3 seconds timeout
+        }
+
+        // Function to hide messages after a timeout
+        function hideMessages() {
+            $('.alert').delay(3000).fadeOut('slow');
+        }
+
+        // Call hideMessages function on page load
+        hideMessages();
+    </script>
+    {% endblock %}
