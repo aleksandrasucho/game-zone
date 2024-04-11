@@ -141,3 +141,23 @@ Click "View build logs" to see the progress of the deployment.
 
 * Set debug to False locally + delete DISABLE_COLLECTSTATIC from config vars in Heroku dashboard.
 * Commit and push the changes to GitHub.
+
+### Create Database on ElephantSQL
+
+1. Go to [ElephantSQL](https://www.elephantsql.com/) and create a new account.
+
+2. Create a new instance of the database.
+
+3. Select a name for your database and select the free plan.
+
+4. Click "Select Region"
+
+5. Select a region close to you.
+
+6. Click "Review"
+
+7. Click "Create Instance"
+
+8. Click on the name of your database to open the dashboard.
+
+9. You will see the dashboard of your database. You will need the URL of your database to connect it to your Django project.
