@@ -28,7 +28,7 @@ def add_to_bag(request, product_id):
     else:
         # Inform the user that the product is already in the bag
         messages.info(request, f"{product.name} is already in your bag.")
-        return redirect('product_list')  # Redirect to a different page or stay on the same page
+        return redirect('product_list')
 
 def remove_from_bag(request, product_id):
     if 'bag' in request.session:
@@ -38,7 +38,7 @@ def remove_from_bag(request, product_id):
         if product_id in bag:
             bag.remove(product_id)
             request.session['bag'] = bag
-            return redirect('view_bag')  # Redirect to the bag page after removal
+            return redirect('view_bag') # Redirect to the bag page after removal
 
     return HttpResponse("Product not found in the bag.")
 

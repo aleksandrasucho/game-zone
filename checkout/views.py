@@ -19,9 +19,7 @@ logger = logging.getLogger(__name__)
 def cache_checkout_data(request):
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
-        print(pid, '#22')
         stripe.api_key = settings.STRIPE_SECRET_KEY
-        print(stripe.api_key, '#33')
         stripe.PaymentIntent.modify(pid, metadata={
             'bag': json.dumps(request.session.get('bag', {})),
             'save_info': request.POST.get('save_info'),
@@ -29,19 +27,14 @@ def cache_checkout_data(request):
         })
         return HttpResponse(status=200)
     except Exception as e:
-        print(e, '#1')
-        messages.error(request, 'Sorry, your payment cannot be \
-            processed right now. Please try again later.')
+        messages.error(request, 'Sorry, your payment cannot be processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
-
 
 @login_required
 def checkout(request):
-    stripe_public_key = 'pk_test_51P3N3GP6tR9JlH7YrUVcruhL6O0aqwq2pgcHjY1hs4XapzigC9h5UI8khOBHvBemHRbce7vyp0yL1j7R1KZAjRXV00aeMAq4h6'
-    stripe_secret_key = settings.STRIPE_SECRET_KEY
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
 
-    stripe.api_key = stripe_secret_key
-    
     bag = request.session.get('bag', {})
     products = Product.objects.filter(pk__in=bag)
 
@@ -61,58 +54,36 @@ def checkout(request):
                     description='Order Payment',
                     metadata={'order_id': order.id},
                 )
-                logger.info('Payment intent created: %s', intent)
-            except stripe.error.CardError as e:
-                logger.error('Card error occurred: %s', str(e))
-                return render(request, 'checkout/checkout.html', {'order_form': order_form, 'products': products, 'error': str(e)})
-
-            if intent.status == 'succeeded':
-                logger.info('Payment succeeded for order: %s', order.order_number)
                 return redirect(reverse('checkout_success', args=[order.order_number]))
-            else:
-                logger.warning("Payment intent status: %s", intent.status)
-                # Disable pay button and show message to the user
-                messages.info(request, 'Payment cannot be processed right now. Please try again later.')
-                context = {
-                    'order_form': order_form,
-                    'products': products,
-                    'stripe_public_key': stripe_public_key,
-                    'total_price': total_amount,
-                    'client_secret': intent.client_secret,
-                    'payment_error': True,
-                }
-                return render(request, 'checkout/checkout.html', context)
+            except stripe.error.CardError as e:
+                messages.error(request, 'There was an issue with your card: {}'.format(e))
+                return render(request, 'checkout/checkout.html', {'order_form': order_form, 'products': products, 'error': str(e)})
     else:
         order_form = OrderForm()
+        total_price = sum(product.price for product in products)
+        try:
+            intent = stripe.PaymentIntent.create(
+                amount=int(total_price * 100),
+                currency='gbp',
+                metadata={'bag': json.dumps(request.session.get('bag', {}))},
+            )
+        except Exception as e:
+            messages.error(request, 'Sorry, we could not process your payment. Please try again later.')
+            return redirect('view_bag')
 
-    total_price = sum(product.price for product in products)
-    
     context = {
         'order_form': order_form,
         'products': products,
         'stripe_public_key': stripe_public_key,
+        'client_secret': intent.client_secret,
         'total_price': total_price,
-        'client_secret': 'test client secret',  # Adjust this as needed
     }
     return render(request, 'checkout/checkout.html', context)
 
-
 def checkout_success(request, order_number):
-    """
-    Handle successful checkouts
-    """
     order = get_object_or_404(Order, order_number=order_number)
-    messages.success(request, f'Order successfully processed! \
-        Your order number is {order_number}. A confirmation \
-        email will be sent to {order.email}.')
-    logger.info('Checkout success for order: %s', order_number)
-
+    messages.success(request, f'Order successfully processed! Your order number is {order_number}. A confirmation email will be sent to {order.email}.')
     if 'bag' in request.session:
         del request.session['bag']
-
-    template = 'checkout/checkout_success.html'
-    context = {
-        'order': order,
-    }
-
-    return render(request, template, context)
+    context = {'order': order}
+    return render(request, 'checkout/checkout_success.html', context)
