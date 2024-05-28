@@ -1,15 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
-    <h1 class="text-white">Order Placed Successfully!</h1>
-    <p class="text-white">Your order has been successfully placed. Below are the details:</p>
-    
-    <h2 class="text-white">Order Details</h2>
-    <p class="text-white"><strong>Order ID:</strong> {{ order.id }}</p>
-    <p class="text-white"><strong>Total Amount:</strong> £{{ order.total }}</p>
-    <!-- You can display more order details here as needed -->
-    
-    <p class="text-white">Thank you for shopping with us!</p>
+<div class="container d-flex align-items-center justify-content-center" style="height: 100vh;">
+    <div style="padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); text-align: center;" class="custom-card">
+        <h1 style="color: #00cc66;">Order Placed Successfully!</h1>
+        <p>Your order has been successfully placed. Below are the details:</p>
+        
+        <h2 style="color: #00cc66;">Order Details</h2>
+        <p><strong>Order ID:</strong> {{ order.order_number }}</p>
+        <p style="font-size: 24px;"><strong>Total Amount:</strong> 
+            {% if total_price %}
+                £<span>{{ total_price|floatformat:2 }}</span>
+            {% else %}
+                <span style="color: #ff0000;">Total amount not available</span>
+            {% endif %}
+        </p>
+        
+        <p style="margin-top: 20px;">Thank you for shopping with us!</p>
+    </div>
 </div>
 {% endblock %}
