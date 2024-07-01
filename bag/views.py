@@ -1,53 +1,46 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
-from stock.models import Product
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from django.contrib import messages
-from django.urls import reverse
-from django.http import JsonResponse
+from stock.models import Product
+from django.contrib.auth.decorators import login_required
+import decimal
 
 def add_to_bag(request, product_id):
-    if 'bag' not in request.session:
-        request.session['bag'] = []
+    if 'bag' not in request.session or not isinstance(request.session['bag'], dict):
+        request.session['bag'] = {}
 
     bag = request.session['bag']
-
-    # Assuming product_id is passed as a parameter
     product = get_object_or_404(Product, pk=product_id)
 
-    # Check if the product is already in the bag
-    if product.id not in bag:
-        # Add the product to the bag if it's not already there
-        bag.append(product.id)
-        # Save the updated bag in the session
+    if str(product_id) not in bag:
+        bag[str(product_id)] = {
+            'name': product.name,
+            'price': float(product.price),  # Convert Decimal to float
+            'quantity': 1
+        }
         request.session['bag'] = bag
-        # Inform the user that the product has been added to the bag
         messages.success(request, f"{product.name} has been added to your bag.")
-        # Redirect to the bag page
         return redirect('view_bag')
     else:
-        # Inform the user that the product is already in the bag
         messages.info(request, f"{product.name} is already in your bag.")
         return redirect('product_list')
 
 def remove_from_bag(request, product_id):
-    if 'bag' in request.session:
+    if 'bag' in request.session and isinstance(request.session['bag'], dict):
         bag = request.session['bag']
-
-        # Check if the product exists in the bag
-        if product_id in bag:
-            bag.remove(product_id)
+        if str(product_id) in bag:
+            del bag[str(product_id)]
             request.session['bag'] = bag
-            return redirect('view_bag') # Redirect to the bag page after removal
-
+            return redirect('view_bag')
     return HttpResponse("Product not found in the bag.")
 
 def view_bag(request):
-    bag = request.session.get('bag', [])
-    products = Product.objects.filter(pk__in=bag)
+    if 'bag' not in request.session or not isinstance(request.session['bag'], dict):
+        request.session['bag'] = {}
 
-    # Calculate the total price of all products in the bag
-    total_price = sum(product.price for product in products)
+    bag = request.session.get('bag', {})
+    print(f"Debug: Bag contents - {bag}")  # Debugging line
+    product_ids = bag.keys()
+    products = Product.objects.filter(pk__in=product_ids)
+    total_price = sum(item['price'] * item['quantity'] for item in bag.values())
 
     return render(request, 'bag/bag.html', {'products': products, 'total_price': total_price})
-
