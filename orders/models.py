@@ -106,9 +106,8 @@ class Order(models.Model):
         return grand_total
 
 class OrderItem(models.Model):
-    """Model for OrderItem."""
     order = models.ForeignKey(
-        Order,
+        'Order',
         on_delete=models.CASCADE,
         related_name='order_items'
     )
@@ -118,31 +117,13 @@ class OrderItem(models.Model):
         related_name='order_items'
     )
     quantity = models.PositiveIntegerField(default=1)
-
-    def __str__(self):
-        return f"{self.product_inventory.product.name} - {self.quantity}"
-
-class OrderLineItem(models.Model):
-    order = models.ForeignKey(
-        Order, null=False, blank=False, on_delete=models.CASCADE,
-        related_name='lineitems'
-    )
-    product = models.ForeignKey(
-        Product, null=False, blank=False, on_delete=models.CASCADE
-    )
-    quantity = models.IntegerField(null=False, blank=False, default=0)
     lineitem_total = models.DecimalField(
-        max_digits=6, decimal_places=2, null=False, blank=False,
-        editable=False
+        max_digits=10, decimal_places=2, default=Decimal('0.00')
     )
 
     def save(self, *args, **kwargs):
-        """
-        Override the original save method to set the lineitem total
-        and update the order total.
-        """
-        self.lineitem_total = self.product.price * self.quantity
+        self.lineitem_total = self.product_inventory.product.price * self.quantity
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f'{self.product.title} on order {self.order.order_number}'
+        return f"{self.product_inventory.product.name} - {self.quantity}"

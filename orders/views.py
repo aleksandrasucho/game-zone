@@ -4,7 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .models import Order, OrderItem
 from .forms import OrderForm, OrderItemForm
-from stock.models import Product
+from stock.models import ProductInventory
 
 # View for listing orders of the logged-in user
 class UserOrdersView(LoginRequiredMixin, ListView):
@@ -15,8 +15,7 @@ class UserOrdersView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         """Filter orders based on the currently logged-in user."""
-        queryset = super().get_queryset()
-        return queryset.filter(user=self.request.user)
+        return self.model.objects.filter(user=self.request.user).order_by('-created_at')
 
 # View for displaying details of an order of the logged-in user
 class UserOrderDetailsView(LoginRequiredMixin, DetailView):
@@ -25,3 +24,9 @@ class UserOrderDetailsView(LoginRequiredMixin, DetailView):
     context_object_name = 'order'
     slug_field = 'order_number'
     slug_url_kwarg = 'order_number'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        order = self.object
+        context['order_items'] = order.order_items.all()
+        return context

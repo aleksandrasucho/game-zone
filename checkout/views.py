@@ -3,8 +3,10 @@ from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from orders.forms import OrderForm
-from orders.models import Order, OrderLineItem
+from django.forms import formset_factory
+from django.db import transaction
+from orders.forms import OrderForm, OrderItemForm
+from orders.models import Order, OrderItem
 from stock.models import Product
 from bag.contexts import bag_contents
 import json
@@ -40,6 +42,8 @@ def checkout(request):
     bag = request.session.get('bag', {})
     products = Product.objects.filter(pk__in=bag.keys())
 
+    intent = None
+
     if request.method == 'POST':
         order_form = OrderForm(request.POST)
         if order_form.is_valid():
@@ -48,6 +52,16 @@ def checkout(request):
             total_amount = sum(item['price'] * item['quantity'] for item in bag.values())
             order.total_paid = total_amount
             order.save()
+
+            # Create order items
+            for product_id, item_data in bag.items():
+                product = Product.objects.get(pk=product_id)
+                order_item = OrderItem.objects.create(
+                    order=order,
+                    product=product,
+                    quantity=item_data['quantity'],
+                    lineitem_total=item_data['price'] * item_data['quantity']
+                )
 
             try:
                 intent = stripe.PaymentIntent.create(
@@ -82,8 +96,8 @@ def checkout(request):
         'order_form': order_form,
         'products': products,
         'stripe_public_key': stripe_public_key,
-        'client_secret': intent.client_secret,
-        'total_price': total_price,
+        'client_secret': intent.client_secret if intent else None,
+        'total_price': total_price if 'total_price' in locals() else None,
     }
     return render(request, 'checkout/checkout.html', context)
 
