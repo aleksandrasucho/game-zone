@@ -175,6 +175,12 @@ cloudinary.config(
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+DISCOUNT_THRESHOLD = 100
+FREE_DELIVERY_THRESHOLD = 100
+STANDARD_DELIVERY_CHARGE = 5.00
+STANDARD_VAT_RATE = 20 
+DISCOUNT_RATE = 10
+
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]

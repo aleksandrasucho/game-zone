@@ -1,14 +1,12 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.http import HttpResponse 
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from django.forms import formset_factory
-from django.db import transaction
 from orders.forms import OrderForm, OrderItemForm
 from orders.models import Order, OrderItem
-from stock.models import Product
-from bag.contexts import bag_contents
+from stock.models import Product, ProductInventory
 import json
 import stripe
 import logging
@@ -19,16 +17,19 @@ logger = logging.getLogger(__name__)
 @require_POST
 def cache_checkout_data(request):
     try:
-        pid = request.POST.get('client_secret').split('_secret')[0]
-        stripe.api_key = settings.STRIPE_SECRET_KEY
-        stripe.PaymentIntent.modify(pid, metadata={
-            'bag': json.dumps(request.session.get('bag', {})),
-            'save_info': request.POST.get('save_info'),
-            'username': request.user,
-        })
+        client_secret = request.POST.get('client_secret', '')
+        pid = client_secret.split('_secret')[0] if client_secret else None
+        if pid:
+            stripe.api_key = settings.STRIPE_SECRET_KEY
+            stripe.PaymentIntent.modify(pid, metadata={
+                'bag': json.dumps(request.session.get('bag', {})),
+                'save_info': request.POST.get('save_info'),
+                'username': request.user.username,
+            })
         return HttpResponse(status=200)
     except Exception as e:
         messages.error(request, 'Sorry, your payment cannot be processed right now. Please try again later.')
+        logger.error(f"Error caching checkout data: {e}")
         return HttpResponse(content=e, status=400)
 
 @login_required
@@ -39,33 +40,34 @@ def checkout(request):
     if 'bag' not in request.session or not isinstance(request.session['bag'], dict):
         request.session['bag'] = {}
 
-    bag = request.session.get('bag', {})
+    bag = request.session['bag']
     products = Product.objects.filter(pk__in=bag.keys())
 
     intent = None
+    total_price = sum(item['price'] * item['quantity'] for item in bag.values())
 
     if request.method == 'POST':
         order_form = OrderForm(request.POST)
         if order_form.is_valid():
             order = order_form.save(commit=False)
             order.user = request.user
-            total_amount = sum(item['price'] * item['quantity'] for item in bag.values())
-            order.total_paid = total_amount
+            order.total_paid = total_price
             order.save()
 
             # Create order items
             for product_id, item_data in bag.items():
                 product = Product.objects.get(pk=product_id)
+                product_inventory = ProductInventory.objects.get(product=product)  # Ensure ProductInventory exists
                 order_item = OrderItem.objects.create(
                     order=order,
-                    product=product,
+                    product_inventory=product_inventory,
                     quantity=item_data['quantity'],
                     lineitem_total=item_data['price'] * item_data['quantity']
                 )
 
             try:
                 intent = stripe.PaymentIntent.create(
-                    amount=int(total_amount * 100),
+                    amount=int(total_price * 100),
                     currency='gbp',
                     description='Order Payment',
                     metadata={
@@ -79,7 +81,7 @@ def checkout(request):
                 return render(request, 'checkout/checkout.html', {'order_form': order_form, 'products': products, 'error': str(e)})
     else:
         order_form = OrderForm()
-        total_price = sum(item['price'] * item['quantity'] for item in bag.values())
+
         try:
             intent = stripe.PaymentIntent.create(
                 amount=int(total_price * 100),

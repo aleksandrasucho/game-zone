@@ -182,7 +182,7 @@
             'client_secret': client_secret,
             'save_info': saveInfo,
         };
-        var url = '/checkout/cache_checkout_data/';
+        var url = '{% url "cache_checkout_data" %}';
 
         fetch(url, {
             method: 'POST',
@@ -234,7 +234,7 @@
                 }
             }
         }).catch(function(error) {
-            location.reload();
+            console.log("An error occurred:", error);
         });
     });
 </script>

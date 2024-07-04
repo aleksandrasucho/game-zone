@@ -20,16 +20,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for item in order.items.all %}
+                    {% for item in order.order_items.all %}
                     <tr>
-                        <td class="text-white">{{ item.product }}</td>
+                        <td class="text-white">{{ item.product_inventory.product.name }}</td>
                         <td class="text-white">{{ item.quantity }}</td>
-                        <td class="text-white">{{ item.price }}</td>
+                        <td class="text-white">{{ item.lineitem_total }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
-            <p class="text-white">Total Price: {{ order.total_price }}</p>
+            <p class="text-white">Total Price: {{ order.total_paid }}</p>
             <!-- Add more order summary details here as needed -->
         </div>
     </div>
