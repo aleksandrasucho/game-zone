@@ -5,6 +5,11 @@
 {% block content %}
 <div class="container mt-5">
     <h1 class="text-center mb-4 text-white">Checkout</h1>
+
+    <div class="alert alert-info text-center" role="alert">
+        Note: You can only purchase one quantity of each game per transaction.
+    </div>
+
     {% if products %}
     <div class="table-responsive">
         <table class="table table-striped">
