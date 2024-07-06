@@ -1,8 +1,11 @@
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from django.conf import settings
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.http import HttpResponse 
 from django.views.decorators.http import require_POST
 from django.contrib import messages
-from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from orders.forms import OrderForm, OrderItemForm
 from orders.models import Order, OrderItem
@@ -54,6 +57,9 @@ def checkout(request):
             order.total_paid = total_price
             order.save()
 
+            # Send email confirmation
+            send_order_confirmation_email(order, request.user)
+
             # Create order items
             for product_id, item_data in bag.items():
                 product = Product.objects.get(pk=product_id)
@@ -102,6 +108,15 @@ def checkout(request):
         'total_price': total_price if 'total_price' in locals() else None,
     }
     return render(request, 'checkout/checkout.html', context)
+
+def send_order_confirmation_email(order, user):
+    subject = 'Order Confirmation'
+    html_message = render_to_string('email/order_confirmation.html', {'order': order})
+    plain_message = strip_tags(html_message)
+    from_email = settings.DEFAULT_FROM_EMAIL
+    to = [user.email]
+    
+    send_mail(subject, plain_message, from_email, to, html_message=html_message)
 
 def checkout_success(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)

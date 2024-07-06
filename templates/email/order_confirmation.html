@@ -1,0 +1,16 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Confirmation</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;">
+    <div style="max-width: 600px; margin: 0 auto; background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        <h1 style="color: #00cc66; text-align: center;">Order Confirmation</h1>
+        <p style="text-align: center;">Thank you for your order, {{ order.user.username }}.</p>
+        <p style="text-align: center;">Your order number is <strong>{{ order.order_number }}</strong>.</p>
+
+        <p style="text-align: center; margin-top: 20px;">Thank you for shopping with us!</p>
+    </div>
+</body>
+</html>
