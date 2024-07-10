@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.core.mail import send_mail
 from django.views.generic import ListView, DetailView, View
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .models import Order, OrderItem
@@ -44,6 +47,16 @@ class CancelOrderView(LoginRequiredMixin, View):
         if order.status == Order.PENDING:
             order.status = Order.CANCELLED
             order.save()
+
+            # Sending email notification
+            subject = 'Order Cancellation Notification'
+            html_message = render_to_string('order_cancel_email.html', {'order': order, 'user': request.user})
+            plain_message = strip_tags(html_message)
+            from_email = 'your-email@example.com'
+            to_email = [request.user.email]
+
+            send_mail(subject, plain_message, from_email, to_email, html_message=html_message)
+
             messages.success(request, 'Order has been cancelled successfully.')
         else:
             messages.error(request, 'Order cannot be cancelled.')
