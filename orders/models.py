@@ -1,3 +1,4 @@
+# models.py
 import uuid
 from django.db import models
 from django.db.models import Sum
@@ -7,12 +8,12 @@ from stock.models import ProductInventory
 from decimal import Decimal
 
 class Order(models.Model):
-    """Model for Order."""
     PENDING = 'Pending'
     PROCESSING = 'Processing'
     SHIPPED = 'Shipped'
     COMPLETED = 'Completed'
     REFUNDED = 'Refunded'
+    CANCELLED = 'Cancelled'
 
     STATUS_CHOICES = (
         (PENDING, 'Pending'),
@@ -20,6 +21,7 @@ class Order(models.Model):
         (SHIPPED, 'Shipped'),
         (COMPLETED, 'Completed'),
         (REFUNDED, 'Refunded'),
+        (CANCELLED, 'Cancelled'),
     )
 
     user = models.ForeignKey(
@@ -27,6 +29,8 @@ class Order(models.Model):
         on_delete=models.CASCADE,
         related_name='orders'
     )
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
     full_name = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
     phone_number = models.CharField(max_length=100, blank=True)
@@ -53,7 +57,7 @@ class Order(models.Model):
         if not self.order_number:
             self.order_number = self._generate_order_number()
         super().save(*args, **kwargs)
-        
+
     def update_total(self):
         """
         Update grand total for the order.
@@ -93,22 +97,11 @@ class Order(models.Model):
         """
         return self.grand_total if hasattr(self, 'grand_total') else Decimal('0.00')
 
-
 class OrderItem(models.Model):
-    order = models.ForeignKey(
-        'Order',
-        on_delete=models.CASCADE,
-        related_name='order_items'
-    )
-    product_inventory = models.ForeignKey(
-        ProductInventory,
-        on_delete=models.CASCADE,
-        related_name='order_items'
-    )
+    order = models.ForeignKey('Order', on_delete=models.CASCADE, related_name='order_items')
+    product_inventory = models.ForeignKey(ProductInventory, on_delete=models.CASCADE, related_name='order_items')
     quantity = models.PositiveIntegerField(default=1)
-    lineitem_total = models.DecimalField(
-        max_digits=10, decimal_places=2, default=Decimal('0.00')
-    )
+    lineitem_total = models.DecimalField(max_digits=10, decimal_places=2, default=Decimal('0.00'))
 
     def save(self, *args, **kwargs):
         self.lineitem_total = self.product_inventory.product.price * self.quantity

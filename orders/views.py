@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import ListView, DetailView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .models import Order, OrderItem
+from django.contrib import messages
 from .forms import OrderForm, OrderItemForm
 from stock.models import ProductInventory
+from django.views.decorators.http import require_POST
+from django.utils.decorators import method_decorator
 
 # View for listing orders of the logged-in user
 class UserOrdersView(LoginRequiredMixin, ListView):
@@ -30,3 +33,19 @@ class UserOrderDetailsView(LoginRequiredMixin, DetailView):
         order = self.object
         context['order_items'] = order.order_items.all()
         return context
+
+@method_decorator(require_POST, name='dispatch')
+class CancelOrderView(LoginRequiredMixin, View):
+
+    def post(self, request, *args, **kwargs):
+        order_number = kwargs.get('order_number')
+        order = get_object_or_404(Order, order_number=order_number, user=request.user)
+
+        if order.status == Order.PENDING:
+            order.status = Order.CANCELLED
+            order.save()
+            messages.success(request, 'Order has been cancelled successfully.')
+        else:
+            messages.error(request, 'Order cannot be cancelled.')
+
+        return redirect('orders:user_order_detail', order_number=order.order_number)
