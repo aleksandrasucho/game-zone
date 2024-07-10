@@ -71,41 +71,49 @@
                     <fieldset class="checkout-fieldset">
                         <legend class="fieldset-label" style="text-align: left;">Personal Details</legend>
                         <div class="form-group">
+                            {{ order_form.full_name.label_tag }}
                             {{ order_form.full_name }}
                         </div>
                         <div class="form-group">
+                            {{ order_form.email.label_tag }}
                             {{ order_form.email }}
                         </div>
                     </fieldset>
                     <fieldset class="checkout-fieldset">
                         <legend class="fieldset-label" style="text-align: left;">Delivery Information</legend>
                         <div class="form-group">
+                            {{ order_form.phone_number.label_tag }}
                             {{ order_form.phone_number }}
                         </div>
                         <div class="form-group">
+                            {{ order_form.address_1.label_tag }}
                             {{ order_form.address_1 }}
                         </div>
                         <div class="form-group">
+                            {{ order_form.address_2.label_tag }}
                             {{ order_form.address_2 }}
                         </div>
                         <div class="form-group">
+                            {{ order_form.city.label_tag }}
                             {{ order_form.city }}
                         </div>
                         <div class="form-group">
+                            {{ order_form.country.label_tag }}
                             {{ order_form.country }}
                         </div>
                         <div class="form-group">
+                            {{ order_form.zip_code.label_tag }}
                             {{ order_form.zip_code }}
                         </div>
                         <div class="form-group save-info-checkbox">
                             {% if user.is_authenticated %}
-                            <input class="form-check-input" type="checkbox" id="id-save-info" name="save-info">
-                            <label class="form-check-label" for="id-save-info">Save this information to my profile</label>
+                                <input class="form-check-input" type="checkbox" id="id-save-info" name="save-info">
+                                <label class="form-check-label" for="id-save-info">Save this information to my profile</label>
                             {% else %}
-                            <label class="form-check-label" for="id-save-info">
-                                <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or
-                                <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
-                            </label>
+                                <label class="form-check-label" for="id-save-info">
+                                    <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or
+                                    <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
+                                </label>
                             {% endif %}
                         </div>
                     </fieldset>
